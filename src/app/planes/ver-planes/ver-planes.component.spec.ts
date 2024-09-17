@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HeaderComponent } from '../../componentTools/header/header.component';
+import { SidebarComponent } from '../../componentTools/sidebar/sidebar.component';
 import { VerPlanesComponent } from './ver-planes.component';
 
 describe('VerPlanesComponent', () => {
@@ -8,7 +9,11 @@ describe('VerPlanesComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [VerPlanesComponent]
+      declarations: [
+        VerPlanesComponent,
+        HeaderComponent, // Añadido aquí
+        SidebarComponent // Añadido aquí
+      ]
     });
     fixture = TestBed.createComponent(VerPlanesComponent);
     component = fixture.componentInstance;
