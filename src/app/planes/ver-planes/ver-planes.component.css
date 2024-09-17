@@ -1,0 +1,13 @@
+body {
+	position: fixed;
+	min-height: 89vh;
+    width: 100%;
+	margin-left: 280px;
+}
+
+.sidebar {
+	position: fixed;
+	top: 100px;
+	left: 0;
+	width: 280px;
+}
