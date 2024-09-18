@@ -1,7 +1,165 @@
-<app-header></app-header>
-<app-sidebar class="sidebar"></app-sidebar>
+<app-header class="headerPage"></app-header>
 
 <body>
-    <h1>Planes</h1>
-    
+	<app-sidebar class="sidebar"></app-sidebar>
+
+	<section class="contenido">
+		<div class="titulo">
+			<h1>Planes</h1>
+		</div>
+
+		<div class="gridTablas">
+			<!-- Card para primer plan -->
+			<div class="pack-container">
+				<div class="header">
+					<p class="title">Nombre del plan</p>
+					<div class="price-container">
+						<span>$</span>27
+						<span>/mo</span>
+					</div>
+				</div>
+				<div>
+					<ul class="lists">
+						<li class="list">
+							<span>
+								<svg
+									aria-hidden="true"
+									stroke="currentColor"
+									stroke-width="2"
+									viewBox="0 0 24 24"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M4.5 12.75l6 6 9-13.5"
+										stroke-linejoin="round"
+										stroke-linecap="round"
+									></path>
+								</svg>
+							</span>
+							<p>Poner esto</p>
+						</li>
+					</ul>
+				</div>
+				<div class="containerBotones">
+					<div class="button-container">
+						<a [routerLink]="'/planes/edit/1'">
+                            <i class='icono bx bxs-edit'></i>
+                            Editar
+                        </a>
+					</div>
+					<div class="button-container">
+						<a>
+                            <i class='icono bx bxs-trash' ></i>
+                            Eliminar
+                        </a>
+					</div>
+				</div>
+			</div>
+
+            <!-- Card para segundo plan -->
+			<div class="pack-container">
+				<div class="header">
+					<p class="title">Nombre del plan</p>
+					<div class="price-container">
+						<span>$</span>27
+						<span>/mo</span>
+					</div>
+				</div>
+				<div>
+					<ul class="lists">
+						<li class="list">
+							<span>
+								<svg
+									aria-hidden="true"
+									stroke="currentColor"
+									stroke-width="2"
+									viewBox="0 0 24 24"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M4.5 12.75l6 6 9-13.5"
+										stroke-linejoin="round"
+										stroke-linecap="round"
+									></path>
+								</svg>
+							</span>
+							<p>Poner esto</p>
+						</li>
+					</ul>
+				</div>
+				<div class="containerBotones">
+					<div class="button-container">
+						<a [routerLink]="'/planes/edit/2'">
+                            <i class='icono bx bxs-edit'></i>
+                            Editar
+                        </a>
+					</div>
+					<div class="button-container">
+						<a>
+                            <i class='icono bx bxs-trash' ></i>
+                            Eliminar
+                        </a>
+					</div>
+				</div>
+			</div>
+
+            <!-- Card para tercer plan -->
+			<div class="pack-container">
+				<div class="header">
+					<p class="title">Nombre del plan</p>
+					<div class="price-container">
+						<span>$</span>27
+						<span>/mo</span>
+					</div>
+				</div>
+				<div>
+					<ul class="lists">
+						<li class="list">
+							<span>
+								<svg
+									aria-hidden="true"
+									stroke="currentColor"
+									stroke-width="2"
+									viewBox="0 0 24 24"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M4.5 12.75l6 6 9-13.5"
+										stroke-linejoin="round"
+										stroke-linecap="round"
+									></path>
+								</svg>
+							</span>
+							<p>Poner esto</p>
+						</li>
+					</ul>
+				</div>
+				<div class="containerBotones">
+					<div class="button-container">
+						<a [routerLink]="'/planes/edit/1'">
+                            <i class='icono bx bxs-edit'></i>
+                            Editar
+                        </a>
+					</div>
+					<div class="button-container">
+						<a>
+                            <i class='icono bx bxs-trash' ></i>
+                            Eliminar
+                        </a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+        <div class="addBtn-container">
+            <a>
+                <i class='icono bx bx-plus-circle'></i>
+                Agregar plan
+			</a>
+        </div>
+
+	</section>
 </body>

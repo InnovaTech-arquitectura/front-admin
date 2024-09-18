@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './componentTools/header/header.component';
 import { SidebarComponent } from './componentTools/sidebar/sidebar.component';
 import { VerPlanesComponent } from './planes/ver-planes/ver-planes.component';
+import { EditarPlanComponent } from './planes/editar-plan/editar-plan.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     SidebarComponent,
-    VerPlanesComponent
+    VerPlanesComponent,
+    EditarPlanComponent
   ],
   imports: [
     BrowserModule,
