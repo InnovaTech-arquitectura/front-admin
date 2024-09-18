@@ -20,15 +20,15 @@ export class PerfilTipoComponent {
       this.tipo = Number(params.get('tipo'));
 
       if (this.tipo == 1)
-        this.tipoPerfil = 'Administrador';
+        this.tipoPerfil = 'administrador';
       else if (this.tipo == 2)
-        this.tipoPerfil = 'Publicidad';
+        this.tipoPerfil = 'publicidad';
       else if (this.tipo == 3)
-        this.tipoPerfil = 'Ventas';
+        this.tipoPerfil = 'ventas';
       else if (this.tipo == 4)
-        this.tipoPerfil = 'Community manager';
+        this.tipoPerfil = 'community manager';
       else if (this.tipo == 5)
-        this.tipoPerfil = 'Asesorías';
+        this.tipoPerfil = 'asesorías';
     });
   }
 }

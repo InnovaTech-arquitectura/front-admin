@@ -71,6 +71,10 @@ body {
 	text-align: center;
 }
 
+.addBtn-container i {
+	font-size: 1.3em;
+}
+
 .addBtn-container a:hover {
 	background-color: black;
 	color: #d9d9d9;
@@ -178,6 +182,10 @@ body {
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
+}
+
+.containerBotones i {
+	font-size: 1.3em;
 }
 
 .button-container {

@@ -67,10 +67,6 @@ span {
     margin-right: 10px;
 }
 
-.elementos span {
-    padding-bottom: 2px;
-}
-
 .opciones li:hover i {
     text-shadow: 0 4px 16px #19647e;
     transition: all 0.2s ease;
