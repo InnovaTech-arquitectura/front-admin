@@ -1,0 +1,108 @@
+<app-header class="headerPage"></app-header>
+
+<body>
+	<app-sidebar class="sidebar"></app-sidebar>
+
+	<section class="contenido">
+		<div class="titulo">
+			<h1>Perfil: {{ tipoPerfil }}</h1>
+		</div>
+
+		<div class="table-container">
+			<table id="myTable" class="tablita">
+				<thead>
+					<tr>
+						<th>Nombre de empleado</th>
+						<th>Cedula</th>
+						<th>Correo</th>
+						<th>Opciones</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Alejandro Suarez</td>
+						<td>111</td>
+						<td>alejandro#mail.com</td>
+						<td>
+							<div class="opciones">
+								<a class="links edit">
+									<i class="bx bxs-edit"></i>
+								</a>
+								<a class="links delete">
+									<i class="bx bxs-trash"></i>
+								</a>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>Hermann Hernandez</td>
+						<td>222</td>
+						<td>hermann#mail.com</td>
+						<td>
+							<div class="opciones">
+								<a class="links edit">
+									<i class="bx bxs-edit"></i>
+								</a>
+								<a class="links delete">
+									<i class="bx bxs-trash"></i>
+								</a>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>Lina Salamanca</td>
+						<td>333</td>
+						<td>lina#mail.com</td>
+						<td>
+							<div class="opciones">
+								<a class="links edit">
+									<i class="bx bxs-edit"></i>
+								</a>
+								<a class="links delete">
+									<i class="bx bxs-trash"></i>
+								</a>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>Maria Cardona</td>
+						<td>444</td>
+						<td>maria#mail.com</td>
+						<td>
+							<div class="opciones">
+								<a class="links edit">
+									<i class="bx bxs-edit"></i>
+								</a>
+								<a class="links delete">
+									<i class="bx bxs-trash"></i>
+								</a>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>Juan Gomez</td>
+						<td>555</td>
+						<td>juan#mail.com</td>
+						<td>
+							<div class="opciones">
+								<a class="links edit">
+									<i class="bx bxs-edit"></i>
+								</a>
+								<a class="links delete">
+									<i class="bx bxs-trash"></i>
+								</a>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="addBtn-container">
+			<a>
+				<i class='bx bx-user-plus'></i>
+				Agregar empleado
+			</a>
+		</div>
+	</section>
+</body>

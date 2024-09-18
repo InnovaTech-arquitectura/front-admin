@@ -8,6 +8,8 @@ import { SidebarComponent } from './componentTools/sidebar/sidebar.component';
 import { VerPlanesComponent } from './planes/ver-planes/ver-planes.component';
 import { EditarPlanComponent } from './planes/editar-plan/editar-plan.component';
 import { CrearPlanComponent } from './planes/crear-plan/crear-plan.component';
+import { VerPerfilesComponent } from './perfiles/ver-perfiles/ver-perfiles.component';
+import { PerfilTipoComponent } from './perfiles/perfil-tipo/perfil-tipo.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { CrearPlanComponent } from './planes/crear-plan/crear-plan.component';
     SidebarComponent,
     VerPlanesComponent,
     EditarPlanComponent,
-    CrearPlanComponent
+    CrearPlanComponent,
+    VerPerfilesComponent,
+    PerfilTipoComponent
   ],
   imports: [
     BrowserModule,

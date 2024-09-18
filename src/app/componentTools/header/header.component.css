@@ -38,6 +38,7 @@ body {
     color: white;
     background-color: black;
     font-size: 1em;
+    cursor: pointer;
 }
 
 .btnLogout:hover {

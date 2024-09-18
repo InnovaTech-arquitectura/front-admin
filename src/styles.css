@@ -8,3 +8,13 @@
 html {
     scroll-behavior: smooth;
 }
+
+i {
+	vertical-align: middle;   
+    display: inline-flex;
+    align-items: center;
+}
+
+a {
+    cursor: pointer;
+}

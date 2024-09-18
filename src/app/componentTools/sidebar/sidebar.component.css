@@ -58,10 +58,13 @@ span {
     display: flex;
 }
 
+.elementos {
+    text-decoration: none;
+}
+
 .elementos i {
     height: 30px;
     margin-right: 10px;
-    padding-top: 6px;
 }
 
 .elementos span {
