@@ -1,0 +1,178 @@
+:root {
+	--navy-blue: #19647e;
+	--light-blue: #87bcde;
+	--light-red: #e15554;
+	--dark-gray: #91918f;
+	--light-gray: #d9d9d9;
+	--light-yellow: #ffca3a;
+}
+
+body {
+	min-height: 89vh;
+	margin-top: 100px;
+	width: 100%;
+}
+
+.header {
+	width: 100%;
+	position: fixed;
+	top: 0;
+}
+
+.sidebar {
+	position: fixed;
+	top: 100px;
+	left: 0;
+	width: 280px;
+}
+
+.contenido {
+	margin-left: 280px;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.titulo {
+	width: 100%;
+	height: 50px;
+	text-align: center;
+}
+
+.titulo h1 {
+	font-size: 3em;
+	font-weight: bold;
+}
+
+.addBtn-container {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	width: 700px;
+	padding-top: 15px;
+	height: 63px;
+}
+
+.addBtn-container a {
+	width: 300px;
+	background-color: #d9d9d9;
+	padding: 10px 20px;
+	color: black;
+	outline: 0;
+	border: 0;
+	border-radius: 10px;
+	text-decoration: none;
+	text-align: center;
+}
+
+.addBtn-container a:hover {
+	background-color: black;
+	color: #d9d9d9;
+}
+
+.editar {
+	height: 650px;
+	width: 700px;
+	border: 2px solid #d9d9d9;
+	border-radius: 10px;
+	padding: 10px;
+	margin-top: 25px;
+}
+
+.inputText {
+	margin-top: 10px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.inputText label {
+	width: 20%;
+	font-size: 1em;
+}
+
+.inputText input {
+	width: 80%;
+	height: 30px;
+	border: 1px solid #d9d9d9;
+	border-radius: 5px;
+	padding-left: 15px;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.inputCheck {
+	margin-top: 10px;
+	display: flex;
+	flex-direction: column;
+}
+
+.opciones {
+	height: 410px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+.opciones::-webkit-scrollbar {
+    width: 10px;
+    background-color: #f1f1f1;
+}
+
+.opciones::-webkit-scrollbar-thumb {
+    background-color: #d9d9d9;
+}
+
+.checkDiv {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	margin-top: 10px;
+	margin-left: 10px;
+	justify-content: start;
+}
+
+.inputCheck input[type='checkbox'] {
+	appearance: none;
+	outline: none;
+	width: 1.5rem;
+	height: 1.5rem;
+	aspect-ratio: 1;
+	padding: 0.25rem;
+	background: transparent;
+	border: 1px solid black;
+	border-radius: 2px;
+	display: grid;
+	place-content: center;
+	cursor: pointer;
+	margin-right: 10px;
+}
+.inputCheck input[type='checkbox']::after {
+	content: '\2714';
+	opacity: 0;
+	transition: opacity 150ms ease-in-out;
+	color: white;
+	font-size: inherit;
+	font-family: inherit;
+}
+
+.inputCheck input[type='checkbox']:checked {
+	border-color: #19647e;
+	background-color: #19647e;
+}
+
+.inputCheck input[type='checkbox']:checked + label {
+	color: #19647e;
+	font-weight: bold;
+}
+
+.inputCheck input[type='checkbox']:checked::after {
+	opacity: 1;
+}

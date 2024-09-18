@@ -7,6 +7,7 @@ import { HeaderComponent } from './componentTools/header/header.component';
 import { SidebarComponent } from './componentTools/sidebar/sidebar.component';
 import { VerPlanesComponent } from './planes/ver-planes/ver-planes.component';
 import { EditarPlanComponent } from './planes/editar-plan/editar-plan.component';
+import { CrearPlanComponent } from './planes/crear-plan/crear-plan.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { EditarPlanComponent } from './planes/editar-plan/editar-plan.component'
     HeaderComponent,
     SidebarComponent,
     VerPlanesComponent,
-    EditarPlanComponent
+    EditarPlanComponent,
+    CrearPlanComponent
   ],
   imports: [
     BrowserModule,
