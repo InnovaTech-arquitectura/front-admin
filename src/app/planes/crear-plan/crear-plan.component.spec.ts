@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { RouterTestingModule } from '@angular/router/testing';  // Import RouterTestingModule
 
 import { CrearPlanComponent } from './crear-plan.component';
 
@@ -8,7 +10,9 @@ describe('CrearPlanComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [CrearPlanComponent]
+      declarations: [CrearPlanComponent],
+      imports: [RouterTestingModule],  // Add RouterTestingModule here
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]  // Already added for custom elements
     });
     fixture = TestBed.createComponent(CrearPlanComponent);
     component = fixture.componentInstance;
