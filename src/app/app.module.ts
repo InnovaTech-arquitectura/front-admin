@@ -11,6 +11,8 @@ import { CrearPlanComponent } from './planes/crear-plan/crear-plan.component';
 import { VerPerfilesComponent } from './perfiles/ver-perfiles/ver-perfiles.component';
 import { PerfilTipoComponent } from './perfiles/perfil-tipo/perfil-tipo.component';
 import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
+import { VerBannersComponent } from './publicidad/ver-banners/ver-banners.component';
+import { NuevoBannerComponent } from './publicidad/nuevo-banner/nuevo-banner.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
     CrearPlanComponent,
     VerPerfilesComponent,
     PerfilTipoComponent,
-    InicioSesionComponent
+    InicioSesionComponent,
+    VerBannersComponent,
+    NuevoBannerComponent
   ],
   imports: [
     BrowserModule,

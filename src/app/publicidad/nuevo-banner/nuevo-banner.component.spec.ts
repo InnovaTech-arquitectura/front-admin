@@ -1,0 +1,21 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { NuevoBannerComponent } from './nuevo-banner.component';
+
+describe('NuevoBannerComponent', () => {
+  let component: NuevoBannerComponent;
+  let fixture: ComponentFixture<NuevoBannerComponent>;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [NuevoBannerComponent]
+    });
+    fixture = TestBed.createComponent(NuevoBannerComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
