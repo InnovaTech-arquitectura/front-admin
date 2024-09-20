@@ -10,6 +10,14 @@ import { EditarPlanComponent } from './planes/editar-plan/editar-plan.component'
 import { CrearPlanComponent } from './planes/crear-plan/crear-plan.component';
 import { VerPerfilesComponent } from './perfiles/ver-perfiles/ver-perfiles.component';
 import { PerfilTipoComponent } from './perfiles/perfil-tipo/perfil-tipo.component';
+import { VerCapacitacionesComponent } from './capacitaciones/ver-capacitaciones/ver-capacitaciones.component';
+import { CrearCapacitacionesComponent } from './capacitaciones/crear-capacitaciones/crear-capacitaciones.component';
+import { EditarCapacitacionesComponent } from './capacitaciones/editar-capacitaciones/editar-capacitaciones.component';
+import { VerInfoCapacitacionesComponent } from './capacitaciones/ver-info-capacitaciones/ver-info-capacitaciones.component';
+import { RecuperarComponent } from './recuperar-password/recuperar/recuperar.component';
+import { VerificacionComponent } from './recuperar-password/verificacion/verificacion.component';
+import { CrearComponent } from './recuperar-password/crear/crear.component';
+import { ResponderPreguntaComponent } from './soporte/responder-pregunta/responder-pregunta.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +28,15 @@ import { PerfilTipoComponent } from './perfiles/perfil-tipo/perfil-tipo.componen
     EditarPlanComponent,
     CrearPlanComponent,
     VerPerfilesComponent,
-    PerfilTipoComponent
+    PerfilTipoComponent,
+    VerCapacitacionesComponent,
+    CrearCapacitacionesComponent,
+    EditarCapacitacionesComponent,
+    VerInfoCapacitacionesComponent,
+    RecuperarComponent,
+    VerificacionComponent,
+    CrearComponent,
+    ResponderPreguntaComponent
   ],
   imports: [
     BrowserModule,
