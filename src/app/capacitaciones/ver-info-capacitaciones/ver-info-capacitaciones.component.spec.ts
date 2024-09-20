@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { RouterModule } from '@angular/router'; // Importa RouterModule
 import { VerInfoCapacitacionesComponent } from './ver-info-capacitaciones.component';
 
 describe('VerInfoCapacitacionesComponent', () => {
@@ -8,7 +9,9 @@ describe('VerInfoCapacitacionesComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [VerInfoCapacitacionesComponent]
+      declarations: [VerInfoCapacitacionesComponent],
+      imports: [RouterModule.forRoot([])], // Agrega RouterModule aquí
+      schemas: [CUSTOM_ELEMENTS_SCHEMA] // Esto permite el uso de 'app-header'
     });
     fixture = TestBed.createComponent(VerInfoCapacitacionesComponent);
     component = fixture.componentInstance;
