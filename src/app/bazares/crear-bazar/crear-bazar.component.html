@@ -1,0 +1,79 @@
+<app-header class="header"></app-header>
+
+<body>
+	<app-sidebar class="sidebar"></app-sidebar>
+
+	<section class="contenido">
+		<div class="titulo">
+			<h1>Crear nuevo bazar</h1>
+		</div>
+
+		<div class="crear-bazar">
+			<form>
+				<div class="info-bazar">
+					<div class="form-row">
+						<div>
+							<label><strong>Nombre del evento:</strong></label>
+							<input type="text" placeholder="Nombre del evento" />
+						</div>
+						<div>
+							<label><strong>Ganancias:</strong></label>
+							<input type="number" placeholder="$" />
+						</div>
+						<div>
+							<label><strong>Locales:</strong></label>
+							<input type="number" placeholder="Número de locales" />
+						</div>
+					</div>
+
+					<div class="form-row">
+						<div>
+							<label><strong>Fechas:</strong></label>
+							<input type="date" /> &rarr; <input type="date" />
+						</div>
+						<div>
+							<label><strong>Costo local:</strong></label>
+							<input type="number" placeholder="Costo por local" />
+						</div>
+						<div>
+							<label><strong>Quota:</strong></label>
+							<input type="number" placeholder="Quota (%)" />
+						</div>
+					</div>
+
+					<div class="form-row">
+						<div>
+							<label><strong>Modalidad:</strong></label>
+							<select class="modalidad">
+								<option value="Presencial">Presencial</option>
+								<option value="Virtual">Virtual</option>
+							</select>
+						</div>
+
+						<div>
+							<label><strong>Lugar:</strong></label>
+							<input type="text" placeholder="Lugar del evento" />
+						</div>
+					</div>
+
+					<div class="form-row">
+						<div class="descripcion">
+							<label><strong>Descripción:</strong></label>
+							<textarea rows="3" placeholder="Descripción del evento"></textarea>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="addBtn-container">
+			<a [routerLink]="'/bazares'">
+				<i class="bx bx-left-arrow-alt"></i>
+				Cancelar
+			</a>
+			<a [routerLink]="'/bazares'">
+				<i class="bx bxs-save"></i>
+				Aceptar
+			</a>
+		</div>
+	</section>
+</body>
