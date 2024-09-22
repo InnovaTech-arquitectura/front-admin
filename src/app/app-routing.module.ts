@@ -19,6 +19,10 @@ import { VerBannersComponent } from './publicidad/ver-banners/ver-banners.compon
 import { NuevoBannerComponent } from './publicidad/nuevo-banner/nuevo-banner.component';
 import { FinanzasComponent } from './finanzas/finanzas.component';
 
+import { GraphsComponent } from './dashboard/graphs/graphs.component';
+
+
+
 
 const routes: Routes = [
   { path: 'planes', component: VerPlanesComponent },
@@ -40,7 +44,9 @@ const routes: Routes = [
   { path: 'login', component: InicioSesionComponent },
   { path: 'publicidad', component: VerBannersComponent },
   { path: 'nuevo-banner', component: NuevoBannerComponent },
-  { path: 'finanzas', component: FinanzasComponent }
+  { path: 'finanzas', component: FinanzasComponent }, 
+
+  { path: 'dashboard', component: GraphsComponent },
 
 ];
 

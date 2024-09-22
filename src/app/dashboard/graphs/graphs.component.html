@@ -1,0 +1,56 @@
+<app-header class="headerPage"></app-header>
+
+<body>
+    <app-sidebar class="sidebar"></app-sidebar>
+    
+    <section class="contenido">
+
+        <div class="titulo">
+			<h1>Editar empleado</h1>
+		</div>
+
+        <div class="parent">
+            <div class="div1 div">
+                <h2>Emprendedores Registrados</h2>
+                <!-- <div class="spacer"></div> -->
+                <div class="graph_container">
+                    <app-bar-chart [chartData]="chartData1"></app-bar-chart>
+                </div>
+            </div>
+
+            <div class="div2 div">
+                <h2>Ventas Totales</h2>
+                <div class="spacer"></div>
+                <div class="graph_container">
+                    <app-pie-chart [chartData]="chartData4"></app-pie-chart>
+                </div>
+            </div>
+
+            <div class="div3 div">
+                <h2>Ingresos Totales Generados </h2>
+                <div class="spacer"></div>
+                <div class="graph_container">
+                    <app-bar-chart [chartData]="chartData3"></app-bar-chart>
+                </div>
+            </div>
+
+            <div class="div4 div">
+                <h2>Suscripciones Activas</h2>
+                <div class="spacer"></div>
+                <div class="graph_container">
+                    <app-pie-chart [chartData]="chartData4"></app-pie-chart>
+                </div>
+            </div>
+
+            <div class="div5 div">
+                <h2>Participacion en Eventos</h2>
+                <div class="spacer"></div>
+                <div class="graph_container">
+                    <app-bar-chart [chartData]="chartData3" ></app-bar-chart>
+                </div>
+            </div>
+        </div>       
+
+    </section>
+
+</body>

@@ -16,25 +16,25 @@ export class StatsEmprendimientoComponent implements OnInit {
     const data = {
       labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
       datasets: [{
-        label: 'Ventas 2021',
+        label: '2021',
         data: [65, 59, 80, 81, 56, 55, 40, 65, 59, 80, 81, 56],
         backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
+          'rgba(135, 188, 222)',
         ],
         fill: false,
         borderColor:
-          'rgb(255, 99, 132)',
+          'rgb(135, 188, 222)',
         tension: 0.1
       },
       {
-        label: 'Ventas 2022',
+        label: '2022',
         data: [45, 47, 72, 69, 44, 33, 77, 12, 98, 103, 55, 23],
         backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
+          'rgba(255, 202, 58)',
         ],
         fill: false,
         borderColor:
-          'rgb(255, 99, 132)',
+          'rgb(255, 202, 58)',
         tension: 0.1
       }
     ]      

@@ -147,18 +147,51 @@ body {
 
 .bottom {
     width: 100%;
-    height: 10%;
+    height: 60%;
     display: flex;
     flex-direction: row;
     justify-content:space-between;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+.chart canvas {
+    height: 100% !important;;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.chart1 canvas {
+    width: 200%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .grafica_Izq {
     width: 50%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .grafica_Der {
-    height: 10%;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+
+.grafica_Der h1, .grafica_Izq h1 {
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
 

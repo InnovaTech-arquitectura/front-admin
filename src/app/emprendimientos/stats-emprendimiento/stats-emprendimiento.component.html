@@ -82,11 +82,19 @@
         <div class = "bottom">
 
             <div class = "grafica_Izq">
-                <canvas id="chart">{{ chart }}</canvas>
+                <h1> Ventas por año </h1>
+                <div class = "chart1">
+                    <!-- <app-line-chart *ngIf="salesByYear" [chartData]="data"></app-line-chart> -->
+                    <canvas id="chart">{{ chart }}</canvas>
+                </div>
             </div>
 
             <div class = "grafica_Der">
-                <canvas id="chart2">{{ chart2 }}</canvas>
+                <h1> Ventas por producto </h1>
+                <div class = "chart">
+                    <!-- <app-pie-chart [chartData]="data2"></app-pie-chart> -->
+                    <canvas id="chart2">{{ chart2 }}></canvas>
+                </div>
             </div>      
             
         </div>

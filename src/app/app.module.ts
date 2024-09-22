@@ -23,6 +23,7 @@ import { FinanzasComponent } from './finanzas/finanzas.component';
 import { LineChartComponent } from './componentTools/line-chart/line-chart.component';
 import { BarChartComponent } from './componentTools/bar-chart/bar-chart.component';
 import { PieChartComponent } from './componentTools/pie-chart/pie-chart.component';
+import { GraphsComponent } from './dashboard/graphs/graphs.component';
 
 
 
@@ -40,7 +41,7 @@ import { PieChartComponent } from './componentTools/pie-chart/pie-chart.componen
     PerfilNuevoEmpleadoComponent,
     PerfilEditarEmpleadoComponent,
     VerEmprendimeintosComponent,
-    StatsEmprendimientoComponent
+    StatsEmprendimientoComponent,
 
     InicioSesionComponent,
     VerBannersComponent,
@@ -48,7 +49,8 @@ import { PieChartComponent } from './componentTools/pie-chart/pie-chart.componen
     FinanzasComponent,
     LineChartComponent,
     BarChartComponent,
-    PieChartComponent
+    PieChartComponent,
+    GraphsComponent
 
   ],
   imports: [
