@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, ElementRef, ViewChild } from '@angular/core';
 import { Chart, ChartType } from 'chart.js/auto';
 
 @Component({
@@ -6,23 +6,18 @@ import { Chart, ChartType } from 'chart.js/auto';
   templateUrl: './bar-chart.component.html',
   styleUrls: ['./bar-chart.component.css']
 })
-export class BarChartComponent implements OnInit, OnChanges {
-  @Input() chartData: any;
+export class BarChartComponent implements OnChanges {
+  @Input() chartData: { labels: string[]; data: number[]; label: string; color: string } | null = null;
+  @ViewChild('barChartCanvas', { static: true }) barChartCanvas!: ElementRef;
   public chart!: Chart;
 
-  ngOnInit(): void {
-    this.createChart();
-  }
-
-  ngOnChanges(): void {
-    this.createChart();
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['chartData'] && this.chartData) {
+      this.createChart();
+    }
   }
 
   createChart(): void {
-    if (!this.chartData) {
-      console.warn('chartData is undefined');
-      return; // Exit if chartData is not defined
-    }
     const data = {
       labels: this.chartData?.labels,
       datasets: [{
@@ -33,22 +28,23 @@ export class BarChartComponent implements OnInit, OnChanges {
         borderWidth: 1 // Ancho del borde
       }]
     };
-
+  
     if (this.chart) {
       this.chart.destroy();
     }
+
     // Calcular el valor máximo y agregar un margen
     const maxValue = Math.max(...this.chartData.data);
-    const suggestedMax = maxValue + 10; 
+    const suggestedMax = maxValue + 10; // Margen en el eje Y
 
-    this.chart = new Chart('bar-chart', {
-      type: 'bar' as ChartType, // Tipo de gráfico: barra
+    this.chart = new Chart(this.barChartCanvas.nativeElement, {
+      type: 'bar' as ChartType,
       data: data,
       options: {
         scales: {
           y: {
-            beginAtZero: true, // Comienza desde cero
-            suggestedMax: suggestedMax
+            beginAtZero: true, // Esto hace que el eje Y comience desde 0
+            suggestedMax: suggestedMax // Sugerir el máximo calculado
           }
         }
       }

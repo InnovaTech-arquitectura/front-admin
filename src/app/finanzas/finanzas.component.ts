@@ -29,6 +29,13 @@ export class FinanzasComponent {
     color: '#ffca3a'
   };
 
+  chartData4 = {
+    labels: ['Plan 1', 'Plan 2', 'Plan 3'],
+    data: [200, 550, 110], // Datos para el gráfico
+    label: 'Usuarios por plan',
+    color: ['#63c5da', 'rgb(255, 99, 132)', '#ffca3a'] // Colores para cada segmento
+  };
+
   toggleGraph(): void {
     this.showIngresos = !this.showIngresos;
   }
