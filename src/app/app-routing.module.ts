@@ -8,6 +8,7 @@ import { PerfilTipoComponent } from './perfiles/perfil-tipo/perfil-tipo.componen
 import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
 import { VerBannersComponent } from './publicidad/ver-banners/ver-banners.component';
 import { NuevoBannerComponent } from './publicidad/nuevo-banner/nuevo-banner.component';
+import { FinanzasComponent } from './finanzas/finanzas.component';
 
 const routes: Routes = [
   { path: 'planes', component: VerPlanesComponent },
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path: 'perfiles/:tipo', component: PerfilTipoComponent },
   { path: 'login', component: InicioSesionComponent },
   { path: 'publicidad', component: VerBannersComponent },
-  { path: 'nuevo-banner', component: NuevoBannerComponent }
+  { path: 'nuevo-banner', component: NuevoBannerComponent },
+  { path: 'finanzas', component: FinanzasComponent }
 ];
 
 @NgModule({

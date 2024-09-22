@@ -13,6 +13,11 @@ import { PerfilTipoComponent } from './perfiles/perfil-tipo/perfil-tipo.componen
 import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
 import { VerBannersComponent } from './publicidad/ver-banners/ver-banners.component';
 import { NuevoBannerComponent } from './publicidad/nuevo-banner/nuevo-banner.component';
+import { FinanzasComponent } from './finanzas/finanzas.component';
+import { LineChartComponent } from './componentTools/line-chart/line-chart.component';
+import { BarChartComponent } from './componentTools/bar-chart/bar-chart.component';
+import { PieChartComponent } from './componentTools/pie-chart/pie-chart.component';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +31,11 @@ import { NuevoBannerComponent } from './publicidad/nuevo-banner/nuevo-banner.com
     PerfilTipoComponent,
     InicioSesionComponent,
     VerBannersComponent,
-    NuevoBannerComponent
+    NuevoBannerComponent,
+    FinanzasComponent,
+    LineChartComponent,
+    BarChartComponent,
+    PieChartComponent
   ],
   imports: [
     BrowserModule,

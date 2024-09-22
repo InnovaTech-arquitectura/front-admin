@@ -21,7 +21,7 @@ export class InicioSesionComponent {
       const email = this.loginForm.get('email')?.value;
       const password = this.loginForm.get('password')?.value;
       
-      // Aquí podrías manejar los datos, enviarlos a un servicio o API
+      // Manejar los datos, enviarlos a un servicio o API
       console.log('Correo:', email);
       console.log('Contraseña:', password);
 
