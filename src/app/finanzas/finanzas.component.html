@@ -1,0 +1,32 @@
+<app-header class="headerPage"></app-header>
+
+<body>
+    <app-sidebar class="sidebar"></app-sidebar>
+    <section class="contenido">
+        <div class="charts-container"> <!-- Contenedor para las gráficas -->
+            <div class="containerGastoIngreso">
+                <h2>Evolución de Ingresos y Gastos</h2>
+                <div class="toggle-button" (click)="toggleGraph()">
+                    <div class="toggle-option" [class.active]="showIngresos">
+                        <i class='bx bx-plus'></i>
+                    </div>
+                    <div class="toggle-option" [class.active]="!showIngresos">
+                        <i class='bx bx-minus'></i>
+                    </div>
+                </div>
+                <app-line-chart *ngIf="showIngresos" [chartData]="chartData1"></app-line-chart>
+                <app-line-chart *ngIf="!showIngresos" [chartData]="chartData2"></app-line-chart>
+            </div>
+            <div class="ingresosPorPlan">
+                <h2>Ingresos por plan</h2>
+                <div class="spacer"></div>
+                <app-bar-chart [chartData]="chartData3"></app-bar-chart>
+            </div>
+            <div class="usuariosPorPlan">
+                <h2>Usuarios por plan</h2>
+                <div class="spacer"></div>
+                <app-pie-chart [chartData]="chartData4"></app-pie-chart>
+            </div>            
+        </div>
+    </section>
+</body>

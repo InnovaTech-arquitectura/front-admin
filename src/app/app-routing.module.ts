@@ -14,6 +14,12 @@ import { VerEmprendimeintosComponent } from './emprendimientos/ver-emprendimeint
 import { StatsEmprendimientoComponent } from './emprendimientos/stats-emprendimiento/stats-emprendimiento.component';
 
 
+import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
+import { VerBannersComponent } from './publicidad/ver-banners/ver-banners.component';
+import { NuevoBannerComponent } from './publicidad/nuevo-banner/nuevo-banner.component';
+import { FinanzasComponent } from './finanzas/finanzas.component';
+
+
 const routes: Routes = [
   { path: 'planes', component: VerPlanesComponent },
   { path: 'planes/edit/:id', component: EditarPlanComponent },
@@ -22,12 +28,19 @@ const routes: Routes = [
   { path: 'perfiles', component: VerPerfilesComponent },
   { path: 'perfiles/add', component: PerfilNuevoEmpleadoComponent },
   { path: 'perfiles/:tipo', component: PerfilTipoComponent },
+
   { path: 'perfiles/:id/edit', component: PerfilEditarEmpleadoComponent },
 
   { path: 'emprendimientos', component: VerEmprendimeintosComponent },
   { path: 'emprendimientos/:id', component: StatsEmprendimientoComponent },
   
 
+
+
+  { path: 'login', component: InicioSesionComponent },
+  { path: 'publicidad', component: VerBannersComponent },
+  { path: 'nuevo-banner', component: NuevoBannerComponent },
+  { path: 'finanzas', component: FinanzasComponent }
 
 ];
 

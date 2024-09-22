@@ -1,0 +1,35 @@
+<app-header class="headerPage"></app-header>
+
+<body>
+	<app-sidebar class="sidebar"></app-sidebar>
+
+	<section class="contenido">
+		<div class="titulo">
+			<h1>Publicidad</h1>
+		</div>
+        <div class="subtitulo">
+			<h2>Crear Nuevo Banner</h2>
+		</div>
+        <div class="formContainer">
+            <form (ngSubmit)="onSubmit()">
+                <label for="text">Titulo-Descripción</label>
+                <input type="text" id="titleDescription" name="titleDescription" required>
+
+                <label for="imageUpload" class="imageLabel" *ngIf="!imagePreview">Subir imagen:</label>
+                
+                <div class="imageUpload" (click)="fileInput.click()" 
+                    [ngStyle]="{ 'background-image': imagePreview ? 'url(' + imagePreview + ')' : 'none' }">
+                    
+                    <input #fileInput type="file" id="imageUpload" (change)="onFileSelected($event)" 
+                           accept="image/*" required hidden>
+                    
+                    <!-- Mostrar el texto y el ícono solo si no hay imagen seleccionada -->
+                    <span *ngIf="!imagePreview" class="placeholder-text">Arrastra o selecciona una imagen</span>
+                    <i *ngIf="!imagePreview" class='bx bxs-plus-circle iconAdd'></i>
+                </div>
+
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+	</section>
+</body>
