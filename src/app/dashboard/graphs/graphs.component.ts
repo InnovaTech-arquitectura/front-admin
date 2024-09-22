@@ -9,37 +9,36 @@ export class GraphsComponent {
 
   chartData1 = {
     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-    data: [65, 59, 80, 81, 56, 55, 40, 70, 75, 85, 90, 100],
-    label: 'Ingresos Anuales',
-    color: '#63c5da'
+    data: [50, 45, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150],
+    label: 'Emprendedores Registrados',
+    color: '#42a5f5'
   };
-  
+
   chartData2 = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-    data: [30, 40, 60, 50, 70, 45, 80, 65, 90, 80, 70, 60], // Datos diferentes
-    label: 'Gastos Anuales',
-    color: 'rgb(255, 99, 132)'
+    labels: ['Emprendedor A', 'Emprendedor B', 'Emprendedor C', 'Emprendedor D', 'Emprendedor E'],
+    data: [3000, 5000, 4000, 3500, 2500],
+    label: 'Ventas Totales',
+    color: ['#ff6384', '#36a2eb', '#cc65fe', '#ffce56', '#2ecc71']
   };
 
   chartData3 = {
-    labels: ['Plan 1', ' Plan2', 'Plan 3'],
-    data: [10,100,50], // Datos diferentes
-    label: 'Ingresos por plan',
-    color: '#ffca3a'
+    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+    data: [12000, 15000, 16000, 18000, 20000, 22000, 25000, 27000, 30000, 32000, 35000, 38000],
+    label: 'Ingresos Totales Generados',
+    color: '#63c5da'
   };
 
   chartData4 = {
-    labels: ['Plan 1', 'Plan 2', 'Plan 3'],
-    data: [200, 550, 110], // Datos para el gráfico
-    label: 'Usuarios por plan',
-    color: ['#63c5da', 'rgb(255, 99, 132)', '#ffca3a'] // Colores para cada segmento
+    labels: ['Suscripción Básica', 'Suscripción Premium', 'Suscripción VIP'],
+    data: [400, 300, 100],
+    label: 'Suscripciones Activas',
+    color: ['#f39c12', '#e74c3c', '#3498db'] 
   };
 
   chartData5 = {
-    labels: ['Plan 1', 'Plan 2', 'Plan 3'],
-    data: [200, 550, 110], // Datos para el gráfico
-    label: 'Usuarios por plan',
-    color: ['#63c5da', 'rgb(255, 99, 132)', '#ffca3a'] // Colores para cada segmento
+    labels: ['Evento 1', 'Evento 2', 'Evento 3', 'Evento 4', 'Evento 5'],
+    data: [200, 180, 220, 160, 250],
+    label: 'Participación en Eventos',
+    color: '#8e44ad'
   };
-
 }

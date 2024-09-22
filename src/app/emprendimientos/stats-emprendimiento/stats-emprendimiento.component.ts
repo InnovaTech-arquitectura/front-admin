@@ -41,17 +41,11 @@ export class StatsEmprendimientoComponent implements OnInit {
     };
 
     const data2 = {
-      labels: ['Jordan 1', 'Jordan 2', 'Jordan 3', 'Jordan 4', 'Jordan 5', 'Jordan 6'],
+      labels: ['Producto A', 'Producto B', 'Producto C', 'Producto D', 'Producto E'],
       datasets: [{
         label: 'Ventas 2021',
-        data: [65, 59, 80, 81, 56, 55],
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-        ],
-        fill: false,
-        borderColor:
-          'rgb(255, 99, 132)',
-        tension: 0.1
+        data: [300, 500, 400, 350, 250],
+        Color: ['#ff6384', '#36a2eb', '#cc65fe', '#ffce56', '#2ecc71'],
       }
     ]      
     };
