@@ -1,0 +1,91 @@
+/* Contenedor principal */
+.support-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Ocupar toda la pantalla */
+    padding: 20px;
+  }
+  
+  /* Estilo para el título y subtítulo */
+  .title {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .subtitle {
+    font-size: 35px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  /* Estilo de la tarjeta de soporte */
+  .support-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 700px;
+    width: 100%;
+    text-align: left;
+  }
+  
+  /* Sección de la pregunta */
+  .question-section p {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .question-section a {
+    color: black; /* Color de enlace */
+    text-decoration: bold;
+    font-weight: bold;
+  }
+  
+  
+  /* Estilo del bloque de la pregunta */
+  blockquote {
+    font-style: italic;
+    background-color: #f9f9f9;
+    border-left: 5px solid #ccc;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  
+  /* Estilo de la sección de respuesta */
+  .answer-section label {
+    font-size: 16px;
+    margin-bottom: 10px;
+    display: block;
+  }
+  
+  .answer-section textarea {
+    width: 100%;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    resize: none;
+    box-sizing: border-box;
+  }
+  
+  /* Estilo del botón */
+  button {
+    width: 100%;
+    padding: 15px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  button:hover {
+    background-color: #333;
+  }
+  

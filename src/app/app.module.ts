@@ -17,6 +17,14 @@ import { EditarBazarComponent } from './bazares/editar-bazar/editar-bazar.compon
 import { VerCuponesComponent } from './cupones/ver-cupones/ver-cupones.component';
 import { EditarCuponComponent } from './cupones/editar-cupon/editar-cupon.component';
 import { CrearCuponComponent } from './cupones/crear-cupon/crear-cupon.component';
+import { VerCapacitacionesComponent } from './capacitaciones/ver-capacitaciones/ver-capacitaciones.component';
+import { CrearCapacitacionesComponent } from './capacitaciones/crear-capacitaciones/crear-capacitaciones.component';
+import { EditarCapacitacionesComponent } from './capacitaciones/editar-capacitaciones/editar-capacitaciones.component';
+import { VerInfoCapacitacionesComponent } from './capacitaciones/ver-info-capacitaciones/ver-info-capacitaciones.component';
+import { RecuperarComponent } from './recuperar-password/recuperar/recuperar.component';
+import { VerificacionComponent } from './recuperar-password/verificacion/verificacion.component';
+import { CrearComponent } from './recuperar-password/crear/crear.component';
+import { ResponderPreguntaComponent } from './soporte/responder-pregunta/responder-pregunta.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +43,14 @@ import { CrearCuponComponent } from './cupones/crear-cupon/crear-cupon.component
     VerCuponesComponent,
     EditarCuponComponent,
     CrearCuponComponent,
+    VerCapacitacionesComponent,
+    CrearCapacitacionesComponent,
+    EditarCapacitacionesComponent,
+    VerInfoCapacitacionesComponent,
+    RecuperarComponent,
+    VerificacionComponent,
+    CrearComponent,
+    ResponderPreguntaComponent
   ],
   imports: [
     BrowserModule,
