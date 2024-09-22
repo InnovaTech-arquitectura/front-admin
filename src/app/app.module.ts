@@ -17,6 +17,21 @@ import { FinanzasComponent } from './finanzas/finanzas.component';
 import { LineChartComponent } from './componentTools/line-chart/line-chart.component';
 import { BarChartComponent } from './componentTools/bar-chart/bar-chart.component';
 import { PieChartComponent } from './componentTools/pie-chart/pie-chart.component';
+import { VerBazaresComponent } from './bazares/ver-bazares/ver-bazares.component';
+import { DetallesBazarComponent } from './bazares/detalles-bazar/detalles-bazar.component';
+import { CrearBazarComponent } from './bazares/crear-bazar/crear-bazar.component';
+import { EditarBazarComponent } from './bazares/editar-bazar/editar-bazar.component';
+import { VerCuponesComponent } from './cupones/ver-cupones/ver-cupones.component';
+import { EditarCuponComponent } from './cupones/editar-cupon/editar-cupon.component';
+import { CrearCuponComponent } from './cupones/crear-cupon/crear-cupon.component';
+import { VerCapacitacionesComponent } from './capacitaciones/ver-capacitaciones/ver-capacitaciones.component';
+import { CrearCapacitacionesComponent } from './capacitaciones/crear-capacitaciones/crear-capacitaciones.component';
+import { EditarCapacitacionesComponent } from './capacitaciones/editar-capacitaciones/editar-capacitaciones.component';
+import { VerInfoCapacitacionesComponent } from './capacitaciones/ver-info-capacitaciones/ver-info-capacitaciones.component';
+import { RecuperarComponent } from './recuperar-password/recuperar/recuperar.component';
+import { VerificacionComponent } from './recuperar-password/verificacion/verificacion.component';
+import { CrearComponent } from './recuperar-password/crear/crear.component';
+import { ResponderPreguntaComponent } from './soporte/responder-pregunta/responder-pregunta.component';
 
 
 @NgModule({
@@ -35,7 +50,22 @@ import { PieChartComponent } from './componentTools/pie-chart/pie-chart.componen
     FinanzasComponent,
     LineChartComponent,
     BarChartComponent,
-    PieChartComponent
+    PieChartComponent,
+    VerBazaresComponent,
+    DetallesBazarComponent,
+    CrearBazarComponent,
+    EditarBazarComponent,
+    VerCuponesComponent,
+    EditarCuponComponent,
+    CrearCuponComponent,
+    VerCapacitacionesComponent,
+    CrearCapacitacionesComponent,
+    EditarCapacitacionesComponent,
+    VerInfoCapacitacionesComponent,
+    RecuperarComponent,
+    VerificacionComponent,
+    CrearComponent,
+    ResponderPreguntaComponent
   ],
   imports: [
     BrowserModule,
