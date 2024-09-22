@@ -1,0 +1,86 @@
+<app-header class="headerPage"></app-header>
+
+<body>
+	<app-sidebar class="sidebar"></app-sidebar>
+
+	<section class="contenido">
+		<div class="titulo">
+			<h1>Soporte Preguntas Emprendedores</h1>
+		</div>
+
+		<div class="table-container">
+			<table id="myTable" class="tablita">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Emprendimiento</th>
+						<th>Estado</th>
+						<th>Responder</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>01</td>
+						<td>Nike_col</td>
+						<td>Pendiente</td>
+						<td>
+							<div class="opciones">
+								<a class="links message" [routerLink]="'/soporte/responder'">
+									<i class="bx bxs-message"></i>
+								</a>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>02</td>
+						<td>Adidas_col</td>
+						<td>Respuesta</td>
+						<td>
+							<div class="opciones">
+								<a class="links message" [routerLink]="'/soporte/responder'">
+									<i class="bx bxs-message"></i>
+								</a>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>03</td>
+						<td>Emprendimiento_x</td>
+						<td>Pendiente</td>
+						<td>
+							<div class="opciones">
+								<a class="links message" [routerLink]="'/soporte/responder'">
+									<i class="bx bxs-message"></i>
+								</a>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>04</td>
+						<td>Emprendimiento_y</td>
+						<td>Pendiente</td>
+						<td>
+							<div class="opciones">
+								<a class="links message" [routerLink]="'/soporte/responder'">
+									<i class="bx bxs-message"></i>
+								</a>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>05</td>
+						<td>Emprendimiento_z</td>
+						<td>Respuesta</td>
+						<td>
+							<div class="opciones">
+								<a class="links message" [routerLink]="'/soporte/responder'">
+									<i class="bx bxs-message"></i>
+								</a>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</section>
+</body>
