@@ -24,6 +24,7 @@ import { RecuperarComponent } from './recuperar-password/recuperar/recuperar.com
 import { VerificacionComponent } from './recuperar-password/verificacion/verificacion.component';
 import { CrearComponent } from './recuperar-password/crear/crear.component';
 import { ResponderPreguntaComponent } from './soporte/responder-pregunta/responder-pregunta.component';
+import { SoportePrincipalComponent } from './soporte/soporte-principal/soporte-principal.component';
 
 
 
@@ -51,7 +52,8 @@ const routes: Routes = [
   { path: 'recuperar-password/recuperar', component:  RecuperarComponent},
   { path: 'recuperar-password/verificacion', component:  VerificacionComponent},
   { path: 'recuperar-password/crear', component:  CrearComponent},
-  { path: 'soporte/responder', component:  ResponderPreguntaComponent}
+  { path: 'soporte/responder', component:  ResponderPreguntaComponent},
+  { path: 'soporte', component:  SoportePrincipalComponent},	
 ];
 
 @NgModule({

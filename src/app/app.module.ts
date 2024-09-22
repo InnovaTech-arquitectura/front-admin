@@ -32,6 +32,7 @@ import { RecuperarComponent } from './recuperar-password/recuperar/recuperar.com
 import { VerificacionComponent } from './recuperar-password/verificacion/verificacion.component';
 import { CrearComponent } from './recuperar-password/crear/crear.component';
 import { ResponderPreguntaComponent } from './soporte/responder-pregunta/responder-pregunta.component';
+import { SoportePrincipalComponent } from './soporte/soporte-principal/soporte-principal.component';
 
 
 @NgModule({
@@ -65,7 +66,8 @@ import { ResponderPreguntaComponent } from './soporte/responder-pregunta/respond
     RecuperarComponent,
     VerificacionComponent,
     CrearComponent,
-    ResponderPreguntaComponent
+    ResponderPreguntaComponent,
+    SoportePrincipalComponent
   ],
   imports: [
     BrowserModule,
