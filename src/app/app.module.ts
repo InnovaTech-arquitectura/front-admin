@@ -10,6 +10,10 @@ import { EditarPlanComponent } from './planes/editar-plan/editar-plan.component'
 import { CrearPlanComponent } from './planes/crear-plan/crear-plan.component';
 import { VerPerfilesComponent } from './perfiles/ver-perfiles/ver-perfiles.component';
 import { PerfilTipoComponent } from './perfiles/perfil-tipo/perfil-tipo.component';
+import { PerfilNuevoEmpleadoComponent } from './perfiles/perfil-nuevo-empleado/perfil-nuevo-empleado.component';
+import { PerfilEditarEmpleadoComponent } from './perfiles/perfil-editar-empleado/perfil-editar-empleado.component';
+import { VerEmprendimeintosComponent } from './emprendimientos/ver-emprendimeintos/ver-emprendimeintos.component';
+import { StatsEmprendimientoComponent } from './emprendimientos/stats-emprendimiento/stats-emprendimiento.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,11 @@ import { PerfilTipoComponent } from './perfiles/perfil-tipo/perfil-tipo.componen
     EditarPlanComponent,
     CrearPlanComponent,
     VerPerfilesComponent,
-    PerfilTipoComponent
+    PerfilTipoComponent,
+    PerfilNuevoEmpleadoComponent,
+    PerfilEditarEmpleadoComponent,
+    VerEmprendimeintosComponent,
+    StatsEmprendimientoComponent
   ],
   imports: [
     BrowserModule,

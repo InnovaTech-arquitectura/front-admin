@@ -1,0 +1,81 @@
+<app-header class="headerPage"></app-header>
+
+<body>
+	<app-sidebar class="sidebar"></app-sidebar>
+
+	<section class="contenido">
+        <div class="titulo">
+			<h1>Emprendimientos</h1>
+		</div>
+
+        <div class="table-container">
+            <table id="myTable" class="tablita">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Logo</th>
+                        <th>Nombre Emprendimiento</th>
+                        <th>Plan actual</th>
+                        <th>Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td> 
+                            <img src="https://domenica.com.co/cdn/shop/files/Logo_DOMENICA_2020.png?v=1637270309" alt="Logo" class="logoEmp" >
+                        </td>
+                        <td>Domenica</td>
+                        <td>Basico</td>
+                        <td>
+                            <a class="links informa" [routerLink]="'/perfiles/1'">
+                                <i class='bx bx-info-circle'></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td> 
+                            <img src="https://www.saju.co/cdn/shop/files/Logo_Negro.png?v=1683646311&width=484" alt="Logo" class="logoEmp" >
+                        </td>
+                        <td>Saju</td>
+                        <td>Super</td>
+                        <td>
+                            <a class="links informa" [routerLink]="'/perfiles/2'">
+                                <i class='bx bx-info-circle'></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td> 
+                            <img src="https://lagranjadelborrego.com/cdn/shop/files/LOGO_LA_FLORESTA_210x.webp?v=1697833611" alt="Logo" class="logoEmp" >
+                        </td>
+                        <td>Cafe la floresta</td>
+                        <td>Super Plus</td>
+                        <td>
+                            <a class="links informa" [routerLink]="'/perfiles/3'">
+                                <i class='bx bx-info-circle'></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td> 
+                            <img src="https://yeticolombia.com/wp-content/uploads/2023/07/yeti-colombia-logo.svg" alt="Logo" class="logoEmp" >
+                        </td>
+                        <td>Yeti</td>
+                        <td>Super</td>
+                        <td>
+                            <a class="links informa" [routerLink]="'/perfiles/4'">
+                                <i class='bx bx-info-circle'></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </section>
+
+</body>

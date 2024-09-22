@@ -1,0 +1,95 @@
+<app-header class="headerPage"></app-header>
+
+<body>
+	<app-sidebar class="sidebar"></app-sidebar>
+
+	<section class="contenido">
+		<div class="titulo">
+			<h1>Estadisticas: emprendiemiento XYZ</h1>
+		</div>
+
+		<div class="middle">
+			
+			<div class="categoria">
+                
+				<div class="catWidgets">
+					
+                    <div class="card2 petStats">
+						<div class="card-header">
+							<div class="icono petIcon">
+								<i class='bx bx-show-alt' ></i>
+							</div>
+							<div class="dato">
+								<i let ventasVirtuales> 133</i>
+							</div>
+						</div>
+
+						<div class="card-body">
+							<p>Ventas en la tienda virtual</p>
+						</div>
+					</div>
+
+					<div class="card2 petStats">
+						<div class="card-header">
+							<div class="icono petIcon">
+								<i class="bx bx-money-withdraw"></i>
+							</div>
+							<div class="dato">
+								<i let totalVentas> 444</i>
+							</div>
+						</div>
+						<div class="card-body">
+							<p>Total de ventas del emprendimeiento</p>
+						</div>
+					</div>
+                    
+                    <div class="card2 moneyStats">
+                        <div class="card-header">
+                            <div class="icono moneyIcon">
+                                <i class='bx bxs-truck' ></i>
+                            </div>
+                            <div class="dato">
+                                <i let enviosCompletados> 123</i>
+                            </div>
+                        </div>
+        
+                        <div class="card-body">
+                            <p>Total de enviaos completados</p>
+                        </div>
+                    </div>
+        
+                    <div class="card2 moneyStats">
+                        <div class="card-header">
+                            <div class="icono moneyIcon">
+                                <i class='bx bx-group'></i>
+                            </div>
+                            <div class="dato">
+                                <i let clientesTotales> 5516</i>
+                            </div>
+                        </div>
+        
+                        <div class="card-body">
+                            <p>Clientes del emprendimiento</p>
+                        </div>
+                    </div>
+
+				</div>
+
+			</div>
+            
+		</div>
+
+        <div class = "bottom">
+
+            <div class = "grafica_Izq">
+                <canvas id="chart">{{ chart }}</canvas>
+            </div>
+
+            <div class = "grafica_Der">
+                <canvas id="chart2">{{ chart2 }}</canvas>
+            </div>      
+            
+        </div>
+
+	</section>
+</body>
