@@ -30,28 +30,28 @@ body {
 .contenido {
 	margin-left: 280px;
 	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .titulo {
 	width: 100%;
 	height: 50px;
 	text-align: center;
-    margin: 0; /* Ajusta el margen superior e inferior */
 }
 
 .titulo h1 {
-	font-size: 2.4em; /* Reducción del tamaño del texto */
+	font-size: 3em;
 	font-weight: bold;
 }
 
 .table-container {
 	width: 100%;
-    height: 60%px;
 	overflow: scroll;
     display: flex;
     justify-content: center;
-
-    margin-bottom: 25px;
+    
 }
 
 .table-container::-webkit-scrollbar {
@@ -59,8 +59,8 @@ body {
 }
 
 table.tablita {
-	font-size: 1.04em; /* Reducción del tamaño del texto */
-	width: 95%;
+	font-size: 1.3em;
+	width: 80%;
 	overflow-y: scroll;
 	border-collapse: separate;
 	border-spacing: 0px;
@@ -71,7 +71,7 @@ table.tablita {
 .tablita td {
 	padding: 10px;
 	text-align: center;
-	width: 33.33333%;
+	width: 25%;
 }
 
 .tablita th {
@@ -89,49 +89,44 @@ table.tablita {
 	background-color: #eeeeee;
 }
 
+.opciones {
+	height: 10%;
+	width: 100%;
+	padding: 0px 20%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
 .links {
-	font-size: 1.2em; /* Reducción del tamaño del texto */
+	font-size: 1.5em;
 	color: black;
 }
 
-.informa:hover {
-	color: #87bcde;
-	text-shadow: 0 4px 16px #87bcde;
+.edit:hover {
+	color: #ffca3a;
+	text-shadow: 0 4px 16px #ffca3a;
 	transition: all 0.2s ease;
 }
 
-.iconImage{
-    font-size: 25.6px; 
-    cursor: pointer;
-}
-
-.newBanner-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-
-.button-container {
-    display: flex;
-    justify-content: center; /* Centrar el botón */
-    margin-top: 20px;
-}
-.iconTrash{
-    cursor: pointer;
+.delete:hover {
+	color: #e15554;
+	text-shadow: 0 4px 16px #e15554;
+	transition: all 0.2s ease;
 }
 
 .addBtn-container {
 	display: flex;
-	justify-content: center;
+	justify-content: space-evenly;
 	align-items: center;
-	width: 100%;
-	padding-top: 25px;
+	width: 700px;
+	padding-top: 15px;
 	height: 63px;
 }
 
 .addBtn-container a {
-	width: 350px;
+	width: 300px;
 	background-color: #d9d9d9;
 	padding: 10px 20px;
 	color: black;
@@ -142,11 +137,11 @@ table.tablita {
 	text-align: center;
 }
 
-.addBtn-container i {
-	font-size: 1.3em;
-}
-
 .addBtn-container a:hover {
 	background-color: black;
 	color: #d9d9d9;
+}
+
+.addBtn-container i {
+	font-size: 1.5em;
 }

@@ -1,0 +1,128 @@
+body {
+	min-height: 89vh;
+	margin-top: 100px;
+	width: 100%;
+}
+
+.headerPage {
+	z-index: 10;
+	width: 100%;
+	position: fixed;
+	top: 0;
+}
+
+.sidebar {
+	position: fixed;
+	top: 100px;
+	left: 0;
+	width: 280px;
+}
+
+
+.container {
+    width: 70%; /* Ajusta el ancho según sea necesario */
+    margin-left: 25%;
+    margin-top: 10%;
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+
+  
+  /* Título principal */
+  .title {
+    text-align: left; /* Alinea el título a la izquierda */
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+  
+  /* Ajustes del contenedor de contenido */
+  .content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%; /* Asegura que la sección ocupe todo el ancho */
+  }
+  
+  /* Sección de información (Izquierda) */
+  .info-section {
+    width: 60%; /* Ocupa el 60% del contenedor */
+  }
+  
+  .info-section h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+  
+  .details, .description, .link-section {
+    margin-bottom: 15px;
+  }
+  
+  /* Sección de imagen y estadísticas (Derecha) */
+  .image-section {
+    width: 35%; /* Ocupa el 35% del contenedor */
+    text-align: center;
+  }
+  
+  .image-section .icon {
+    width: 80%;
+    max-width: 150px;
+    margin-bottom: 15px;
+  }
+  
+  .stats p {
+    font-size: 18px;
+    margin: 5px 0;
+  }
+  
+  /* Asegurarse que el contenido no se baje demasiado */
+  @media (max-width: 768px) {
+    .container {
+      padding: 15px;
+      min-height: 90vh;
+    }
+  
+    .content {
+      flex-direction: column; /* Las secciones se apilan en pantallas pequeñas */
+    }
+  
+    .info-section, .image-section {
+      width: 100%; /* Cada sección ocupa el 100% del ancho en pantallas pequeñas */
+      text-align: center;
+    }
+  
+    .image-section {
+      margin-top: 20px;
+    }
+  }
+  .addBtn-container {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+    margin-left: auto;
+	width: 700px;
+	padding-top: 15px;
+	height: 63px;
+}
+
+.addBtn-container a {
+	width: 300px;
+	background-color: #d9d9d9;
+	padding: 10px 20px;
+	color: black;
+	outline: 0;
+	border: 0;
+	border-radius: 10px;
+	text-decoration: none;
+	text-align: center;
+}
+
+.addBtn-container a:hover {
+	background-color: black;
+	color: #d9d9d9;
+}
+
+.addBtn-container i {
+	font-size: 1.5em;
+}
