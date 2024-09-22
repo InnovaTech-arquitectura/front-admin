@@ -37,7 +37,7 @@ export class PieChartComponent implements OnChanges {
       type: 'pie' as ChartType, // Tipo de gráfico: pie
       data: data,
       options: {
-        responsive: true,
+        responsive: false,
         plugins: {
           legend: {
             position: 'top',
