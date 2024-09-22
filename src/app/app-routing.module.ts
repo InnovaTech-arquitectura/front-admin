@@ -34,7 +34,7 @@ const routes: Routes = [
 	{ path: 'bazares/edit/:id', component: EditarBazarComponent },
 	{ path: 'cupones', component: VerCuponesComponent },
 	{ path: 'cupones/edit/:id', component: EditarCuponComponent },
-	{ path: 'cupones/add', component: CrearCuponComponent }
+	{ path: 'cupones/add', component: CrearCuponComponent },
   { path: 'capacitaciones', component: VerCapacitacionesComponent },
   { path: 'capacitaciones/add', component:  CrearCapacitacionesComponent},
   { path: 'capacitaciones/edit/:id', component:  EditarCapacitacionesComponent},
@@ -42,7 +42,7 @@ const routes: Routes = [
   { path: 'recuperar-password/recuperar', component:  RecuperarComponent},
   { path: 'recuperar-password/verificacion', component:  VerificacionComponent},
   { path: 'recuperar-password/crear', component:  CrearComponent},
-  { path: 'soporte/responder', component:  ResponderPreguntaComponent},
+  { path: 'soporte/responder', component:  ResponderPreguntaComponent}
 ];
 
 @NgModule({
