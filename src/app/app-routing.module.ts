@@ -5,6 +5,10 @@ import { EditarPlanComponent } from './planes/editar-plan/editar-plan.component'
 import { CrearPlanComponent } from './planes/crear-plan/crear-plan.component';
 import { VerPerfilesComponent } from './perfiles/ver-perfiles/ver-perfiles.component';
 import { PerfilTipoComponent } from './perfiles/perfil-tipo/perfil-tipo.component';
+import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
+import { VerBannersComponent } from './publicidad/ver-banners/ver-banners.component';
+import { NuevoBannerComponent } from './publicidad/nuevo-banner/nuevo-banner.component';
+import { FinanzasComponent } from './finanzas/finanzas.component';
 import { VerBazaresComponent } from './bazares/ver-bazares/ver-bazares.component';
 import { DetallesBazarComponent } from './bazares/detalles-bazar/detalles-bazar.component';
 import { CrearBazarComponent } from './bazares/crear-bazar/crear-bazar.component';
@@ -22,12 +26,17 @@ import { CrearComponent } from './recuperar-password/crear/crear.component';
 import { ResponderPreguntaComponent } from './soporte/responder-pregunta/responder-pregunta.component';
 
 
+
 const routes: Routes = [
   { path: 'planes', component: VerPlanesComponent },
   { path: 'planes/edit/:id', component: EditarPlanComponent },
   { path: 'planes/add', component: CrearPlanComponent },
   { path: 'perfiles', component: VerPerfilesComponent },
   { path: 'perfiles/:tipo', component: PerfilTipoComponent },
+  { path: 'login', component: InicioSesionComponent },
+  { path: 'publicidad', component: VerBannersComponent },
+  { path: 'nuevo-banner', component: NuevoBannerComponent },
+  { path: 'finanzas', component: FinanzasComponent },
 	{ path: 'bazares', component: VerBazaresComponent },
   { path: 'bazares/add', component: CrearBazarComponent },
   { path: 'bazares/:id', component: DetallesBazarComponent },
