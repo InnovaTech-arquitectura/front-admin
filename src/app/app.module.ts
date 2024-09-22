@@ -10,6 +10,13 @@ import { EditarPlanComponent } from './planes/editar-plan/editar-plan.component'
 import { CrearPlanComponent } from './planes/crear-plan/crear-plan.component';
 import { VerPerfilesComponent } from './perfiles/ver-perfiles/ver-perfiles.component';
 import { PerfilTipoComponent } from './perfiles/perfil-tipo/perfil-tipo.component';
+import { VerBazaresComponent } from './bazares/ver-bazares/ver-bazares.component';
+import { DetallesBazarComponent } from './bazares/detalles-bazar/detalles-bazar.component';
+import { CrearBazarComponent } from './bazares/crear-bazar/crear-bazar.component';
+import { EditarBazarComponent } from './bazares/editar-bazar/editar-bazar.component';
+import { VerCuponesComponent } from './cupones/ver-cupones/ver-cupones.component';
+import { EditarCuponComponent } from './cupones/editar-cupon/editar-cupon.component';
+import { CrearCuponComponent } from './cupones/crear-cupon/crear-cupon.component';
 import { VerCapacitacionesComponent } from './capacitaciones/ver-capacitaciones/ver-capacitaciones.component';
 import { CrearCapacitacionesComponent } from './capacitaciones/crear-capacitaciones/crear-capacitaciones.component';
 import { EditarCapacitacionesComponent } from './capacitaciones/editar-capacitaciones/editar-capacitaciones.component';
@@ -29,6 +36,13 @@ import { ResponderPreguntaComponent } from './soporte/responder-pregunta/respond
     CrearPlanComponent,
     VerPerfilesComponent,
     PerfilTipoComponent,
+    VerBazaresComponent,
+    DetallesBazarComponent,
+    CrearBazarComponent,
+    EditarBazarComponent,
+    VerCuponesComponent,
+    EditarCuponComponent,
+    CrearCuponComponent,
     VerCapacitacionesComponent,
     CrearCapacitacionesComponent,
     EditarCapacitacionesComponent,

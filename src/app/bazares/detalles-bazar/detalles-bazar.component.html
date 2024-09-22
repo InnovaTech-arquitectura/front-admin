@@ -1,0 +1,96 @@
+<app-header class="headerPage"></app-header>
+
+<body>
+	<app-sidebar class="sidebar"></app-sidebar>
+
+	<section class="contenido">
+		<div class="titulo">
+			<h1>Detalles del Bazar</h1>
+		</div>
+
+		<div class="detalle-bazar">
+			<div class="info-bazar">
+				<div>
+					<span><strong>Nombre del evento:</strong> Buró XYZ</span>
+					<span><strong>Ganancias:</strong> $ 15.533.000</span>
+					<span><strong>Locales:</strong> 333</span>
+				</div>
+				<div>
+					<span><strong>Fechas:</strong> 09/09/2024 &rarr; 13/09/2024</span>
+					<span><strong>Costo local:</strong> $ 1.500.000</span>
+					<span><strong>Modalidad:</strong> Presencial</span>
+					<span><strong>Lugar:</strong> parque de la 93</span>
+					<span><strong>Quota:</strong> 15%</span>
+				</div>
+				<div>
+					<span
+						><strong>Descripción:</strong> Este es el mejor bazar para emprendimientos del sector
+						moda, tenemos preparados pabellones acondicionados para que trabajen normal y lleguen a
+						más clientes.</span
+					>
+				</div>
+			</div>
+
+			<div class="tabla-emprendimientos">
+				<h2>Emprendimientos Registrados</h2>
+				<table class="tablita">
+					<thead>
+						<tr>
+							<th>ID Emprendimiento</th>
+							<th>Emprendimiento</th>
+							<th>Cantidad Pagada</th>
+							<th>Opciones</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>###01</td>
+							<td>Emprendimiento 1</td>
+							<td>$ 1.000.000</td>
+							<td>
+								<a class="links info" [routerLink]="'/detalles-emprendimiento/###01'">
+									<i class="bx bx-info-circle"></i>
+								</a>
+								<a class="links delete" [routerLink]="'/eliminar-emprendimiento/###01'">
+									<i class="bx bx-trash"></i>
+								</a>
+							</td>
+						</tr>
+						<tr>
+							<td>###02</td>
+							<td>Emprendimiento 2</td>
+							<td>$ 2.000.000</td>
+							<td>
+								<a class="links info" [routerLink]="'/detalles-emprendimiento/###02'">
+									<i class="bx bx-info-circle"></i>
+								</a>
+								<a class="links delete" [routerLink]="'/eliminar-emprendimiento/###02'">
+									<i class="bx bx-trash"></i>
+								</a>
+							</td>
+						</tr>
+						<tr>
+							<td>###03</td>
+							<td>Emprendimiento 3</td>
+							<td>$ 3.000.000</td>
+							<td>
+								<a class="links info" [routerLink]="'/detalles-emprendimiento/###03'">
+									<i class="bx bx-info-circle"></i>
+								</a>
+								<a class="links delete" [routerLink]="'/eliminar-emprendimiento/###03'">
+									<i class="bx bx-trash"></i>
+								</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="addBtn-container">
+			<a [routerLink]="'/bazares'">
+				<i class="bx bx-left-arrow-alt"></i>
+				Volver
+			</a>
+		</div>
+	</section>
+</body>
