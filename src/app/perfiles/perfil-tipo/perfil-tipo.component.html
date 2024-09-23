@@ -25,7 +25,7 @@
 						<td>alejandro#mail.com</td>
 						<td>
 							<div class="opciones">
-								<a class="links edit">
+								<a class="links edit" [routerLink]="['/perfiles', '111', 'edit']">
 									<i class="bx bxs-edit"></i>
 								</a>
 								<a class="links delete">
@@ -40,7 +40,7 @@
 						<td>hermann#mail.com</td>
 						<td>
 							<div class="opciones">
-								<a class="links edit">
+								<a class="links edit" [routerLink]="['/perfiles', '222', 'edit']">
 									<i class="bx bxs-edit"></i>
 								</a>
 								<a class="links delete">
@@ -55,7 +55,7 @@
 						<td>lina#mail.com</td>
 						<td>
 							<div class="opciones">
-								<a class="links edit">
+								<a class="links edit" [routerLink]="['/perfiles', '333', 'edit']">
 									<i class="bx bxs-edit"></i>
 								</a>
 								<a class="links delete">
@@ -70,7 +70,7 @@
 						<td>maria#mail.com</td>
 						<td>
 							<div class="opciones">
-								<a class="links edit">
+								<a class="links edit" [routerLink]="['/perfiles', '444', 'edit']">
 									<i class="bx bxs-edit"></i>
 								</a>
 								<a class="links delete">
@@ -85,7 +85,7 @@
 						<td>juan#mail.com</td>
 						<td>
 							<div class="opciones">
-								<a class="links edit">
+								<a class="links edit" [routerLink]="['/perfiles', '555', 'edit']">
 									<i class="bx bxs-edit"></i>
 								</a>
 								<a class="links delete">
@@ -103,7 +103,7 @@
 				<i class='bx bx-left-arrow-alt'></i>
 				Regresar
 			</a>
-			<a>
+			<a [routerLink]="'/perfiles/add'">
 				<i class='bx bx-user-plus'></i>
 				Agregar empleado
 			</a>
