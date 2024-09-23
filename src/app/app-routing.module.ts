@@ -72,7 +72,8 @@ const routes: Routes = [
   { path: 'recuperar-password/verificacion', component:  VerificacionComponent},
   { path: 'recuperar-password/crear', component:  CrearComponent},
   { path: 'soporte/responder', component:  ResponderPreguntaComponent},
-  { path: 'soporte', component:  SoportePrincipalComponent}	
+  { path: 'soporte', component:  SoportePrincipalComponent},
+  { path: '', pathMatch: 'full', redirectTo: 'login' },
 ];
 
 @NgModule({
