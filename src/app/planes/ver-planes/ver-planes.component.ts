@@ -16,10 +16,6 @@ export class VerPlanesComponent implements OnInit {
   listaPLanes?: Planes[];
   
   ngOnInit(): void {
-    this.planesService.findAll().subscribe(data => {
-      this.listaPLanes = data;
-    });
 
-    console.log("Hola\n" + this.listaPLanes);
   }
 }
