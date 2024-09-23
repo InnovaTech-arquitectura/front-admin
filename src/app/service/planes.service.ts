@@ -21,6 +21,13 @@ export class PlanesService {
     return this.http.get<any>(this.apiURL + '/all', { headers });
   }
 
+  findFuncionalities(): Observable<any>{
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  
+    return this.http.get<any>(this.apiURL + '/functionality', { headers });
+  }
+
   findById(id: number): Observable<any>{
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
@@ -32,14 +39,23 @@ export class PlanesService {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-    this.http.put(this.apiURL + '/update', plan, {headers}).subscribe();
+    this.http.put(this.apiURL + '/update', plan, {headers, responseType: 'text'}).subscribe(response => {
+      console.log(response);
+    }, error => {
+      console.error(error); 
+    });
   }
 
   addPlan(plan: Planes) {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-    this.http.post(this.apiURL + '/add', plan, {headers}).subscribe();
+    this.http.post(this.apiURL + '/add', plan, {headers, responseType: 'text' })
+    .subscribe(response => {
+      console.log(response);
+    }, error => {
+      console.error(error); 
+    });
   }
 
   deletePlan(id: number) {

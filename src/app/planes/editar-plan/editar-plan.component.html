@@ -12,12 +12,12 @@
 			<h2>Información del plan</h2>
 			<div class="inputText">
 				<label class="" for="nombre">Nombre del plan</label>
-				<input type="text" id="nombre" name="nombre" />
+				<input type="text" id="nombre" name="nombre" [(ngModel)]="formPlan.name"/>
 			</div>
 
 			<div class="inputText">
 				<label class="" for="precio">Precio del plan</label>
-				<input type="number" id="precio" name="precio" />
+				<input type="number" id="precio" name="precio" [(ngModel)]="formPlan.price"/>
 			</div>
 
 			<div class="inputCheck">
@@ -28,71 +28,11 @@
 					no desee.
 				</p>
 
-				<!-- Ejemplo por ahora -->
+				<!-- Opciones -->
 				<div class="opciones">
-					<div class="checkDiv">
-						<input id="check-1" type="checkbox" />
-						<label for="check-1">Checkbox 1</label>
-					</div>
-					<div class="checkDiv">
-						<input id="check-2" type="checkbox" />
-						<label for="check-2">Checkbox 2</label>
-					</div>
-					<div class="checkDiv">
-						<input id="check-3" type="checkbox" />
-						<label for="check-3">Checkbox 3</label>
-					</div>
-					<div class="checkDiv">
-						<input id="check-4" type="checkbox" />
-						<label for="check-4">Checkbox 4</label>
-					</div>
-					<div class="checkDiv">
-						<input id="check-5" type="checkbox" />
-						<label for="check-5">Checkbox 5</label>
-					</div>
-					<div class="checkDiv">
-						<input id="check-6" type="checkbox" />
-						<label for="check-6">Checkbox 6</label>
-					</div>
-					<div class="checkDiv">
-						<input id="check-7" type="checkbox" />
-						<label for="check-7">Checkbox 7</label>
-					</div>
-					<div class="checkDiv">
-						<input id="check-8" type="checkbox" />
-						<label for="check-8">Checkbox 8</label>
-					</div>
-					<div class="checkDiv">
-						<input id="check-9" type="checkbox" />
-						<label for="check-9">Checkbox 9</label>
-					</div>
-					<div class="checkDiv">
-						<input id="check-10" type="checkbox" />
-						<label for="check-10">Checkbox 10</label>
-					</div>
-					<div class="checkDiv">
-						<input id="check-11" type="checkbox" />
-						<label for="check-11">Checkbox 11</label>
-					</div>
-					<div class="checkDiv">
-						<input id="check-12" type="checkbox" />
-						<label for="check-12">Checkbox 12</label>
-					</div>
-					<div class="checkDiv">
-						<input id="check-13" type="checkbox" />
-						<label for="check-13">Checkbox 13</label>
-					</div>
-					<div class="checkDiv">
-						<input id="check-14" type="checkbox" />
-						<label for="check-14">Checkbox 14</label>
-					</div>
-					<div class="checkDiv">
-						<input id="check-15" type="checkbox" />
-						<label for="check-15">Checkbox 15</label>
-					</div>
-					<div class="checkDiv">
-						<input id="check-16" type="checkbox" />
-						<label for="check-16">Checkbox 16</label>
+					<div class="checkDiv" *ngFor="let func of allFunc">
+						<input id="check-{{ func.id }}"  type="checkbox" [checked]="isChecked(func)" />
+						<label for="check-{{ func.id }}"> <strong> {{ func.name }} </strong> <br> {{func.description}} </label>
 					</div>
 				</div>
 			</div>
@@ -103,7 +43,7 @@
 				<i class='bx bx-left-arrow-alt'></i>
 				Cancelar
 			</a>
-			<a>
+			<a (click)="guardar()">
 				<i class='bx bxs-save' ></i>
 				Guardar
 			</a>
