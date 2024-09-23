@@ -9,18 +9,18 @@
 		</div>
 
 		<div class="gridTablas">
-			<!-- Card para primer plan -->
-			<div class="pack-container">
+			<!-- Card para los planes -->
+			<div class="pack-container" *ngFor="let plan of planList" >
 				<div class="header">
-					<p class="title">Nombre del plan</p>
+					<p class="title"> {{ plan.name }} </p>
 					<div class="price-container">
-						<span>$</span>27
+						<span>$</span> {{ plan.price}}
 						<span>/mo</span>
 					</div>
 				</div>
 				<div>
 					<ul class="lists">
-						<li class="list">
+						<li class="list" *ngFor="let func of plan.functionalities">
 							<span>
 								<svg
 									aria-hidden="true"
@@ -37,115 +37,19 @@
 									></path>
 								</svg>
 							</span>
-							<p>Poner esto</p>
+							<p> <strong> {{func.name }} </strong> <br> {{func.description }}</p>
 						</li>
 					</ul>
 				</div>
 				<div class="containerBotones">
 					<div class="button-container">
-						<a [routerLink]="'/planes/edit/1'">
+						<a [routerLink]="['/planes/edit/', plan.id]">
                             <i class='bx bxs-edit'></i>
                             Editar
                         </a>
 					</div>
 					<div class="button-container">
-						<a>
-                            <i class='bx bxs-trash' ></i>
-                            Eliminar
-                        </a>
-					</div>
-				</div>
-			</div>
-
-            <!-- Card para segundo plan -->
-			<div class="pack-container">
-				<div class="header">
-					<p class="title">Nombre del plan</p>
-					<div class="price-container">
-						<span>$</span>27
-						<span>/mo</span>
-					</div>
-				</div>
-				<div>
-					<ul class="lists">
-						<li class="list">
-							<span>
-								<svg
-									aria-hidden="true"
-									stroke="currentColor"
-									stroke-width="2"
-									viewBox="0 0 24 24"
-									fill="none"
-									xmlns="http://www.w3.org/2000/svg"
-								>
-									<path
-										d="M4.5 12.75l6 6 9-13.5"
-										stroke-linejoin="round"
-										stroke-linecap="round"
-									></path>
-								</svg>
-							</span>
-							<p>Poner esto</p>
-						</li>
-					</ul>
-				</div>
-				<div class="containerBotones">
-					<div class="button-container">
-						<a [routerLink]="'/planes/edit/2'">
-                            <i class='bx bxs-edit'></i>
-                            Editar
-                        </a>
-					</div>
-					<div class="button-container">
-						<a>
-                            <i class='bx bxs-trash' ></i>
-                            Eliminar
-                        </a>
-					</div>
-				</div>
-			</div>
-
-            <!-- Card para tercer plan -->
-			<div class="pack-container">
-				<div class="header">
-					<p class="title">Nombre del plan</p>
-					<div class="price-container">
-						<span>$</span>27
-						<span>/mo</span>
-					</div>
-				</div>
-				<div>
-					<ul class="lists">
-						<li class="list">
-							<span>
-								<svg
-									aria-hidden="true"
-									stroke="currentColor"
-									stroke-width="2"
-									viewBox="0 0 24 24"
-									fill="none"
-									xmlns="http://www.w3.org/2000/svg"
-								>
-									<path
-										d="M4.5 12.75l6 6 9-13.5"
-										stroke-linejoin="round"
-										stroke-linecap="round"
-									></path>
-								</svg>
-							</span>
-							<p>Poner esto</p>
-						</li>
-					</ul>
-				</div>
-				<div class="containerBotones">
-					<div class="button-container">
-						<a [routerLink]="'/planes/edit/1'">
-                            <i class='bx bxs-edit'></i>
-                            Editar
-                        </a>
-					</div>
-					<div class="button-container">
-						<a>
+						<a (click)="deletePlan(plan.id)">
                             <i class='bx bxs-trash' ></i>
                             Eliminar
                         </a>

@@ -13,9 +13,21 @@ export class VerPlanesComponent implements OnInit {
     private planesService: PlanesService,
   ) { }
 
-  listaPLanes?: Planes[];
+  planList!: Planes[];
   
   ngOnInit(): void {
+    this.planesService.findAll().subscribe(
+      (planes) => {
+        this.planList = planes.content;
+        console.log(this.planList);
+      }
+    );
+  }
 
+  deletePlan(id: number){
+    this.planesService.deletePlan(id);
+    
+    const index = this.planList.findIndex((plan) => plan.id === id);
+    this.planList.splice(index, 1);
   }
 }
