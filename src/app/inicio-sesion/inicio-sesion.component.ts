@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../service/auth.service'; // Ajusta la ruta según la ubicación real
-import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-inicio-sesion',
@@ -8,24 +7,31 @@ import { Router } from '@angular/router';
   styleUrls: ['./inicio-sesion.component.css']
 })
 export class InicioSesionComponent {
-  email: string = ''; // Propiedad para el email
-  password: string = ''; // Propiedad para la contraseña
+  loginForm: FormGroup;
 
-  constructor(
-    private authService: AuthService, // Inyectar AuthService
-    private router: Router // Inyectar Router
-  ) {}
+  constructor(private formBuilder: FormBuilder) {
+    this.loginForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]], // Validación de correo
+      password: ['', [Validators.required, Validators.minLength(6)]] // Validación de contraseña
+    });
+  }
 
   onSubmit() {
-    this.authService.login(this.email, this.password).subscribe(
-      response => {
-        console.log('Inicio de sesión exitoso:', response);
-        localStorage.setItem('token', response.token);
-        this.router.navigate(['/publicidad']); // Redirigir a /publicidad
-      },
-      error => {
-        console.error('Error al iniciar sesión:', error);
-      }
-    );
+    if (this.loginForm.valid) {
+      const email = this.loginForm.get('email')?.value;
+      const password = this.loginForm.get('password')?.value;
+      
+      // Manejar los datos, enviarlos a un servicio o API
+      console.log('Correo:', email);
+      console.log('Contraseña:', password);
+
+      // Ejemplo de cómo enviar los datos a un servicio (requiere un servicio HTTP):
+      // this.authService.login(email, password).subscribe(response => {
+      //   console.log('Respuesta del servidor:', response);
+      // });
+
+    } else {
+      console.log('Formulario inválido');
+    }
   }
 }

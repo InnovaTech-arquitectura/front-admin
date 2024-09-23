@@ -39,7 +39,6 @@ import { VerificacionComponent } from './recuperar-password/verificacion/verific
 import { CrearComponent } from './recuperar-password/crear/crear.component';
 import { ResponderPreguntaComponent } from './soporte/responder-pregunta/responder-pregunta.component';
 import { SoportePrincipalComponent } from './soporte/soporte-principal/soporte-principal.component';
-import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -83,7 +82,6 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
-    FormsModule,
     AppRoutingModule,
     HttpClientModule
   ],
