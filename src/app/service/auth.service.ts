@@ -7,15 +7,16 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'https://localhost:7123/user/Login';
+  private apiUrl = 'http://localhost:8090/login';
 
   constructor(private http: HttpClient) {}
 
-  login(email: string, password: string): Observable<any> {
+  login(email: string, password: string): Observable<string> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const body = JSON.stringify({ email, password });
-    
-    return this.http.post<any>(this.apiUrl, body, { headers }).pipe(
+  
+    // Cambia el responseType a 'text'
+    return this.http.post(this.apiUrl, body, { headers, responseType: 'text' }).pipe(
       catchError(error => {
         console.error('Error en la solicitud:', error);
         return throwError(error);

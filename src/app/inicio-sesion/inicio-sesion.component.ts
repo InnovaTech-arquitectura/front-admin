@@ -20,12 +20,13 @@ export class InicioSesionComponent {
     this.authService.login(this.email, this.password).subscribe(
       response => {
         console.log('Inicio de sesión exitoso:', response);
-        localStorage.setItem('token', response.token);
+        // Almacena el token directamente
+        localStorage.setItem('token', response);
         this.router.navigate(['/publicidad']); // Redirigir a /publicidad
       },
       error => {
         console.error('Error al iniciar sesión:', error);
       }
     );
-  }
+  }  
 }
