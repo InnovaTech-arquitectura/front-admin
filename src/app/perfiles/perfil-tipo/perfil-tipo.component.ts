@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Profiles } from 'src/app/model/profiles';
+import { Users } from 'src/app/model/users';
+import { PerfilesService } from 'src/app/service/perfiles.service';
 
 @Component({
   selector: 'app-perfil-tipo',
@@ -10,25 +13,47 @@ export class PerfilTipoComponent {
 
   constructor(
     private route: ActivatedRoute,
-  ) { }
+    private perfilesService: PerfilesService,
+  ) {
+    this.profile =  {
+			id: 0,
+			name: '',
+      quantity: 0,
+		}
+  }
 
   tipo!: number;
-  tipoPerfil!: string;
+  profile: Profiles;
+  users: Users[] = [];
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this.tipo = Number(params.get('tipo'));
 
-      if (this.tipo == 1)
-        this.tipoPerfil = 'administrador';
-      else if (this.tipo == 2)
-        this.tipoPerfil = 'publicidad';
-      else if (this.tipo == 3)
-        this.tipoPerfil = 'ventas';
-      else if (this.tipo == 4)
-        this.tipoPerfil = 'community manager';
-      else if (this.tipo == 5)
-        this.tipoPerfil = 'asesorías';
+      this.perfilesService.findProfiles().subscribe(
+        (profiles) => {
+          const selectedProfile = profiles.find(profile => profile.id === this.tipo);
+          this.profile = selectedProfile;
+          console.log(this.profile);
+        }
+      );
+
+      this.perfilesService.findById(this.tipo).subscribe(
+        (response) => {
+          const data = response.content;
+          for (let i=0; i<data.length; i++){
+            this.users.push(data[i].user);
+          }
+          console.log(this.users);
+        }
+      );
     });
+  }
+
+  delete(id: number){
+    this.perfilesService.deletePlan(id);
+
+    const index = this.users.findIndex((plan) => plan.id === id);
+    this.users.splice(index, 1);
   }
 }
