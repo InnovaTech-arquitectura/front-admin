@@ -18,47 +18,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Administrador</td>
+                    <tr *ngFor="let profile of profilesList">
+                        <td> {{ profile.quantity }} </td>
+                        <td> {{ profile.name }} </td>
                         <td>
-                            <a class="links informa" [routerLink]="'/perfiles/1'">
-                                <i class='bx bx-info-circle'></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Publicidad</td>
-                        <td>
-                            <a class="links informa" [routerLink]="'/perfiles/2'">
-                                <i class='bx bx-info-circle'></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Ventas</td>
-                        <td>
-                            <a class="links informa" [routerLink]="'/perfiles/3'">
-                                <i class='bx bx-info-circle'></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Community manager</td>
-                        <td>
-                            <a class="links informa" [routerLink]="'/perfiles/4'">
-                                <i class='bx bx-info-circle'></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Asesorías</td>
-                        <td>
-                            <a class="links informa" [routerLink]="'/perfiles/5'">
+                            <a class="links informa" [routerLink]="['/perfiles/', profile.id]">
                                 <i class='bx bx-info-circle'></i>
                             </a>
                         </td>

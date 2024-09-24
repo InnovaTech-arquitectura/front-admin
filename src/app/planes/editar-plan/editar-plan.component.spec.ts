@@ -4,6 +4,9 @@ import { EditarPlanComponent } from './editar-plan.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
+import { PlanesService } from 'src/app/service/planes.service';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 describe('EditarPlanComponent', () => {
   let component: EditarPlanComponent;
@@ -12,8 +15,9 @@ describe('EditarPlanComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ EditarPlanComponent ], // Asegúrate de que el componente esté declarado
-      imports: [ RouterTestingModule ], // Importa el módulo de pruebas del Router
-      providers: [
+      imports: [RouterTestingModule, HttpClientModule, FormsModule],  // Add RouterTestingModule here
+      providers: [ 
+        PlanesService, 
         {
           provide: ActivatedRoute, // Simula ActivatedRoute con un valor
           useValue: {

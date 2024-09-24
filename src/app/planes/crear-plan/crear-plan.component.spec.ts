@@ -3,6 +3,9 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';  // Import RouterTestingModule
 
 import { CrearPlanComponent } from './crear-plan.component';
+import { HttpClientModule } from '@angular/common/http';
+import { PlanesService } from 'src/app/service/planes.service';
+import { FormsModule } from '@angular/forms';
 
 describe('CrearPlanComponent', () => {
   let component: CrearPlanComponent;
@@ -11,7 +14,8 @@ describe('CrearPlanComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [CrearPlanComponent],
-      imports: [RouterTestingModule],  // Add RouterTestingModule here
+      imports: [RouterTestingModule, HttpClientModule, FormsModule],  // Add RouterTestingModule here
+      providers: [PlanesService],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]  // Already added for custom elements
     });
     fixture = TestBed.createComponent(CrearPlanComponent);
