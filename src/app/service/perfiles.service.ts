@@ -2,6 +2,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Profiles } from '../model/profiles';
+import { Users } from '../model/users';
+import { UsersCreate } from '../model/userCreate';
+import { UsersUpdate } from '../model/userUpdate';
 
 @Injectable({
   providedIn: 'root'
@@ -24,10 +27,34 @@ export class PerfilesService {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
   
-    return this.http.get<any>(this.apiURL + '/all/10/' + id, { headers });
+    return this.http.get<any>(this.apiURL + '/role/' + id, { headers });
   }
 
-  deletePlan(id: number) {
+  updateProfile(profile: UsersUpdate) {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  
+    this.http.put(this.apiURL + '/update', profile, { headers, responseType: 'text' })
+      .subscribe(response => {
+        console.log(response);
+      }, error => {
+        console.error(error); 
+      });
+  }
+
+  addProfile(user: UsersCreate) {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  
+    this.http.post(this.apiURL, user, { headers, responseType: 'text' })
+      .subscribe(response => {
+        console.log(response);
+      }, error => {
+        console.error(error); 
+      });
+  }
+
+  deleteProfile(id: number) {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
   

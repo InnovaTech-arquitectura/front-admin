@@ -6,5 +6,5 @@ export interface Users {
     idCard: number;
     email: string;
     password: string;
-    role: Roles;
+    role?: Roles;
 }

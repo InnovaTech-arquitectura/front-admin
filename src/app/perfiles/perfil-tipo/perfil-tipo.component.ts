@@ -40,9 +40,9 @@ export class PerfilTipoComponent {
 
       this.perfilesService.findById(this.tipo).subscribe(
         (response) => {
-          const data = response.content;
-          for (let i=0; i<data.length; i++){
-            this.users.push(data[i].user);
+          console.log(response);
+          for (let i=0; i<response.length; i++){
+            this.users.push(response[i].user);
           }
           console.log(this.users);
         }
@@ -51,7 +51,7 @@ export class PerfilTipoComponent {
   }
 
   delete(id: number){
-    this.perfilesService.deletePlan(id);
+    this.perfilesService.deleteProfile(id);
 
     const index = this.users.findIndex((plan) => plan.id === id);
     this.users.splice(index, 1);
