@@ -67,7 +67,7 @@ const routes: Routes = [
   { path: 'capacitaciones', component: VerCapacitacionesComponent },
   { path: 'capacitaciones/add', component:  CrearCapacitacionesComponent},
   { path: 'capacitaciones/edit/:id', component:  EditarCapacitacionesComponent},
-  { path: 'capacitaciones/info', component:  VerInfoCapacitacionesComponent},
+  { path: 'capacitaciones/info/:id', component:  VerInfoCapacitacionesComponent},
   { path: 'recuperar-password/recuperar', component:  RecuperarComponent},
   { path: 'recuperar-password/verificacion', component:  VerificacionComponent},
   { path: 'recuperar-password/crear', component:  CrearComponent},

@@ -12,7 +12,8 @@
 			<h1>Capacitaciones activas:</h1>
 		</div>
 
-		<div class="table-container">
+		<div *ngFor="let course of courseList" class="course-item">
+
 			<table id="myTable" class="tablita">
 				<thead>
 					<tr>
@@ -24,95 +25,24 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td>1</td>
-						<td>Cap_finanzas</td>
-						<td>15/09/2024</td>
+						<td>{{ course.id }}</td>
+						<td>{{ course.title }}</td>
+						<td>{{ course.date }}</td>
 						<td>
 							<div class="opciones">
-								<a class="links edit" [routerLink]="'/capacitaciones/edit/1'">
+								<a class="links edit" [routerLink]="['/capacitaciones/edit/', course.id]">
 									<i class="bx bxs-edit"></i>
 								</a>
-								<a class="links delete" [routerLink]="'/capacitaciones/delete/{id}'">
+								<a class="links delete" (click)="deleteCourse(course.id)">
 									<i class="bx bxs-trash"></i>
 								</a>
-                                <a class="links info" [routerLink]="'/capacitaciones/info'">
+                                <a class="links info" [routerLink]="['/capacitaciones/info/', course.id]">
                                     <i class='bx bx-info-circle'></i>
 								</a>
 							</div>
 						</td>
 					</tr>
-					<tr>
-						<td>2</td>
-						<td>Cap_ventas</td>
-						<td>20/09/2024</td>
-						<td>
-							<div class="opciones">
-								<a class="links edit" [routerLink]="'/capacitaciones/edit/1'">
-									<i class="bx bxs-edit"></i>
-								</a>
-								<a class="links delete" [routerLink]="'/capacitaciones/delete/{id}'">
-									<i class="bx bxs-trash"></i>
-								</a>
-                                <a class="links info" [routerLink]="'/capacitaciones/info'">
-                                    <i class='bx bx-info-circle'></i>
-								</a>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>3</td>
-						<td>Cap_marketing</td>
-						<td>30/10/2024</td>
-						<td>
-							<div class="opciones">
-								<a class="links edit" [routerLink]="'/capacitaciones/edit/1'">
-									<i class="bx bxs-edit"></i>
-								</a>
-								<a class="links delete" [routerLink]="'/capacitaciones/delete/{id}'">
-									<i class="bx bxs-trash"></i>
-								</a>
-                                <a class="links info" [routerLink]="'/capacitaciones/info'">
-                                    <i class='bx bx-info-circle'></i>
-								</a>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>4</td>
-						<td>Cap_como_emprender</td>
-						<td>08/10/2024</td>
-						<td>
-							<div class="opciones">
-								<a class="links edit" [routerLink]="'/capacitaciones/edit/1'">
-									<i class="bx bxs-edit"></i>
-								</a>
-								<a class="links delete" [routerLink]="'/capacitaciones/delete/{id}'">
-									<i class="bx bxs-trash"></i>
-								</a>
-                                <a class="links info" [routerLink]="'/capacitaciones/info'">
-                                    <i class='bx bx-info-circle'></i>
-								</a>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>5</td>
-						<td>Cap_estadisticas</td>
-						<td>08/10/2024</td>
-						<td>
-							<div class="opciones">
-								<a class="links edit" [routerLink]="'/capacitaciones/edit/1'">
-									<i class="bx bxs-edit"></i>
-								</a>
-								<a class="links delete" [routerLink]="'/capacitaciones/delete/{id}'">
-									<i class="bx bxs-trash"></i>
-								</a>
-                                <a class="links info" [routerLink]="'/capacitaciones/info'">
-                                    <i class='bx bx-info-circle'></i>
-								</a>
-							</div>
-						</td>
-					</tr>
+				
 				</tbody>
 			</table>
 		</div>

@@ -7,25 +7,28 @@
 		<div class="titulo">
 			<h1>Edite la información de la capacitación</h1>
 		</div>
-        <form>
+        <form class="editar"(ngSubmit)="guardar()">
             <label for="contenido">Contenido - Título</label>
-            <input type="text" id="contenido" name="contenido" placeholder="Contenido - título">
-          
+            <input type="text" id="contenido" name="contenido" [(ngModel)]="formCourse.title"/>
+
+            <label for="descripcion">Descripción</label>
+            <input type="text" id="descripcion" name="descripcion" placeholder="Ingrese una breve descripción acerca de la capacitación"[(ngModel)]="formCourse.description"/>
+
             <label for="fecha">Fecha</label>
-            <input type="date" id="fecha" name="fecha" placeholder="dd/mm/yyyy">
+            <input type="date" id="fecha" name="fecha"  [(ngModel)]="formCourse.date"/>
           
             <label for="modalidad">Modalidad</label>
-            <select id="modalidad" name="modalidad">
+            <select id="modalidad" name="modalidad" [(ngModel)]="formCourse.modality">
               <option value="" disabled selected>Selecciona una modalidad</option>
               <option value="presencial">Presencial</option>
               <option value="virtual">Virtual</option>
             </select>
           
             <label for="direccion">Dirección - Link</label>
-            <textarea id="direccion" name="direccion" placeholder="Recuerde que para capacitación física es una dirección y para una capacitación virtual sería el link de acceso a la reunión."></textarea>
+            <textarea id="direccion" name="direccion" [(ngModel)]="formCourse.link"></textarea>
           
             <label for="cupos">Cupos</label>
-            <input type="number" id="cupos" name="cupos" placeholder="Cupos">
+            <input type="number" id="cupos" name="cupos" [(ngModel)]="formCourse.places">
             <div class="addBtn-container">
                 <a [routerLink]="'/capacitaciones'">
                     <i class='bx bx-left-arrow-alt'></i>

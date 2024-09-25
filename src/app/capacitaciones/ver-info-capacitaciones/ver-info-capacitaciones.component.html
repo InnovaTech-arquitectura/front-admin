@@ -8,29 +8,28 @@
     
         <div class="content">
         <div class="info-section">
-            <h2>Marketing digital</h2>
+            <h2>{{formCourse.title}}</h2>
     
             <div class="details">
-            <p><strong>Fecha:</strong> 26/09/2024</p>
-            <p><strong>Modalidad:</strong> Virtual</p>
+            <p><strong>Fecha: </strong> {{formCourse.date}}</p>
+            <p><strong>Modalidad: </strong>{{formCourse.modality}}</p>
             </div>
     
             <div class="description">
-            <p><strong>Descripción:</strong></p>
-            <p>Esta capacitación va a tartar temas de marketing digital, para llevar el marketing de tu negocio a otro nivel</p> 
+            <p><strong>Descripción: </strong></p>
+            <p>{{formCourse.description}}</p>
             </div>
     
             <div class="link-section">
-            <p><strong>Dirección - Link:</strong></p>
-            <p>https://teams.microsoft.com/l/meetup-join/</p>
+            <p><strong>Dirección - Link: </strong></p>
+            <p>{{formCourse.link}}</p>
             </div>
         </div>
     
         <div class="image-section">
             <img src="https://cdn-icons-png.flaticon.com/512/1946/1946429.png" alt="People Icon" class="icon">
             <div class="stats">
-            <p><strong>Cupos Totales:</strong> ##</p>
-            <p><strong>Cupos disponibles:</strong> ##</p>
+            <p><strong>Cupos Totales: </strong>{{formCourse.places}}</p>
             </div>
         </div>
         </div>
