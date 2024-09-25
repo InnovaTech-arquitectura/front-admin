@@ -8,29 +8,23 @@
 			<h1>Detalles del Bazar</h1>
 		</div>
 
-		<div class="detalle-bazar">
+		<div class="detalle-bazar" *ngIf="event">
 			<div class="info-bazar">
 				<div>
-					<span><strong>Nombre del evento:</strong> Buró XYZ</span>
-					<span><strong>Ganancias:</strong> $ 15.533.000</span>
-					<span><strong>Locales:</strong> 333</span>
+					<span><strong>Nombre del evento:</strong> {{ event.name }}</span>
+					<span><strong>Ganancias:</strong> {{ event.earnings | currency }}</span>
+					<span><strong>Locales:</strong> {{ event.quota }}</span>
 				</div>
 				<div>
-					<span><strong>Fechas:</strong> 09/09/2024 &rarr; 13/09/2024</span>
-					<span><strong>Costo local:</strong> $ 1.500.000</span>
-					<span><strong>Modalidad:</strong> Presencial</span>
-					<span><strong>Lugar:</strong> parque de la 93</span>
-					<span><strong>Quota:</strong> 15%</span>
-				</div>
-				<div>
-					<span
-						><strong>Descripción:</strong> Este es el mejor bazar para emprendimientos del sector
-						moda, tenemos preparados pabellones acondicionados para que trabajen normal y lleguen a
-						más clientes.</span
-					>
+					<span><strong>Fechas:</strong> {{ event.date }}</span>
+					<span><strong>Costo local:</strong> {{ event.costoLocal | currency }}</span>
+					<span><strong>Modalidad:</strong> {{ event.modality }}</span>
+					<span><strong>Lugar:</strong> {{ event.place }}</span>
+					<span><strong>Quota:</strong> {{ event.quota }}%</span>
 				</div>
 			</div>
 
+			<!-- Registered ventures table -->
 			<div class="tabla-emprendimientos">
 				<h2>Emprendimientos Registrados</h2>
 				<table class="tablita">
@@ -42,47 +36,6 @@
 							<th>Opciones</th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr>
-							<td>###01</td>
-							<td>Emprendimiento 1</td>
-							<td>$ 1.000.000</td>
-							<td>
-								<a class="links info" [routerLink]="'/detalles-emprendimiento/###01'">
-									<i class="bx bx-info-circle"></i>
-								</a>
-								<a class="links delete" [routerLink]="'/eliminar-emprendimiento/###01'">
-									<i class="bx bx-trash"></i>
-								</a>
-							</td>
-						</tr>
-						<tr>
-							<td>###02</td>
-							<td>Emprendimiento 2</td>
-							<td>$ 2.000.000</td>
-							<td>
-								<a class="links info" [routerLink]="'/detalles-emprendimiento/###02'">
-									<i class="bx bx-info-circle"></i>
-								</a>
-								<a class="links delete" [routerLink]="'/eliminar-emprendimiento/###02'">
-									<i class="bx bx-trash"></i>
-								</a>
-							</td>
-						</tr>
-						<tr>
-							<td>###03</td>
-							<td>Emprendimiento 3</td>
-							<td>$ 3.000.000</td>
-							<td>
-								<a class="links info" [routerLink]="'/detalles-emprendimiento/###03'">
-									<i class="bx bx-info-circle"></i>
-								</a>
-								<a class="links delete" [routerLink]="'/eliminar-emprendimiento/###03'">
-									<i class="bx bx-trash"></i>
-								</a>
-							</td>
-						</tr>
-					</tbody>
 				</table>
 			</div>
 		</div>

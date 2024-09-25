@@ -2,6 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { VerBazaresComponent } from './ver-bazares.component';
 import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 describe('VerBazaresComponent', () => {
   let component: VerBazaresComponent;
@@ -10,7 +12,11 @@ describe('VerBazaresComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [VerBazaresComponent],
-      imports: [RouterTestingModule],
+      imports: [
+        RouterTestingModule,
+        HttpClientModule,
+        FormsModule
+      ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     });
     fixture = TestBed.createComponent(VerBazaresComponent);
