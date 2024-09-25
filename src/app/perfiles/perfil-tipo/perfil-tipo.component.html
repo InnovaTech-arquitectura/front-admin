@@ -25,7 +25,7 @@
 						<td> {{ user.email }} </td>
 						<td>
 							<div class="opciones">
-								<a class="links edit" [routerLink]="['/perfiles', '111', 'edit']">
+								<a class="links edit" [routerLink]="['/perfiles', user.id, 'edit']">
 									<i class="bx bxs-edit"></i>
 								</a>
 								<a class="links delete" (click)="delete(user.id)">

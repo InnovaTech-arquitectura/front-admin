@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Profiles } from 'src/app/model/profiles';
+import { RequestUsersUpdate } from 'src/app/model/requestUserUpdate';
 import { UsersUpdate } from 'src/app/model/userUpdate';
 import { PerfilesService } from 'src/app/service/perfiles.service';
 
@@ -18,25 +19,54 @@ export class PerfilEditarEmpleadoComponent {
     ) { 
 
       this.editProfile =  {
+        id: 0,
         name: "",
         email: "",
         password: ""
       }
 
       this.formEmployee =  {
+        id: 1,
         name: "",
         email: "",
         password: ""
+      }
+
+      this.sendUser =  {
+        id: 1,
+        user: {
+          id: 0,
+          name: "",
+          email: "",
+          password: ""
+        }
       }
 
     }
 
   editProfile: UsersUpdate;
   formEmployee: UsersUpdate;
+  sendUser: RequestUsersUpdate;
+  cedula: number;
   
   allProfiles: Profiles[];
 
+
   ngOnInit(): void {
+
+    this.route.paramMap.subscribe(params => {
+      const id = Number(params.get('id'));
+
+      this.perfilesService.findUserById(id).subscribe(data => {
+        this.formEmployee.id = data.user.id;
+        this.formEmployee.name = data.user.name;
+        this.formEmployee.email = data.user.email;
+        this.formEmployee.password = data.user.password;
+        this.cedula = data.user.idCard;
+            
+        
+      });
+    });
 
     this.perfilesService.findProfiles().subscribe(
       (profiles) => {
@@ -49,12 +79,13 @@ export class PerfilEditarEmpleadoComponent {
 
   editar() {
 
-    console.log(this.formEmployee);
-
-    this.perfilesService.updateProfile(this.formEmployee);
-
-    this.editProfile = Object.assign({}, this.formEmployee);
-    console.log(this.editProfile);
+    this.sendUser.id = this.formEmployee.id;
+    this.sendUser.user = Object.assign({}, this.formEmployee);
+    
+    this.perfilesService.updateProfile(this.sendUser);
+    
+    console.log(this.sendUser);
+    
 
     this.router.navigate(['/perfiles']);
   }

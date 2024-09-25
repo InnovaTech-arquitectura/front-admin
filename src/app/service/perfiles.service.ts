@@ -5,6 +5,7 @@ import { Profiles } from '../model/profiles';
 import { Users } from '../model/users';
 import { UsersCreate } from '../model/userCreate';
 import { UsersUpdate } from '../model/userUpdate';
+import { RequestUsersUpdate } from '../model/requestUserUpdate';
 
 @Injectable({
   providedIn: 'root'
@@ -30,11 +31,19 @@ export class PerfilesService {
     return this.http.get<any>(this.apiURL + '/role/' + id, { headers });
   }
 
-  updateProfile(profile: UsersUpdate) {
+  findUserById(id: number): Observable<any>{
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
   
-    this.http.put(this.apiURL + '/update', profile, { headers, responseType: 'text' })
+    return this.http.get<any>(this.apiURL + '/' + id, { headers });
+  }
+
+  updateProfile(profile: RequestUsersUpdate) {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  
+    console.log(profile);
+    this.http.put(this.apiURL, profile, { headers, responseType: 'text' })
       .subscribe(response => {
         console.log(response);
       }, error => {

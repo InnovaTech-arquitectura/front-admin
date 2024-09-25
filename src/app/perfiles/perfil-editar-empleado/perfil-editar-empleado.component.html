@@ -20,7 +20,7 @@
     
                 <div class="form-group">
                     <label class="" for="documento">Número de documento</label>
-                    <input type="number" id="documento" name="documento"  disabled>
+                    <input type="number" id="documento" name="documento" [(ngModel)]="cedula"  disabled>
                 </div>
     
                 <div class="form-group">
@@ -47,7 +47,7 @@
                         <i class ='bx bx-left-arrow-alt'></i>
                         Cancelar
                     </a>
-                    <a [routerLink]="['/perfiles']" class="btn">
+                    <a (click)="editar()" class="btn">
                         <i class ='bx bx-user-plus'></i>
                         Guardar cambios
                     </a>
