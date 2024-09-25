@@ -14,67 +14,55 @@
 					<div class="form-row">
 						<div>
 							<label><strong>Nombre del evento:</strong></label>
-							<input type="text" placeholder="Nombre del evento" />
+							<input type="text" [(ngModel)]="formEvent.name" name="name" />
 						</div>
 						<div>
 							<label><strong>Ganancias:</strong></label>
-							<input type="number" placeholder="$" />
+							<input type="number" [(ngModel)]="formEvent.earnings" name="earnings" />
 						</div>
 						<div>
 							<label><strong>Locales:</strong></label>
-							<input type="number" placeholder="Número de locales" />
+							<input type="number" [(ngModel)]="formEvent.costoLocal" name="costoLocal" />
 						</div>
 					</div>
 
 					<div class="form-row">
 						<div>
 							<label><strong>Fechas:</strong></label>
-							<input type="date" /> &rarr;
-							<input type="date" />
-						</div>
-						<div>
-							<label><strong>Costo local:</strong></label>
-							<input type="number" placeholder="Costo por local" />
+							<input type="date" [(ngModel)]="formEvent.date" name="date" />
 						</div>
 						<div>
 							<label><strong>Quota:</strong></label>
-							<input type="number" placeholder="Quota (%)" />
+							<input type="number" [(ngModel)]="formEvent.quota" name="quota" />
 						</div>
 					</div>
 
 					<div class="form-row">
 						<div>
 							<label><strong>Modalidad:</strong></label>
-							<select class="modalidad">
+							<select [(ngModel)]="formEvent.modality" name="modality">
 								<option value="Presencial">Presencial</option>
 								<option value="Virtual">Virtual</option>
 							</select>
 						</div>
 						<div>
 							<label><strong>Lugar:</strong></label>
-							<input type="text" placeholder="Lugar del evento" />
+							<input type="text" [(ngModel)]="formEvent.place" name="place" />
 						</div>
 					</div>
-
-					<div class="form-row">
-						<div class="descripcion">
-							<label><strong>Descripción:</strong></label>
-							<textarea rows="3" placeholder="Descripción del evento"></textarea>
-						</div>
-					</div>
-				</div>
-
-				<div class="addBtn-container">
-					<a [routerLink]="'/bazares'">
-						<i class="bx bx-left-arrow-alt"></i>
-						Cancelar
-					</a>
-					<a [routerLink]="'/bazares'">
-						<i class="bx bxs-save"></i>
-						Guardar
-					</a>
 				</div>
 			</form>
+		</div>
+
+		<div class="addBtn-container">
+			<a [routerLink]="'/bazares'">
+				<i class="bx bx-left-arrow-alt"></i>
+				Cancelar
+			</a>
+			<a (click)="editar()" class="btn-save">
+				<i class="bx bxs-save"></i>
+				Guardar
+			</a>
 		</div>
 	</section>
 </body>
