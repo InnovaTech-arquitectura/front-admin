@@ -42,7 +42,7 @@ export class PerfilesService {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
   
-    console.log(profile);
+    
     this.http.put(this.apiURL, profile, { headers, responseType: 'text' })
       .subscribe(response => {
         console.log(response);

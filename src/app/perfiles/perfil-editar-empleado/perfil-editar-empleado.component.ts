@@ -20,6 +20,7 @@ export class PerfilEditarEmpleadoComponent {
 
       this.editProfile =  {
         id: 0,
+        idCard: 0,
         name: "",
         email: "",
         password: ""
@@ -27,6 +28,7 @@ export class PerfilEditarEmpleadoComponent {
 
       this.formEmployee =  {
         id: 1,
+        idCard: 0,
         name: "",
         email: "",
         password: ""
@@ -36,6 +38,7 @@ export class PerfilEditarEmpleadoComponent {
         id: 1,
         user: {
           id: 0,
+          idCard: 0,
           name: "",
           email: "",
           password: ""
@@ -59,6 +62,7 @@ export class PerfilEditarEmpleadoComponent {
 
       this.perfilesService.findUserById(id).subscribe(data => {
         this.formEmployee.id = data.user.id;
+        this.formEmployee.idCard = data.user.idCard;
         this.formEmployee.name = data.user.name;
         this.formEmployee.email = data.user.email;
         this.formEmployee.password = data.user.password;
