@@ -1,9 +1,9 @@
-import { Roles } from './roles';
+import { Roles } from "./roles";
 
-export interface Users {
+export interface UsersUpdate {
     id: number;
-    name: string;
     idCard: number;
+    name: string;
     email: string;
     password: string;
     role?: Roles;
