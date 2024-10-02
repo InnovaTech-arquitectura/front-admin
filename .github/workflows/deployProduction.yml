@@ -1,27 +1,14 @@
 name: Deploy Angular App to Production
 
 on:
-  workflow_run:
-    workflows: ["Deploy Angular App to Testing"]
-    types:
-      - completed
+  release:
+    types: [created]
 
 jobs:
   deploy:
-    runs-on: [self-hosted, prod-admin]  # Runner local para 'producción'
-    if: ${{ github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main' }}
+    runs-on: [self-hosted, prod-admin]
 
     steps:
-    - name: Esperando aprobación manual
-      uses: trstringer/manual-approval@v1
-      with:
-        secret: ${{ github.TOKEN }}
-        approvers: ''  # Sin especificar aprobadores, cualquier miembro con acceso puede aprobar
-        minimum-approvals: 2  # Se requieren al menos 2 aprobaciones
-        issue-title: "Desplegando a producción"
-        issue-body: "Por favor, aprueba o niega el despliegue a producción."
-        exclude-workflow-initiator-as-approver: true  # El iniciador del workflow no puede aprobar
-
     - name: Comprobando el repositorio
       uses: actions/checkout@v4
 
