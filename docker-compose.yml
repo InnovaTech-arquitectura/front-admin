@@ -1,12 +1,9 @@
 version: '3.8'
 
 services:
-  web:
-    build: .
+  nginx:
+    build: .  # Esto construirá el contenedor de Nginx, que también contendrá la aplicación Angular
     ports:
-      - "80:80"
+      - "80:80"  # Nginx escuchando en el puerto 80
     volumes:
-      - .:/usr/src/app
-    environment:
-      - NODE_ENV=production
-    container_name: front-admin-container  # Aquí defines el nombre del contenedor
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
