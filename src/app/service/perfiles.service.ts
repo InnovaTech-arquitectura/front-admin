@@ -6,12 +6,13 @@ import { Users } from '../model/users';
 import { UsersCreate } from '../model/userCreate';
 import { UsersUpdate } from '../model/userUpdate';
 import { RequestUsersUpdate } from '../model/requestUserUpdate';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PerfilesService {
-  private apiURL = 'http://localhost:8090/profile';
+  private apiURL = environment.baseApiUrl + '/profile';
 
   constructor(
     private http: HttpClient

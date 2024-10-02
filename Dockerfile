@@ -10,8 +10,8 @@ RUN npm install
 
 COPY . .
 
-# Construir la aplicación Angular
-RUN npm run build --prod
+# Construir la aplicación Angular para el entorno de testing
+RUN npm run build --configuration=testing
 
 # Usar una imagen base de Nginx para servir la aplicación
 FROM nginx:alpine
