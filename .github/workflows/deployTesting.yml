@@ -15,11 +15,10 @@ jobs:
     - name: Comprobando el repositorio
       uses: actions/checkout@v4
 
-    - name: Deploy via SSH
-      uses: appleboy/ssh-action@v0.1.4
-      with:
-        host: '10.43.101.107'
-        username: 'estudiante'
-        key: ${{ secrets.DEPLOY_SSH_KEY_TESTING }}
-        script: |
-          /home/estudiante/Desktop/deploy.sh
+    - name: Ejecutar el script de despliegue
+      run: |
+        ssh -o StrictHostKeyChecking=no -i ${{ secrets.DEPLOY_SSH_KEY_TESTING }} estudiante@10.43.101.107 'bash -s' < ./deploy.sh
+
+    - name: Comprobar estado de despliegue
+      run: |
+        ssh -o StrictHostKeyChecking=no -i ${{ secrets.DEPLOY_SSH_KEY_TESTING }} estudiante@10.43.101.107 'docker ps'
