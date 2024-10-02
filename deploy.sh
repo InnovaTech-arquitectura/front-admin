@@ -37,13 +37,7 @@ docker rm front-admin-container || true
 echo "Construyendo y ejecutando los contenedores Docker..."
 docker-compose up --build -d
 
-# Verificar que el contenedor esté corriendo antes de reiniciar Nginx
-if docker ps | grep -q front-admin-container; then
-    echo "Reiniciando Nginx en el contenedor..."
-    docker exec front-admin-container nginx -s reload
-else
-    echo "Error: El contenedor front-admin-container no está en ejecución."
-    exit 1
-fi
+echo "Reiniciando Nginx en el contenedor..."
+docker exec front-admin-container nginx -s reload
 
 echo "Despliegue completado."
