@@ -22,19 +22,14 @@ echo "Instalando dependencias de npm..."
 npm install
 
 echo "Construyendo la aplicación Angular..."
-npm run build --prod
-
-# Verifica si la carpeta dist se creó correctamente
-if [ ! -d "dist/front-admin" ]; then
-    echo "Error: La carpeta 'dist/front-admin' no se creó. Revisa si hay problemas con la compilación."
-    exit 1
+# Establecer la variable de entorno para el build
+if [[ $1 == "production" ]]; then
+    export ENVIRONMENT=production
+else
+    export ENVIRONMENT=testing
 fi
 
-echo "Deteniendo y eliminando contenedor existente..."
-docker stop front-admin-container || true
-docker rm front-admin-container || true
-
-echo "Construyendo y ejecutando los contenedores Docker..."
+# Ejecutar docker-compose con el argumento de entorno
 docker-compose up --build -d
 
 echo "Reiniciando Nginx en el contenedor..."

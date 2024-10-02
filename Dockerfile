@@ -10,8 +10,9 @@ RUN npm install
 
 COPY . .
 
-# Construir la aplicación Angular para el entorno de testing
-RUN npm run build -- --configuration=testing
+# Usar la variable de entorno para definir el entorno de construcción
+ARG ENV=testing
+RUN npm run build -- --configuration=$ENV
 
 # Usar una imagen base de Nginx para servir la aplicación
 FROM nginx:alpine
