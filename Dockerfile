@@ -16,6 +16,9 @@ RUN npm run build --configuration=testing
 # Usar una imagen base de Nginx para servir la aplicación
 FROM nginx:alpine
 
+# Crear el directorio /var/run
+RUN mkdir -p /var/run
+
 # Copiar archivos generados al contenedor de Nginx
 COPY --from=build /usr/src/app/dist/front-admin /usr/share/nginx/html
 
