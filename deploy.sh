@@ -1,18 +1,11 @@
-#!/bin/bash
-
-# Mensaje inicial
+# Script de despliegue (deploy.sh)
 echo "Iniciando proceso de despliegue..."
 
-# Navegar al directorio del proyecto Angular
-cd /home/estudiante/Desktop/front-admin || exit
-
-# Detener y eliminar el contenedor existente si está en ejecución
 echo "Deteniendo y eliminando contenedor existente..."
-docker-compose down
+docker stop front-admin-container || true
+docker rm front-admin-container || true
 
-# Construir y ejecutar los contenedores
 echo "Construyendo y ejecutando los contenedores Docker..."
-docker-compose up -d --build
+docker-compose up --build -d
 
-# Mensaje final
-echo "Despliegue completado con éxito."
+echo "Despliegue completado."
