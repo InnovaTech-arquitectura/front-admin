@@ -20,12 +20,10 @@ jobs:
       with:
           ssh-private-key: ${{ secrets.DEPLOY_SSH_KEY_TESTING }}
 
-    - name: Asegurarse de que deploy.sh tenga permisos de ejecución
-      run: chmod +x ./deploy.sh
-
     - name: Ejecutar el script de despliegue
       run: |
         ssh -o StrictHostKeyChecking=no estudiante@10.43.101.107 'bash -s' < ./deploy.sh
+      working-directory: ./  # Establece el directorio de trabajo a la raíz del repositorio
 
     - name: Comprobar estado de despliegue
       run: |
