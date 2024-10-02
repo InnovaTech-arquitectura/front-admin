@@ -17,11 +17,33 @@ git clone https://github.com/InnovaTech-arquitectura/front-admin.git
 # Cambiar al directorio del repositorio clonado
 cd front-admin || exit 1
 
+# Instalar dependencias y construir el proyecto Angular
+echo "Instalando dependencias de npm..."
+npm install
+
+echo "Construyendo la aplicación Angular..."
+npm run build --prod
+
+# Verifica si la carpeta dist se creó correctamente
+if [ ! -d "dist/front-admin" ]; then
+    echo "Error: La carpeta 'dist/front-admin' no se creó. Revisa si hay problemas con la compilación."
+    exit 1
+fi
+
 echo "Deteniendo y eliminando contenedor existente..."
 docker stop front-admin-container || true
 docker rm front-admin-container || true
 
 echo "Construyendo y ejecutando los contenedores Docker..."
 docker-compose up --build -d
+
+# Verificar que el contenedor esté corriendo antes de reiniciar Nginx
+if docker ps | grep -q front-admin-container; then
+    echo "Reiniciando Nginx en el contenedor..."
+    docker exec front-admin-container nginx -s reload
+else
+    echo "Error: El contenedor front-admin-container no está en ejecución."
+    exit 1
+fi
 
 echo "Despliegue completado."
