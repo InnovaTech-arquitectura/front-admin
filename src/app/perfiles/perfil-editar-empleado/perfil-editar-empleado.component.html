@@ -1,0 +1,54 @@
+<app-header class="header"></app-header>
+
+<body>
+	<app-sidebar class="sidebar"></app-sidebar>
+
+    <section class="contenido">
+
+        <div class="titulo">
+			<h1>Editar empleado</h1>
+		</div>
+        
+            <form class="editar">
+
+                <h2 class="form-group">Información del empeleado</h2>
+
+                <div class="form-group">
+                    <label class="" for="nombre">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" [(ngModel)]="formEmployee.name">
+                </div>
+    
+                <div class="form-group">
+                    <label class="" for="documento">Número de documento</label>
+                    <input type="number" id="documento" name="documento" [(ngModel)]="cedula"  disabled>
+                </div>
+    
+                <div class="form-group">
+                    <label class="" for="email">Correo electrónico</label>
+                    <input type="email" id="email" name="email" [(ngModel)]="formEmployee.email">
+                </div>
+    
+                <div class="form-group">
+
+                    <label for="perfil">Perfil en la empresa</label>
+
+                    <select id="perfil" name="perfil" disabled>
+                        <option *ngFor="let profile of allProfiles" [value]="profile.id" >{{ profile.name }}</option>
+                    </select>
+                </div>
+    
+                <div class="btn-container">
+                    <a [routerLink]="['/perfiles']" class="btn">
+                        <i class ='bx bx-left-arrow-alt'></i>
+                        Cancelar
+                    </a>
+                    <a (click)="editar()" class="btn">
+                        <i class ='bx bx-user-plus'></i>
+                        Guardar cambios
+                    </a>
+                </div>
+                
+            </form>
+        
+    </section>
+</body>

@@ -1,0 +1,58 @@
+<app-header class="headerPage"></app-header>
+
+<body>
+	<app-sidebar class="sidebar"></app-sidebar>
+
+	<section class="contenido">
+		<div class="titulo">
+			<h1>Capacitaciones</h1>
+		</div>
+
+        <div class="subtitulo">
+			<h1>Capacitaciones activas:</h1>
+		</div>
+
+		<div *ngFor="let course of courseList" class="course-item">
+
+			<table id="myTable" class="tablita">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Contenido-titulo</th>
+						<th>Fecha</th>
+						<th>Detalles</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>{{ course.id }}</td>
+						<td>{{ course.title }}</td>
+						<td>{{ course.date }}</td>
+						<td>
+							<div class="opciones">
+								<a class="links edit" [routerLink]="['/capacitaciones/edit/', course.id]">
+									<i class="bx bxs-edit"></i>
+								</a>
+								<a class="links delete" (click)="deleteCourse(course.id)">
+									<i class="bx bxs-trash"></i>
+								</a>
+                                <a class="links info" [routerLink]="['/capacitaciones/info/', course.id]">
+                                    <i class='bx bx-info-circle'></i>
+								</a>
+							</div>
+						</td>
+					</tr>
+				
+				</tbody>
+			</table>
+		</div>
+
+		<div class="addBtn-container">
+			
+			<a [routerLink]="'/capacitaciones/add'">
+				<i class='bx bx-user-plus'></i>
+				Agregar capacitación
+			</a>
+		</div>
+	</section>
+</body>

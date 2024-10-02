@@ -1,0 +1,52 @@
+<app-header class="header"></app-header>
+
+<body>
+	<app-sidebar class="sidebar"></app-sidebar>
+
+	<section class="contenido">
+		<div class="titulo">
+			<h1>Editar plan</h1>
+		</div>
+
+		<form class="editar">
+			<h2>Información del plan</h2>
+			<div class="inputText">
+				<label class="" for="nombre">Nombre del plan</label>
+				<input type="text" id="nombre" name="nombre" [(ngModel)]="formPlan.name"/>
+			</div>
+
+			<div class="inputText">
+				<label class="" for="precio">Precio del plan</label>
+				<input type="number" id="precio" name="precio" [(ngModel)]="formPlan.price"/>
+			</div>
+
+			<div class="inputCheck">
+				<h3>Funcionalidades del plan</h3>
+
+				<p>
+					Seleccione las casillas de las funcionalidades que desea que tenga el plan, o desmarque las que
+					no desee.
+				</p>
+
+				<!-- Opciones -->
+				<div class="opciones">
+					<div class="checkDiv" *ngFor="let func of allFunc">
+						<input id="check-{{ func.id }}"  type="checkbox" [checked]="isChecked(func)" />
+						<label for="check-{{ func.id }}"> <strong> {{ func.name }} </strong> <br> {{func.description}} </label>
+					</div>
+				</div>
+			</div>
+		</form>
+
+		<div class="addBtn-container">
+			<a [routerLink]="'/planes'">
+				<i class='bx bx-left-arrow-alt'></i>
+				Cancelar
+			</a>
+			<a (click)="guardar()">
+				<i class='bx bxs-save' ></i>
+				Guardar
+			</a>
+		</div>
+	</section>
+</body>

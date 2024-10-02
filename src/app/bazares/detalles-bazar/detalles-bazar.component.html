@@ -1,0 +1,49 @@
+<app-header class="headerPage"></app-header>
+
+<body>
+	<app-sidebar class="sidebar"></app-sidebar>
+
+	<section class="contenido">
+		<div class="titulo">
+			<h1>Detalles del Bazar</h1>
+		</div>
+
+		<div class="detalle-bazar" *ngIf="event">
+			<div class="info-bazar">
+				<div>
+					<span><strong>Nombre del evento:</strong> {{ event.name }}</span>
+					<span><strong>Ganancias:</strong> {{ event.earnings | currency }}</span>
+					<span><strong>Locales:</strong> {{ event.quota }}</span>
+				</div>
+				<div>
+					<span><strong>Fechas:</strong> {{ event.date }}</span>
+					<span><strong>Costo local:</strong> {{ event.costoLocal | currency }}</span>
+					<span><strong>Modalidad:</strong> {{ event.modality }}</span>
+					<span><strong>Lugar:</strong> {{ event.place }}</span>
+					<span><strong>Quota:</strong> {{ event.quota }}%</span>
+				</div>
+			</div>
+
+			<!-- Registered ventures table -->
+			<div class="tabla-emprendimientos">
+				<h2>Emprendimientos Registrados</h2>
+				<table class="tablita">
+					<thead>
+						<tr>
+							<th>ID Emprendimiento</th>
+							<th>Emprendimiento</th>
+							<th>Cantidad Pagada</th>
+							<th>Opciones</th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+		</div>
+		<div class="addBtn-container">
+			<a [routerLink]="'/bazares'">
+				<i class="bx bx-left-arrow-alt"></i>
+				Volver
+			</a>
+		</div>
+	</section>
+</body>

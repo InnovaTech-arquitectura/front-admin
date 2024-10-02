@@ -1,0 +1,73 @@
+<app-header class="header"></app-header>
+
+<body>
+	<app-sidebar class="sidebar"></app-sidebar>
+
+	<section class="contenido">
+		<div class="titulo">
+			<h1>Crear nuevo bazar</h1>
+		</div>
+
+		<div class="crear-bazar">
+			<form>
+				<div class="info-bazar">
+					<div class="form-row">
+						<div>
+							<label><strong>Nombre del evento:</strong></label>
+							<input type="text" id="nombre" name="nombre" [(ngModel)]="formEvent.name" />
+						</div>
+						<div>
+							<label><strong>Ganancias:</strong></label>
+							<input
+								type="number"
+								id="ganancias"
+								name="ganancias"
+								[(ngModel)]="formEvent.earnings"
+							/>
+						</div>
+					</div>
+
+					<div class="form-row">
+						<div>
+							<label><strong>Fechas:</strong></label>
+							<input type="date" id="date" name="date" [(ngModel)]="formEvent.date" />
+						</div>
+						<div>
+							<label><strong>Costo local:</strong></label>
+							<input type="number" id="costo" name="costo" [(ngModel)]="formEvent.costoLocal" />
+						</div>
+						<div>
+							<label><strong>Quota:</strong></label>
+							<input type="number" id="quota" name="quota" [(ngModel)]="formEvent.quota" />
+						</div>
+					</div>
+
+					<div class="form-row">
+						<div>
+							<label><strong>Modalidad:</strong></label>
+							<select class="modalidad" [(ngModel)]="formEvent.modality" name="modalidad">
+								<option value="Presencial">Presencial</option>
+								<option value="Virtual">Virtual</option>
+							</select>
+						</div>
+
+						<div>
+							<label><strong>Lugar:</strong></label>
+							<input type="text" id="lugar" name="lugar" [(ngModel)]="formEvent.place" />
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="addBtn-container">
+			<a [routerLink]="'/bazares'">
+				<i class="bx bx-left-arrow-alt"></i>
+				Cancelar
+			</a>
+			<a (click)="crear()" class="btn-save">
+				<i class="bx bxs-save"></i>
+				Aceptar
+			</a>
+		</div>
+	</section>
+</body>

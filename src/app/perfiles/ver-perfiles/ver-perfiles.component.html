@@ -1,0 +1,36 @@
+<app-header class="headerPage"></app-header>
+
+<body>
+	<app-sidebar class="sidebar"></app-sidebar>
+
+	<section class="contenido">
+        <div class="titulo">
+			<h1>Perfiles</h1>
+		</div>
+
+        <div class="table-container">
+            <table id="myTable" class="tablita">
+                <thead>
+                    <tr>
+                        <th>Número de empleados</th>
+                        <th>Nombre Perfil</th>
+                        <th>Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let profile of profilesList">
+                        <td> {{ profile.quantity }} </td>
+                        <td> {{ profile.name }} </td>
+                        <td>
+                            <a class="links informa" [routerLink]="['/perfiles/', profile.id]">
+                                <i class='bx bx-info-circle'></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </section>
+
+</body>

@@ -1,0 +1,43 @@
+<app-header class="headerPage"></app-header>
+<body>
+
+    <app-sidebar class="sidebar"></app-sidebar>
+
+    <div class="container">
+        <h1 class="title">Info. Capacitación</h1>
+    
+        <div class="content">
+        <div class="info-section">
+            <h2>{{formCourse.title}}</h2>
+    
+            <div class="details">
+            <p><strong>Fecha: </strong> {{formCourse.date}}</p>
+            <p><strong>Modalidad: </strong>{{formCourse.modality}}</p>
+            </div>
+    
+            <div class="description">
+            <p><strong>Descripción: </strong></p>
+            <p>{{formCourse.description}}</p>
+            </div>
+    
+            <div class="link-section">
+            <p><strong>Dirección - Link: </strong></p>
+            <p>{{formCourse.link}}</p>
+            </div>
+        </div>
+    
+        <div class="image-section">
+            <img src="https://cdn-icons-png.flaticon.com/512/1946/1946429.png" alt="People Icon" class="icon">
+            <div class="stats">
+            <p><strong>Cupos Totales: </strong>{{formCourse.places}}</p>
+            </div>
+        </div>
+        </div>
+   </div>
+   <div class="addBtn-container">
+        <a [routerLink]="'/capacitaciones'">
+            <i class='bx bx-left-arrow-alt'></i>
+            Regresar
+        </a>
+    </div>
+</body>  
