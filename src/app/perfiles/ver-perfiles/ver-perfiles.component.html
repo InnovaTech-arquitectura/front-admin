@@ -22,7 +22,7 @@
                         <td> {{ profile.quantity }} </td>
                         <td> {{ profile.name }} </td>
                         <td>
-                            <a class="links informa" [routerLink]="['/perfiles/', profile.id]">
+                            <a class="links informa" [routerLink]="['/perfiles/', profile.id]" [attr.id]="'profile-' + profile.id">
                                 <i class='bx bx-info-circle'></i>
                             </a>
                         </td>
