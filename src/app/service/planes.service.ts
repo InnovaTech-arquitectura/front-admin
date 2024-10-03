@@ -3,12 +3,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Planes } from '../model/planes';
 import { Functionalities } from '../model/functionalities';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PlanesService {
-  private apiURL = 'http://localhost:8090/plan';
+  private apiURL = environment.baseApiUrl +'/plan';
 
   constructor(
     private http: HttpClient

@@ -2,12 +2,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Events as BazarEvent } from 'src/app/model/events'; // Alias para evitar el conflicto con el Event global
+import { environment } from 'src/environments/environment';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class EventsService {
-	private apiURL = 'http://localhost:8090/event';
+	private apiURL = environment.baseApiUrl + '/event';
 
 	constructor(private http: HttpClient) {}
 
