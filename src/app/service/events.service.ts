@@ -37,13 +37,15 @@ export class EventsService {
 	updateEvent(event: BazarEvent): Observable<any> {
 		const token = localStorage.getItem('token');
 		const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-		return this.http.put<any>(`${this.apiURL}/update`, event, { headers });
-	}
+		
+		return this.http.put(this.apiURL + '/update', event, { headers, responseType: 'text' });
+	}	  
 
 	// Método para eliminar un evento
 	deleteEvent(id: number): Observable<any> {
 		const token = localStorage.getItem('token');
 		const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-		return this.http.delete<any>(`${this.apiURL}/delete/${id}`, { headers });
+
+		return this.http.delete(this.apiURL + '/delete/' + id, { headers, responseType: 'text' });
 	}
 }
