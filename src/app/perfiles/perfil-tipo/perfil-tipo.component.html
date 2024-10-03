@@ -25,10 +25,10 @@
 						<td> {{ user.email }} </td>
 						<td>
 							<div class="opciones">
-								<a class="links edit" [routerLink]="['/perfiles', user.id, 'edit']">
+								<a class="links edit" [routerLink]="['/perfiles', user.id, 'edit']" [attr.id]="'edit-' + user.id">
 									<i class="bx bxs-edit"></i>
 								</a>
-								<a class="links delete" (click)="delete(user.id)">
+								<a class="links delete" (click)="delete(user.id)" [attr.id]="'delete-' + user.id">
 									<i class="bx bxs-trash"></i>
 								</a>
 							</div>
@@ -43,7 +43,7 @@
 				<i class='bx bx-left-arrow-alt'></i>
 				Regresar
 			</a>
-			<a [routerLink]="'/perfiles/add'">
+			<a [routerLink]="'/perfiles/add'" id="addEmployee">
 				<i class='bx bx-user-plus'></i>
 				Agregar empleado
 			</a>
