@@ -10,7 +10,7 @@
 
 		<div class="gridTablas">
 			<!-- Card para los planes -->
-			<div class="pack-container" *ngFor="let plan of planList" >
+			<div class="pack-container" *ngFor="let plan of planList" [attr.id]="'plan-' + plan.id">
 				<div class="header">
 					<p class="title"> {{ plan.name }} </p>
 					<div class="price-container">
@@ -43,13 +43,13 @@
 				</div>
 				<div class="containerBotones">
 					<div class="button-container">
-						<a [routerLink]="['/planes/edit/', plan.id]">
+						<a [routerLink]="['/planes/edit/', plan.id]" [attr.id]="'edit-' + plan.id">
                             <i class='bx bxs-edit'></i>
                             Editar
                         </a>
 					</div>
 					<div class="button-container">
-						<a (click)="deletePlan(plan.id)">
+						<a (click)="deletePlan(plan.id)" [attr.id]="'delete-' + plan.id">
                             <i class='bx bxs-trash' ></i>
                             Eliminar
                         </a>
@@ -59,7 +59,7 @@
 		</div>
 
         <div class="addBtn-container">
-            <a [routerLink]="'/planes/add'">
+            <a [routerLink]="'/planes/add'" id="addPlan">
                 <i class='bx bx-plus-circle'></i>
                 Agregar plan
 			</a>
