@@ -41,7 +41,17 @@ export class EditarBazarComponent implements OnInit {
 
 	editar() {
 		this.formEvent = Object.assign({}, this.formEvent);
-		this.eventService.updateEvent(this.formEvent);
-		this.router.navigate(['/bazares']);
+		
+		this.eventService.updateEvent(this.formEvent).subscribe(
+			(response) => {
+				console.log('Evento actualizado con éxito:', response);
+				// Redirigir solo después de que la actualización sea exitosa
+				this.router.navigate(['/bazares']);
+			},
+			(error) => {
+				console.error('Error al actualizar el evento:', error);
+				// Aquí podrías manejar el error, mostrar una alerta o mensaje al usuario
+			}
+		);
 	}
 }

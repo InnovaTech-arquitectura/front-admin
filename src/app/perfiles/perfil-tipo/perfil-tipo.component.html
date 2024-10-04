@@ -19,16 +19,16 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr *ngFor="let user of users">
-						<td> {{ user.name }} </td>
-						<td> {{ user.idCard }} </td>
-						<td> {{ user.email }} </td>
+					<tr *ngFor="let userElement of users">
+						<td> {{ userElement.user.name }} </td>
+						<td> {{ userElement.user.idCard }} </td>
+						<td> {{ userElement.user.email }} </td>
 						<td>
 							<div class="opciones">
-								<a class="links edit" [routerLink]="['/perfiles', user.id, 'edit']">
+								<a class="links edit" [routerLink]="['/perfiles', userElement.id, 'edit']" [attr.id]="'edit-' + userElement.id">
 									<i class="bx bxs-edit"></i>
 								</a>
-								<a class="links delete" (click)="delete(user.id)">
+								<a class="links delete" (click)="delete(userElement.id)" [attr.id]="'delete-' + userElement.id">
 									<i class="bx bxs-trash"></i>
 								</a>
 							</div>
@@ -43,7 +43,7 @@
 				<i class='bx bx-left-arrow-alt'></i>
 				Regresar
 			</a>
-			<a [routerLink]="'/perfiles/add'">
+			<a [routerLink]="'/perfiles/add'" id="addEmployee">
 				<i class='bx bx-user-plus'></i>
 				Agregar empleado
 			</a>

@@ -14,7 +14,7 @@
 					<div class="form-row">
 						<div>
 							<label><strong>Nombre del evento:</strong></label>
-							<input type="text" [(ngModel)]="formEvent.name" name="name" />
+							<input type="text" [(ngModel)]="formEvent.name" name="name" id="name"/>
 						</div>
 						<div>
 							<label><strong>Ganancias:</strong></label>
@@ -59,7 +59,7 @@
 				<i class="bx bx-left-arrow-alt"></i>
 				Cancelar
 			</a>
-			<a (click)="editar()" class="btn-save">
+			<a (click)="editar()" class="btn-save" id="saveBazar">
 				<i class="bx bxs-save"></i>
 				Guardar
 			</a>
