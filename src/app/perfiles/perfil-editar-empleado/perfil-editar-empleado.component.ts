@@ -51,6 +51,7 @@ export class PerfilEditarEmpleadoComponent {
   formEmployee: UsersUpdate;
   sendUser: RequestUsersUpdate;
   cedula: number;
+  profile: number;
   
   allProfiles: Profiles[];
 
@@ -67,8 +68,7 @@ export class PerfilEditarEmpleadoComponent {
         this.formEmployee.email = data.user.email;
         this.formEmployee.password = data.user.password;
         this.cedula = data.user.idCard;
-            
-        
+        this.profile = data.id;
       });
     });
 
@@ -83,7 +83,7 @@ export class PerfilEditarEmpleadoComponent {
 
   editar() {
 
-    this.sendUser.id = this.formEmployee.id;
+    this.sendUser.id = this.profile;
     this.sendUser.user = Object.assign({}, this.formEmployee);
     
     this.perfilesService.updateProfile(this.sendUser);
