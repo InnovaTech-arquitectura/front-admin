@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Profiles } from 'src/app/model/profiles';
+import { RequestUsersUpdate } from 'src/app/model/requestUserUpdate';
 import { Users } from 'src/app/model/users';
 import { PerfilesService } from 'src/app/service/perfiles.service';
 
@@ -24,7 +25,7 @@ export class PerfilTipoComponent {
 
   tipo!: number;
   profile: Profiles;
-  users: Users[] = [];
+  users: RequestUsersUpdate[] = [];
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -42,7 +43,7 @@ export class PerfilTipoComponent {
         (response) => {
           console.log(response);
           for (let i=0; i<response.length; i++){
-            this.users.push(response[i].user);
+            this.users.push(response[i]);
           }
           console.log(this.users);
         }
