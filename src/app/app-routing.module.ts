@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './auth.guard';
 
 import { VerPlanesComponent } from './planes/ver-planes/ver-planes.component';
 import { EditarPlanComponent } from './planes/editar-plan/editar-plan.component';
@@ -43,37 +44,37 @@ import { GraphsComponent } from './dashboard/graphs/graphs.component';
 
 
 const routes: Routes = [
-  { path: 'planes', component: VerPlanesComponent },
-  { path: 'planes/edit/:id', component: EditarPlanComponent },
-  { path: 'planes/add', component: CrearPlanComponent },
-  { path: 'perfiles', component: VerPerfilesComponent },
-  { path: 'perfiles/add', component: PerfilNuevoEmpleadoComponent },
-  { path: 'perfiles/:tipo', component: PerfilTipoComponent },
-  { path: 'perfiles/:id/edit', component: PerfilEditarEmpleadoComponent },
-  { path: 'emprendimientos', component: VerEmprendimeintosComponent },
-  { path: 'emprendimientos/:id', component: StatsEmprendimientoComponent },
+  { path: 'planes', component: VerPlanesComponent, canActivate: [AuthGuard] }, 
+  { path: 'planes/edit/:id', component: EditarPlanComponent, canActivate: [AuthGuard] },
+  { path: 'planes/add', component: CrearPlanComponent, canActivate: [AuthGuard] },
+  { path: 'perfiles', component: VerPerfilesComponent, canActivate: [AuthGuard] },
+  { path: 'perfiles/add', component: PerfilNuevoEmpleadoComponent, canActivate: [AuthGuard] },
+  { path: 'perfiles/:tipo', component: PerfilTipoComponent, canActivate: [AuthGuard] },
+  { path: 'perfiles/:id/edit', component: PerfilEditarEmpleadoComponent, canActivate: [AuthGuard] },
+  { path: 'emprendimientos', component: VerEmprendimeintosComponent, canActivate: [AuthGuard] },
+  { path: 'emprendimientos/:id', component: StatsEmprendimientoComponent, canActivate: [AuthGuard] },
+  { path: 'publicidad', component: VerBannersComponent, canActivate: [AuthGuard] },
+  { path: 'nuevo-banner', component: NuevoBannerComponent, canActivate: [AuthGuard] },
+  { path: 'dashboard', component: GraphsComponent, canActivate: [AuthGuard] },
+  { path: 'finanzas', component: FinanzasComponent, canActivate: [AuthGuard] },
+  { path: 'bazares', component: VerBazaresComponent, canActivate: [AuthGuard] },
+  { path: 'bazares/add', component: CrearBazarComponent, canActivate: [AuthGuard] },
+  { path: 'bazares/:id', component: DetallesBazarComponent, canActivate: [AuthGuard] },
+  { path: 'bazares/edit/:id', component: EditarBazarComponent, canActivate: [AuthGuard] },
+  { path: 'cupones', component: VerCuponesComponent, canActivate: [AuthGuard] },
+  { path: 'cupones/edit/:id', component: EditarCuponComponent, canActivate: [AuthGuard] },
+  { path: 'cupones/add', component: CrearCuponComponent, canActivate: [AuthGuard] },
+  { path: 'capacitaciones', component: VerCapacitacionesComponent, canActivate: [AuthGuard] },
+  { path: 'capacitaciones/add', component: CrearCapacitacionesComponent, canActivate: [AuthGuard] },
+  { path: 'capacitaciones/edit/:id', component: EditarCapacitacionesComponent, canActivate: [AuthGuard] },
+  { path: 'capacitaciones/info/:id', component: VerInfoCapacitacionesComponent, canActivate: [AuthGuard] },
+  { path: 'soporte/responder', component: ResponderPreguntaComponent, canActivate: [AuthGuard] },
+  { path: 'soporte', component: SoportePrincipalComponent, canActivate: [AuthGuard] },
   { path: 'login', component: InicioSesionComponent },
-  { path: 'publicidad', component: VerBannersComponent },
-  { path: 'nuevo-banner', component: NuevoBannerComponent },
-  { path: 'dashboard', component: GraphsComponent },
-  { path: 'finanzas', component: FinanzasComponent },
-	{ path: 'bazares', component: VerBazaresComponent },
-  { path: 'bazares/add', component: CrearBazarComponent },
-  { path: 'bazares/:id', component: DetallesBazarComponent },
-	{ path: 'bazares/edit/:id', component: EditarBazarComponent },
-	{ path: 'cupones', component: VerCuponesComponent },
-	{ path: 'cupones/edit/:id', component: EditarCuponComponent },
-	{ path: 'cupones/add', component: CrearCuponComponent },
-  { path: 'capacitaciones', component: VerCapacitacionesComponent },
-  { path: 'capacitaciones/add', component:  CrearCapacitacionesComponent},
-  { path: 'capacitaciones/edit/:id', component:  EditarCapacitacionesComponent},
-  { path: 'capacitaciones/info/:id', component:  VerInfoCapacitacionesComponent},
-  { path: 'recuperar-password/recuperar', component:  RecuperarComponent},
-  { path: 'recuperar-password/verificacion', component:  VerificacionComponent},
-  { path: 'recuperar-password/crear', component:  CrearComponent},
-  { path: 'soporte/responder', component:  ResponderPreguntaComponent},
-  { path: 'soporte', component:  SoportePrincipalComponent},
-  { path: '', pathMatch: 'full', redirectTo: 'login' },
+  { path: 'recuperar-password/recuperar', component: RecuperarComponent },
+  { path: 'recuperar-password/verificacion', component: VerificacionComponent },
+  { path: 'recuperar-password/crear', component: CrearComponent },
+  { path: '', pathMatch: 'full', redirectTo: 'login' }
 ];
 
 @NgModule({
