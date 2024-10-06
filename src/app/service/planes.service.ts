@@ -36,38 +36,27 @@ export class PlanesService {
     return this.http.get<any>(this.apiURL + '/' + id, { headers });
   }
 
-  updatePlan(plan: Planes) {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-
-    this.http.put(this.apiURL + '/update', plan, {headers, responseType: 'text'}).subscribe(response => {
-      console.log(response);
-    }, error => {
-      console.error(error); 
-    });
-  }
-
-  addPlan(plan: Planes) {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-
-    this.http.post(this.apiURL + '/add', plan, {headers, responseType: 'text' })
-    .subscribe(response => {
-      console.log(response);
-    }, error => {
-      console.error(error); 
-    });
-  }
-
-  deletePlan(id: number) {
+  updatePlan(plan: Planes): Observable<any> {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
   
-    this.http.delete(this.apiURL + '/delete/' + id, { headers, responseType: 'text' })
-      .subscribe(response => {
-        console.log(response);
-      }, error => {
-        console.error(error); 
-      });
+    return this.http.put(this.apiURL + '/update', plan, { headers, responseType: 'text' });
+  }
+  
+
+  addPlan(plan: Planes): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  
+    // Retornamos el observable de la petición HTTP
+    return this.http.post(this.apiURL + '/add', plan, { headers, responseType: 'text' });
+  }
+
+  deletePlan(id: number): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    
+    // Retornamos el observable de la petición HTTP de eliminación
+    return this.http.delete(this.apiURL + '/delete/' + id, { headers, responseType: 'text' });
   }
 }
