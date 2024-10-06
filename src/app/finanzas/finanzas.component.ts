@@ -1,81 +1,122 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FinanzasService } from '../service/finanzas.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-finanzas',
   templateUrl: './finanzas.component.html',
   styleUrls: ['./finanzas.component.css']
 })
-export class FinanzasComponent {
-  showIngresos: boolean = true; // Inicialmente mostrar ingresos
+export class FinanzasComponent implements OnInit {
+  showIncome: boolean = true;
+  loading: boolean = false; // Nueva variable para manejar el estado de carga
 
+  // Variables para almacenar los datos obtenidos de la API
+  totalIncomeValue: number = 0; // Ingresos Totales
+  totalExpensesValue: number = 0; // Egresos Totales
+  incomeChartData: any = {}; // Datos para la gráfica de ingresos
+  expensesChartData: any = {}; // Datos para la gráfica de egresos
+  incomeByPlanChartData: any = {}; // Datos para ingresos por plan
+  usersByPlanChartData: any = {}; // Datos para usuarios por plan
 
-  chartData1 = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-    data: [65, 59, 80, 81, 56, 55, 40, 70, 75, 85, 90, 100],
-    label: 'Ingresos Anuales',
-    color: '#63c5da'
-  };
-  
-  chartData2 = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-    data: [30, 40, 60, 50, 70, 45, 80, 65, 90, 80, 70, 60],
-    label: 'Gastos Anuales',
-    color: 'rgb(255, 99, 132)'
-  };
+  availableYears: number[] = []; // Lista de años disponibles
+  selectedYear: number = new Date().getFullYear(); // Año seleccionado por defecto es el actual
 
-  chartData3 = {
-    labels: ['Plan 1', ' Plan2', 'Plan 3'],
-    data: [10, 100, 50],
-    label: 'Ingresos por plan',
-    color: '#ffca3a'
-  };
+  constructor(private finanzasService: FinanzasService) { }
 
-  chartData4 = {
-    labels: ['Plan 1', 'Plan 2', 'Plan 3'],
-    data: [200, 550, 110],
-    label: 'Usuarios por plan',
-    color: ['#63c5da', 'rgb(255, 99, 132)', '#ffca3a']
-  };
-
-  // Añadir filtros de selección de año y mes
-  availableYears: number[] = [2020, 2021, 2022, 2023, 2024];
-  availableMonths = [
-    { name: 'Enero', value: 1 },
-    { name: 'Febrero', value: 2 },
-    { name: 'Marzo', value: 3 },
-    { name: 'Abril', value: 4 },
-    { name: 'Mayo', value: 5 },
-    { name: 'Junio', value: 6 },
-    { name: 'Julio', value: 7 },
-    { name: 'Agosto', value: 8 },
-    { name: 'Septiembre', value: 9 },
-    { name: 'Octubre', value: 10 },
-    { name: 'Noviembre', value: 11 },
-    { name: 'Diciembre', value: 12 }
-  ];
-
-  anioSeleccionado: number = new Date().getFullYear();
-  mesSeleccionado: number = new Date().getMonth() + 1; // Mes actual
-
-  onSubmit(): void {
-    // Aquí puedes actualizar los datos según la selección de año y mes
-    console.log('Año seleccionado:', this.anioSeleccionado);
-    console.log('Mes seleccionado:', this.mesSeleccionado);
-
-    // Lógica para actualizar los datos de las gráficas basados en la selección
-    // ...
+  ngOnInit(): void {
+    this.loadAvailableYears();
+    this.updateData(this.selectedYear); // Cargar datos para el año actual al iniciar
   }
 
-  // Cálculos de las sumas
-  valorTarjeta1: number = this.sumarValores(this.chartData1.data); // Suma de ingresos
-  valorTarjeta2: number = this.sumarValores(this.chartData2.data); // Suma de gastos
+  loadAvailableYears(): void {
+    const currentYear = new Date().getFullYear();
+    for (let i = currentYear; i >= 2020; i--) { // Solo años desde 2020 en adelante
+      this.availableYears.push(i);
+    }
+  }
 
-  // Función para sumar los valores de un array
-  sumarValores(data: number[]): number {
-    return data.reduce((total, valor) => total + valor, 0);
+  updateData(year: number): void {
+    this.loading = true; // Activar el estado de carga
+
+    // Obtener ingresos y gastos por año
+    this.finanzasService.getIncomeByYear(year).subscribe(
+      data => {
+        this.incomeChartData = {
+          ...data,
+          color: '#63c5da', // Color para la gráfica de ingresos
+        };
+        this.totalIncomeValue = this.sumValues(data.data); // Sumar los ingresos totales
+      },
+      error => {
+        console.error('Error al obtener ingresos:', error);
+        this.showError();
+      }
+    );
+
+    this.finanzasService.getExpensesByYear(year).subscribe(
+      data => {
+        this.expensesChartData = {
+          ...data,
+          color: 'rgb(255, 99, 132)', // Color para la gráfica de egresos
+        };
+        this.totalExpensesValue = this.sumValues(data.data); // Sumar los gastos totales
+      },
+      error => {
+        console.error('Error al obtener egresos:', error);
+        this.showError();
+      }
+    );
+
+    // Obtener ingresos por plan
+    this.finanzasService.getIncomeByPlan(year).subscribe(
+      data => {
+        this.incomeByPlanChartData = {
+          ...data,
+          color: '#ffca3a' // Color para ingresos por plan
+        };
+      },
+      error => {
+        console.error('Error al obtener ingresos por plan:', error);
+        this.showError();
+      }
+    );
+
+    // Obtener usuarios por plan
+    this.finanzasService.getUsersByPlan(year).subscribe(
+      data => {
+        this.usersByPlanChartData = {
+          ...data,
+          color: ['#63c5da', 'rgb(255, 99, 132)', '#ffca3a'] // Colores para usuarios por plan
+        };
+      },
+      error => {
+        console.error('Error al obtener usuarios por plan:', error);
+        this.showError();
+      }
+    ).add(() => this.loading = false); // Desactivar el estado de carga una vez que se completa
+  }
+
+  onSubmit(): void {
+    this.updateData(this.selectedYear); // Actualiza los datos financieros según el año seleccionado
   }
 
   toggleGraph(): void {
-    this.showIngresos = !this.showIngresos;
+    this.showIncome = !this.showIncome;
+  }
+
+  // Función para sumar los valores de un array
+  sumValues(data: number[]): number {
+    return data.reduce((total, value) => total + value, 0);
+  }
+
+  // Función para mostrar una alerta en caso de error
+  showError(): void {
+    Swal.fire({
+      icon: 'error',
+      title: 'Error de autenticación',
+      text: 'No se pudo obtener la información. Por favor, intenta nuevamente.',
+      confirmButtonText: 'Cerrar'
+    });
   }
 }
