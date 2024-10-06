@@ -14,5 +14,7 @@ export class HeaderComponent {
     localStorage.removeItem('token');
     // Redirige al usuario a la página de inicio de sesión
     this.router.navigate(['/login']);
+    localStorage.clear();
+
   }
 }
