@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Profiles } from 'src/app/model/profiles';
 import { RequestUsersUpdate } from 'src/app/model/requestUserUpdate';
-import { Users } from 'src/app/model/users';
 import { PerfilesService } from 'src/app/service/perfiles.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-perfil-tipo',
@@ -52,9 +52,53 @@ export class PerfilTipoComponent {
   }
 
   delete(id: number){
-    this.perfilesService.deleteProfile(id);
 
-    const index = this.users.findIndex((plan) => plan.id === id);
-    this.users.splice(index, 1);
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: "No podrás revertir esta acción",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+			confirmButtonColor: '#e15554',
+      cancelButtonText: 'Cancelar',
+      cancelButtonColor: '#91918f',
+      reverseButtons: true,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Si el usuario confirma, llamamos al servicio para eliminar el perfil
+        this.perfilesService.deleteProfile(id).subscribe(
+          response => {
+            // Eliminación exitosa
+            console.log('Perfil eliminado', response);
+  
+            // Eliminamos el perfil de la lista local (en el front)
+            const index = this.users.findIndex((user) => user.id === id);
+            if (index !== -1) {
+              this.users.splice(index, 1);
+            }
+  
+            // Mostramos el pop-up de éxito
+            Swal.fire({
+              title: 'Eliminado',
+              text: 'El perfil ha sido eliminado correctamente.',
+              icon: 'success',
+              confirmButtonText: 'Aceptar',
+              confirmButtonColor: '#19647e'
+            });
+          },
+          error => {
+            // Si ocurre un error, mostramos el pop-up de error
+            Swal.fire({
+              title: 'Error',
+              text: 'Hubo un problema al eliminar el perfil. Por favor, intenta nuevamente.',
+              icon: 'error',
+              confirmButtonText: 'Aceptar',
+              confirmButtonColor: '#19647e'
+            });
+            console.error(error);
+          }
+        );
+      }
+    });
   }
 }

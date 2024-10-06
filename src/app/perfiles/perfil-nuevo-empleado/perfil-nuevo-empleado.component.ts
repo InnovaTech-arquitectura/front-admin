@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { PerfilesService } from 'src/app/service/perfiles.service';
 import { Profiles } from 'src/app/model/profiles';
 import { UsersCreate } from 'src/app/model/userCreate';
-
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-perfil-nuevo-empleado',
@@ -55,12 +55,24 @@ export class PerfilNuevoEmpleadoComponent implements OnInit {
 
     console.log(this.formEmployee);
 
-    this.perfilesService.addProfile(this.formEmployee);
-
-    this.sendProfile = Object.assign({}, this.formEmployee);
-    console.log(this.sendProfile);
-
-    this.router.navigate(['/perfiles']);
+    this.perfilesService.addProfile(this.formEmployee).subscribe(
+      response => {
+        // Si la petición es exitosa, redirigimos sin mostrar nada extra
+        console.log('Perfil creado exitosamente', response);
+        this.router.navigate(['/perfiles']);
+      },
+      error => {
+        // Si ocurre un error, mostramos un pop-up con SweetAlert
+        Swal.fire({
+          title: 'Error al crear el perfil',
+          text: 'Hubo un problema al intentar crear el perfil. Por favor, intenta nuevamente.',
+          icon: 'error',
+          confirmButtonText: 'Aceptar',
+			    confirmButtonColor: '#e15554'
+        });
+        console.error(error);
+      }
+    );
   }
 
 }
