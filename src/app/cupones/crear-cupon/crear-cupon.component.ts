@@ -9,24 +9,12 @@ import { CuponesService } from 'src/app/service/cupones.service';
 	styleUrls: ['./crear-cupon.component.css']
 })
 export class CrearCuponComponent {
-	coupon: Coupon = {
-		id: null,
-		descripcion: '',
-		descuento: '',
-		plan: '',
-		validez: 0,
-		codigo: ''
-	};
-
 	constructor(
 		private couponService: CuponesService,
 		private router: Router
 	) {}
 
 	addCoupon() {
-		this.couponService.createCoupon(this.coupon).subscribe((response) => {
-			console.log('Coupon created:', response);
-			this.router.navigate(['/cupones']);
-		});
+		
 	}
 }

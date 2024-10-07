@@ -15,7 +15,6 @@
 					type="text"
 					id="descripcion"
 					name="descripcion"
-					[(ngModel)]="coupon.descripcion"
 					placeholder="Ingrese la descripción del cupón"
 				/>
 			</div>
@@ -26,14 +25,13 @@
 					type="text"
 					id="descuento"
 					name="descuento"
-					[(ngModel)]="coupon.descuento"
 					placeholder="## %"
 				/>
 			</div>
 
 			<div class="inputText">
 				<label for="plan" required>Plan</label>
-				<select id="plan" name="plan" [(ngModel)]="coupon.plan">
+				<select id="plan" name="plan">
 					<option value="Emprender">Emprender</option>
 					<option value="Plan2">Plan 2</option>
 					<option value="Plan3">Plan 3</option>
@@ -46,14 +44,13 @@
 					type="number"
 					id="validez"
 					name="validez"
-					[(ngModel)]="coupon.validez"
 					placeholder="Ingrese el número de días"
 				/>
 			</div>
 
 			<div class="inputText">
 				<label for="codigo" required>Código</label>
-				<input type="text" id="codigo" name="codigo" [(ngModel)]="coupon.codigo" placeholder="Value" />
+				<input type="text" id="codigo" name="codigo" placeholder="Value" />
 			</div>
 
 			<button type="submit" class="btn-primary">Agregar cupón</button>

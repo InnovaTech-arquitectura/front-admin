@@ -13,100 +13,24 @@
 				<thead>
 					<tr>
 						<th>Id</th>
-						<th>Código</th>
-						<th>Fecha de Expedición</th>
-						<th>Periodo de Validez</th>
-						<th>Funcionalidad</th>
-						<th>Estado</th>
+						<th>Descripción</th>
+						<th>Fecha vencimiento</th>
+						<th>Plan</th>
 						<th>Opciones</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>1</td>
-						<td>CUP001</td>
-						<td>20-05-2024</td>
-						<td>5 días</td>
-						<td>Funcionalidad1</td>
-						<td>Vencido</td>
+					<tr *ngFor="let coupon of cuponsList">
+						<td> {{ coupon.id }} </td>
+						<td> {{ coupon.description }} </td>
+						<td> {{ coupon.expirationDate | date:'dd/MM/yyyy' }} </td>
+						<td> {{ coupon.plan.name }} </td>
 						<td>
 							<div class="opciones">
-								<a class="links edit" [routerLink]="'/cupones/edit/1'">
+								<a class="links edit" [routerLink]="'/cupones/edit/' + coupon.id">
 									<i class="bx bxs-edit"></i>
 								</a>
-								<a class="links delete">
-									<i class="bx bxs-trash"></i>
-								</a>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>2</td>
-						<td>CUP002</td>
-						<td>29-08-2024</td>
-						<td>7 días</td>
-						<td>Funcionalidad3</td>
-						<td>Redimido</td>
-						<td>
-							<div class="opciones">
-								<a class="links edit" [routerLink]="'/cupones/edit/2'">
-									<i class="bx bxs-edit"></i>
-								</a>
-								<a class="links delete">
-									<i class="bx bxs-trash"></i>
-								</a>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>3</td>
-						<td>CUP003</td>
-						<td>13-10-2024</td>
-						<td>3 días</td>
-						<td>Funcionalidad4</td>
-						<td>Activo</td>
-						<td>
-							<div class="opciones">
-								<a class="links edit" [routerLink]="'/cupones/edit/3'">
-									<i class="bx bxs-edit"></i>
-								</a>
-								<a class="links delete">
-									<i class="bx bxs-trash"></i>
-								</a>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>4</td>
-						<td>CUP004</td>
-						<td>30-09-2024</td>
-						<td>7 días</td>
-						<td>Funcionalidad3</td>
-						<td>Vencido</td>
-						<td>
-							<div class="opciones">
-								<a class="links edit" [routerLink]="'/cupones/edit/4'">
-									<i class="bx bxs-edit"></i>
-								</a>
-								<a class="links delete">
-									<i class="bx bxs-trash"></i>
-								</a>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>5</td>
-						<td>CUP005</td>
-						<td>04-10-2024</td>
-						<td>2 días</td>
-						<td>Funcionalidad1</td>
-						<td>Activo</td>
-						<td>
-							<div class="opciones">
-								<a class="links edit" [routerLink]="'/cupones/edit/5'">
-									<i class="bx bxs-edit"></i>
-								</a>
-								<a class="links delete">
+								<a class="links delete" (click)="delete(coupon.id)">
 									<i class="bx bxs-trash"></i>
 								</a>
 							</div>
