@@ -74,6 +74,7 @@ const routes: Routes = [
   { path: 'recuperar-password/recuperar', component: RecuperarComponent },
   { path: 'recuperar-password/verificacion', component: VerificacionComponent },
   { path: 'recuperar-password/crear', component: CrearComponent },
+  { path: 'ver-banners', component: VerBannersComponent, canActivate: [AuthGuard] },
   { path: '', pathMatch: 'full', redirectTo: 'login' }
 ];
 

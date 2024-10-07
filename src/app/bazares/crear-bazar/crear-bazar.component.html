@@ -9,65 +9,117 @@
 		</div>
 
 		<div class="crear-bazar">
-			<form>
+			<form [formGroup]="eventForm" (ngSubmit)="crear()">
 				<div class="info-bazar">
 					<div class="form-row">
 						<div>
 							<label><strong>Nombre del evento:</strong></label>
-							<input type="text" id="nombre" name="nombre" [(ngModel)]="formEvent.name" />
+							<input type="text" id="nombre" name="nombre" formControlName="name" />
+							<div *ngIf="eventForm.get('name').invalid && eventForm.get('name').touched">
+								<small class="error">El nombre del evento es obligatorio</small>
+							</div>
 						</div>
 						<div>
 							<label><strong>Ganancias:</strong></label>
-							<input
-								type="number"
-								id="ganancias"
-								name="ganancias"
-								[(ngModel)]="formEvent.earnings"
-							/>
+							<input type="number" id="ganancias" name="ganancias" formControlName="earnings" />
+							<div *ngIf="eventForm.get('earnings').invalid && eventForm.get('earnings').touched">
+								<small class="error">Las ganancias son obligatorias</small>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-row">
+						<!-- Fecha de inicio -->
+						<div>
+							<label><strong>Fecha de inicio:</strong></label>
+							<input type="date" id="startDate" name="date" formControlName="date" />
+							<div *ngIf="eventForm.get('date').invalid && eventForm.get('date').touched">
+								<small class="error">La fecha de inicio es obligatoria</small>
+							</div>
+						</div>
+						<!-- Fecha de finalización -->
+						<div>
+							<label><strong>Fecha de fin:</strong></label>
+							<input type="date" id="date2" name="date2" formControlName="date2" />
+							<div *ngIf="eventForm.get('date2').invalid && eventForm.get('date2').touched">
+								<small class="error">La fecha de finalización es obligatoria</small>
+							</div>
 						</div>
 					</div>
 
 					<div class="form-row">
 						<div>
-							<label><strong>Fechas:</strong></label>
-							<input type="date" id="date" name="date" [(ngModel)]="formEvent.date" />
-						</div>
-						<div>
 							<label><strong>Costo local:</strong></label>
-							<input type="number" id="costo" name="costo" [(ngModel)]="formEvent.costoLocal" />
+							<input type="number" id="costo" name="costo" formControlName="costoLocal" />
+							<div
+								*ngIf="
+									eventForm.get('costoLocal').invalid && eventForm.get('costoLocal').touched
+								"
+							>
+								<small class="error">El costo local es obligatorio</small>
+							</div>
 						</div>
 						<div>
 							<label><strong>Quota:</strong></label>
-							<input type="number" id="quota" name="quota" [(ngModel)]="formEvent.quota" />
+							<input type="number" id="quota" name="quota" formControlName="quota" />
+							<div *ngIf="eventForm.get('quota').invalid && eventForm.get('quota').touched">
+								<small class="error">La quota es obligatoria</small>
+							</div>
 						</div>
 					</div>
 
 					<div class="form-row">
 						<div>
 							<label><strong>Modalidad:</strong></label>
-							<select class="modalidad" [(ngModel)]="formEvent.modality" name="modalidad">
+							<select class="modalidad" formControlName="modality" name="modalidad">
 								<option value="Presencial">Presencial</option>
 								<option value="Virtual">Virtual</option>
 							</select>
+							<div *ngIf="eventForm.get('modality').invalid && eventForm.get('modality').touched">
+								<small class="error">La modalidad es obligatoria</small>
+							</div>
 						</div>
 
 						<div>
 							<label><strong>Lugar:</strong></label>
-							<input type="text" id="lugar" name="lugar" [(ngModel)]="formEvent.place" />
+							<input type="text" id="lugar" name="lugar" formControlName="place" />
+							<div *ngIf="eventForm.get('place').invalid && eventForm.get('place').touched">
+								<small class="error">El lugar es obligatorio</small>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-row">
+						<div>
+							<label><strong>Descripción:</strong></label>
+							<textarea
+								id="descripcion"
+								name="descripcion"
+								formControlName="description"
+							></textarea>
+							<div
+								*ngIf="
+									eventForm.get('description').invalid &&
+									eventForm.get('description').touched
+								"
+							>
+								<small class="error">La descripción es obligatoria</small>
+							</div>
 						</div>
 					</div>
 				</div>
+
+				<div class="addBtn-container">
+					<a [routerLink]="'/bazares'">
+						<i class="bx bx-left-arrow-alt"></i>
+						Cancelar
+					</a>
+					<button type="submit" class="btn-save" [disabled]="eventForm.invalid">
+						<i class="bx bxs-save"></i>
+						Aceptar
+					</button>
+				</div>
 			</form>
-		</div>
-		<div class="addBtn-container">
-			<a [routerLink]="'/bazares'">
-				<i class="bx bx-left-arrow-alt"></i>
-				Cancelar
-			</a>
-			<a (click)="crear()" class="btn-save" id="createBazar">
-				<i class="bx bxs-save"></i>
-				Aceptar
-			</a>
 		</div>
 	</section>
 </body>
