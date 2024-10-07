@@ -4,61 +4,52 @@
 	<app-sidebar class="sidebar"></app-sidebar>
 
 	<section class="contenido">
-		<div class="titulo">
-			<h1>Editar Cupón</h1>
-		</div>
+		<div class="editar">
+			<h2 class="titulo">Editar Cupón</h2>
 
-		<form class="editar">
-			<div class="inputText">
-				<label for="descripcion" required>Descripción del cupón</label>
-				<input
-					type="text"
-					id="descripcion"
-					name="descripcion"
-					placeholder="Cupón de descuento para el plan Emprender"
-				/>
-			</div>
+			<form [formGroup]="couponForm" (ngSubmit)="onSubmit()">
+				<div class="inputText">
+					<label>Descripción del cupón</label>
+					<input
+						type="text"
+						formControlName="descripcion"
+						placeholder="Cupón de descuento para el plan Emprender"
+					/>
+				</div>
 
-			<div class="inputText">
-				<label for="funcionalidades" required>Funcionalidades</label>
-				<select id="descuento" name="descuento">
-					<option value="Funcionalidad1">Funcionalidad1</option>
-					<option value="Funcionalidad2">Funcionalidad2</option>
-					<option value="Funcionalidad3">Funcionalidad3</option>
-					<option value="Funcionalidad4">Funcionalidad4</option>
-					<option value="Funcionalidad5">Funcionalidad5</option>
-				</select>
-			</div>
-			<div class="inputText">
-				<label for="plan" required>Plan</label>
-				<select id="plan" name="plan">
-					<option value="Emprender">Emprender</option>
-					<option value="Plan2">Plan2</option>
-					<option value="Plan3">Plan3</option>
-				</select>
-			</div>
+				<div class="inputText">
+					<label>Funcionalidades</label>
+					<select formControlName="funcionalidad">
+						<option>Funcionalidad1</option>
+						<option>Funcionalidad2</option>
+					</select>
+				</div>
 
-			<div class="inputText">
-				<label for="validez" required>Periodo de validez</label>
-				<input type="number" id="validez" name="validez" value="5" />
-			</div>
+				<div class="inputText">
+					<label>Plan</label>
+					<select formControlName="plan">
+						<option>Emprender</option>
+						<option>Avanzado</option>
+					</select>
+				</div>
 
-			<div class="inputText">
-				<label for="codigo" required>Código</label>
-				<input type="text" id="codigo" name="codigo" value="aaa" />
-			</div>
+				<div class="inputText">
+					<label>Periodo de validez</label>
+					<input type="number" formControlName="validez" value="5" />
+				</div>
 
-			<button type="submit" class="btn-primary">Agregar cupón</button>
-		</form>
-		<div class="addBtn-container">
-			<a [routerLink]="'/cupones'">
-				<i class="bx bx-left-arrow-alt"></i>
-				Cancelar
-			</a>
-			<a [routerLink]="'/cupones'">
-				<i class="bx bxs-save"></i>
-				Aceptar
-			</a>
+				<div class="inputText">
+					<label>Código</label>
+					<input type="text" formControlName="codigo" placeholder="aaa" />
+				</div>
+
+				<div class="addBtn-container">
+					<a href="#" class="cancel-btn"> <i class="fas fa-arrow-left"></i> Cancelar </a>
+					<button type="submit" class="submit-btn" [disabled]="couponForm.invalid">
+						<i class="fas fa-save"></i> Aceptar
+					</button>
+				</div>
+			</form>
 		</div>
 	</section>
 </body>
