@@ -46,11 +46,10 @@
 				<label for="plan" required>Plan</label>
 				<select id="plan" name="plan" [(ngModel)]="formCoupon.plan">
 					<option value="" selected>Seleccione un plan</option>
-					<option *ngFor="let plan of planList" value="'plan.id'"> {{ plan.name }} </option>
+					<option *ngFor="let plan of planList" [value]="plan.id"> {{ plan.name }} </option>
 				</select>
 			</div>
 
-			<!-- TODO: poner petición que se traiga funcionalidades -->
 			<div class="inputCheck">
 				<h3>Funcionalidades del plan</h3>
 

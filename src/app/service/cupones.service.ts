@@ -13,7 +13,6 @@ export class CuponesService {
 
 	constructor(private http: HttpClient) {}
 
-	//! bien
 	findAll(): Observable<any> {
 		const token = localStorage.getItem('token');
 		const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
@@ -21,11 +20,14 @@ export class CuponesService {
 		return this.http.get<any>(this.apiURL + '/all', { headers });
 	}
 
-	getCouponById(id: number): Observable<Coupon> {
-		return this.http.get<Coupon>(`${this.apiURL}/${id}`);
+	//! creo
+	getCouponById(id: number): Observable<any> {
+		const token = localStorage.getItem('token');
+		const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+		return this.http.get<any>(this.apiURL + '/' + id, { headers });
 	}
 
-	//! bien
 	createCoupon(coupon: NewCoupon): Observable<any> { 
 		const token = localStorage.getItem('token'); // Obtener el token si es necesario
 		const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`); // Agregar autorización si es necesario
@@ -33,11 +35,14 @@ export class CuponesService {
 		return this.http.post<NewCoupon>(this.apiURL + '/add', coupon, { headers });
 	}
 
-	updateCoupon(id: number, coupon: Coupon): Observable<Coupon> {
-		return this.http.put<Coupon>(`${this.apiURL}/${id}`, coupon);
+	//! revisar
+	updateCoupon(coupon: NewCoupon): Observable<any> {
+		const token = localStorage.getItem('token');
+		const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+		return this.http.put(this.apiURL + '/update', coupon, { headers });
 	}
 
-	//! bien
 	deleteCoupon(id: number): Observable<any> {
 		const token = localStorage.getItem('token');
 		const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
