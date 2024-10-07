@@ -1,12 +1,13 @@
 <app-header class="headerPage"></app-header>
 
 <body>
-	<app-sidebar class="sidebar"></app-sidebar>
+    <app-sidebar class="sidebar"></app-sidebar>
 
-	<section class="contenido">
-		<div class="titulo">
-			<h1>Publicidad - banners</h1>
-		</div>
+    <section class="contenido">
+        <div class="titulo">
+            <h1>Publicidad - banners</h1>
+        </div>
+        
         <div class="table-container">
             <table id="myTable" class="tablita">
                 <thead>
@@ -14,69 +15,32 @@
                         <th>ID</th>
                         <th>Multimedia</th>
                         <th>Titulo-Descripción</th>
-                        <th>Interacciónes</th>
+                        <th>Interacciones</th>
                         <th>Opciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>####01</td>
+                    <tr *ngFor="let banner of banners">
+                        <td>{{ banner.id }}</td>
                         <td>
-                            <i class='bx bx-image iconImage'></i>
+                            <img [src]="'data:image/jpeg;base64,' + banner.multimedia" alt="Banner Image" class="banner-img" />
                         </td>
-                        <td>Banner para evento 1</td>
-                        <td>###</td>
-                        <td><i class='bx bxs-trash iconTrash'></i></td>
-                    </tr>
-                    <tr>
-                        <td>####01</td>
+                        <td>{{ banner.title }}</td>
+                        <td>{{ banner.interactions }}</td>
                         <td>
-                            <i class='bx bx-image iconImage'></i>
+                            <i class='bx bxs-edit iconEdit' (click)="editBanner(banner.id)"></i>
+                            <i class='bx bxs-trash iconTrash' (click)="deleteBanner(banner.id)"></i>
                         </td>
-                        <td>Banner para evento 2</td>
-                        <td>###</td>
-                        <td><i class='bx bxs-trash iconTrash'></i></td>
-                    </tr>
-                    <tr>
-                        <td>####03</td>
-                        <td>
-                            <i class='bx bx-image iconImage'></i>
-                        </td>
-                        <td>Banner para evento 3</td>
-                        <td>###</td>
-                        <td><i class='bx bxs-trash iconTrash'></i></td>
-                    </tr>
-                    <tr>
-                        <td>####04</td>
-                        <td>
-                            <i class='bx bx-image iconImage'></i>
-                        </td>
-                        <td>Banner para evento 4</td>
-                        <td>###</td>
-                        <td><i class='bx bxs-trash iconTrash'></i></td>
-                    </tr>
-                    <tr>
-                        <td>####05</td>
-                        <td>
-                            <i class='bx bx-image iconImage'></i>
-                        </td>
-                        <td>Banner para evento 5</td>
-                        <td>###</td>
-                        <td><i class='bx bxs-trash iconTrash'></i></td>
                     </tr>
                 </tbody>
             </table>
         </div>
+
         <div class="addBtn-container">
             <a [routerLink]="'/nuevo-banner'">
                 <i class='bx bx-plus-circle'></i>
                 Agregar banner
-			</a>
+            </a>
         </div>
-        
-
-
-
-
-	</section>
+    </section>
 </body>

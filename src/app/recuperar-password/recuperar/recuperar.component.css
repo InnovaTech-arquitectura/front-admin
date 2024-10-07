@@ -1,20 +1,19 @@
-/* Contenedor principal que centra todo el contenido */
 .password-recovery-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh; /* Ocupar toda la pantalla */
-  background-color: #f5f5f5; /* Color de fondo */
+  height: 100vh;
+  background-color: #f5f5f5;
 }
 
-/* Estilo para el logo */
+
 .logo {
-  width: 150px; /* Tamaño ajustado para el logo */
+  width: 200px; 
   margin-bottom: 20px;
 }
 
-/* Tarjeta de recuperación de contraseña */
+
 .password-recovery-card {
   background-color: white;
   border-radius: 10px;
@@ -25,20 +24,19 @@
   width: 100%;
 }
 
-/* Título */
 .password-recovery-card h1 {
-  font-size: 28px;
+  font-size: 32px; 
   margin-bottom: 10px;
+  font-weight: bold;
 }
 
-/* Descripción */
 .password-recovery-card p {
-  font-size: 16px;
+  font-size: 18px;
   margin-bottom: 20px;
   color: #333;
+  font-weight: 400;
 }
 
-/* Estilo del campo de entrada */
 .password-recovery-card input[type="email"] {
   width: 100%;
   padding: 10px;
@@ -49,29 +47,23 @@
   box-sizing: border-box;
 }
 
- /* Estilo del botón */
- .addBtn-container {
-	display: flex;
-    margin-left:10px;
-	align-items: center;
-	width: 700px;
-	padding-top: 15px;
-	height: 63px;
+.addBtn-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
-.addBtn-container a {
-	width: 300px;
-	background-color: #d9d9d9;
-	padding: 10px 20px;
-	color: black;
-	outline: 0;
-	border: 0;
-	border-radius: 10px;
-	text-decoration: none;
-	text-align: center;
+.addBtn-container button {
+  width: 100%;
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
 }
 
-.addBtn-container a:hover {
-	background-color: black;
-	color: #d9d9d9;
+.addBtn-container button:hover {
+  background-color: #000;
 }

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { PublicidadService } from 'src/app/service/publicidad.service';
 
 @Component({
   selector: 'app-nuevo-banner',
@@ -6,29 +8,39 @@ import { Component } from '@angular/core';
   styleUrls: ['./nuevo-banner.component.css']
 })
 export class NuevoBannerComponent {
-  titleDescription: string = '';
+  imagePreview: string | ArrayBuffer | null = null;
   selectedFile: File | null = null;
-  imagePreview: string | null = null;
 
+  constructor(private publicidadService: PublicidadService, private router: Router) {}
   onFileSelected(event: Event): void {
-    const input = event.target as HTMLInputElement;
-    if (input.files && input.files.length > 0) {
-      this.selectedFile = input.files[0];
-      const reader = new FileReader();
-      reader.onload = () => {
-        this.imagePreview = reader.result as string;
-      };
-      reader.readAsDataURL(this.selectedFile);
-    }
+    const file = (event.target as HTMLInputElement).files![0];
+    this.selectedFile = file;
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imagePreview = reader.result;
+    };
+    reader.readAsDataURL(file);
   }
 
+  // Handle form submission
   onSubmit(): void {
-    if (this.selectedFile && this.titleDescription) {
+    if (this.selectedFile) {
       const formData = new FormData();
-      formData.append('titleDescription', this.titleDescription);
-      formData.append('image', this.selectedFile);
+      const title = (document.getElementById('titleDescription') as HTMLInputElement).value;
+      formData.append('title', title);
+      formData.append('picture', this.selectedFile);
 
-      // Aquí puedes enviar formData a tu servidor
+      this.publicidadService.createBanner(formData).subscribe(
+        (response) => {
+          console.log('Banner created successfully:', response);
+          this.router.navigate(['/ver-banners']); 
+        },
+        (error) => {
+          console.error('Error creating banner:', error);
+          // Handle error with a modal or notification (e.g., SweetAlert)
+        }
+      );
     }
   }
 }
