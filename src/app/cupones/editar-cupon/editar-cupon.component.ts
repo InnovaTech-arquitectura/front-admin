@@ -97,6 +97,17 @@ export class EditarCuponComponent implements OnInit {
 		this.sendCoupon = Object.assign({}, this.formCoupon);
 		this.sendCoupon.id = this.couponId;
 
+		//Para las funcionalidades
+		this.sendCoupon.functionalityIds = [];
+		for (let i=0; i<this.allFunc.length; i++) {
+			const check = document.getElementById('check-' + (i+1)) as HTMLInputElement;
+			if (check) {
+			  if (check.checked) {
+				this.sendCoupon.functionalityIds.push(this.allFunc[i].id);
+			  } 
+			}
+		  }
+
 		console.log("editado:", this.sendCoupon);
 
 		this.couponService.updateCoupon(this.sendCoupon).subscribe(
