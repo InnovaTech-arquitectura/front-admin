@@ -11,9 +11,11 @@ export class BarChartComponent implements OnChanges {
   @ViewChild('barChartCanvas', { static: true }) barChartCanvas!: ElementRef;
   public chart!: Chart;
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['chartData'] && this.chartData) {
-      this.createChart();
+  ngOnChanges() {
+    if (this.chartData && this.chartData.data && Array.isArray(this.chartData.data)) {
+      this.createChart(); // Solo crea el gráfico si los datos están disponibles y son válidos
+    } else {
+      console.error('No hay datos disponibles para el gráfico');
     }
   }
 
