@@ -44,7 +44,7 @@
 
 			<div class="inputText">
 				<label for="plan" required>Plan</label>
-				<select id="plan" name="plan" [(ngModel)]="formCoupon.plan">
+				<select id="plan" name="plan" [(ngModel)]="formCoupon.planId">
 					<option value="" selected>Seleccione un plan</option>
 					<option *ngFor="let plan of planList" [value]="plan.id"> {{ plan.name }} </option>
 				</select>

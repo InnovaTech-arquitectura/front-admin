@@ -60,7 +60,8 @@ export class CrearCuponComponent implements OnInit {
 		}
 
 		this.sendCoupon = Object.assign({}, this.formCoupon);
-		console.log(this.sendCoupon);
+		this.sendCoupon.planId = this.formCoupon.planId;
+		console.log("Crea", this.sendCoupon);
 
 		this.couponService.createCoupon(this.sendCoupon).subscribe(
 			() => {

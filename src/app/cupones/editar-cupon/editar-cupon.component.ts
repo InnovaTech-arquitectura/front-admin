@@ -95,9 +95,9 @@ export class EditarCuponComponent implements OnInit {
 		}
 
 		this.sendCoupon = Object.assign({}, this.formCoupon);
+		this.sendCoupon.id = this.couponId;
 
-		//this.sendCoupon.id = this.couponId;
-		console.log(this.sendCoupon);
+		console.log("editado:", this.sendCoupon);
 
 		this.couponService.updateCoupon(this.sendCoupon).subscribe(
 			() => {

@@ -20,7 +20,6 @@ export class CuponesService {
 		return this.http.get<any>(this.apiURL + '/all', { headers });
 	}
 
-	//! creo
 	getCouponById(id: number): Observable<any> {
 		const token = localStorage.getItem('token');
 		const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
@@ -35,12 +34,11 @@ export class CuponesService {
 		return this.http.post<NewCoupon>(this.apiURL + '/add', coupon, { headers });
 	}
 
-	//! revisar
 	updateCoupon(coupon: NewCoupon): Observable<any> {
 		const token = localStorage.getItem('token');
 		const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-		return this.http.put(this.apiURL + '/update', coupon, { headers });
+		return this.http.put(this.apiURL + '/update', coupon, { headers, responseType: 'text' });
 	}
 
 	deleteCoupon(id: number): Observable<any> {
