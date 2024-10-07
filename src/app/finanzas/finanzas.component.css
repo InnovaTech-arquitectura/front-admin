@@ -231,8 +231,30 @@ canvas {
 
 .addBtn:hover {
     cursor: pointer;
-	background-color: black;
-	color: #d9d9d9;
+    background-color: black;
+    color: #d9d9d9;
 }
 
+/* Efecto hover cuando está deshabilitado */
+button[disabled]:hover {
+    background-color: #d9d9d9; /* Mantiene el color de fondo en gris */
+    color: black; /* Mantiene el color de texto en negro */
+}
 
+  
+  .spinner {
+    border: 3px solid rgba(255, 255, 255, 0.3); /* Color del borde de fondo */
+    border-top: 3px solid #fff; /* Color del borde del spinner */
+    border-radius: 50%;
+    width: 20px; /* Tamaño del spinner */
+    height: 20px; /* Tamaño del spinner */
+    animation: spin 1s linear infinite;
+    display: inline-block; /* Asegura que el spinner se alinee con el texto */
+    margin-right: 10px; /* Espacio entre el spinner y el texto */
+}
+
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }

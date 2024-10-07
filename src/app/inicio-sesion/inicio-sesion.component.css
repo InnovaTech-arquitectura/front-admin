@@ -85,3 +85,29 @@
     color: #333; 
     cursor: pointer; 
   }
+
+  button {
+    position: relative;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  button[disabled] {
+    cursor: not-allowed;
+  }
+  
+  .spinner {
+    border: 3px solid rgba(255, 255, 255, 0.3); /* Color del borde de fondo */
+    border-top: 3px solid #fff; /* Color del borde del spinner */
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }

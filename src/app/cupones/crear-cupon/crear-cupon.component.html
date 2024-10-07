@@ -8,26 +8,32 @@
 			<h1>Agregar Nuevo Cupón</h1>
 		</div>
 
-		<form class="editar">
+		<form class="editar" (ngSubmit)="addCoupon()">
 			<div class="inputText">
 				<label for="descripcion" required>Descripción del cupón</label>
 				<input
 					type="text"
 					id="descripcion"
 					name="descripcion"
+					[(ngModel)]="coupon.descripcion"
 					placeholder="Ingrese la descripción del cupón"
 				/>
 			</div>
 
 			<div class="inputText">
 				<label for="descuento" required>Porcentaje de descuento</label>
-				<input type="text" id="descuento" name="descuento" placeholder="## %" />
+				<input
+					type="text"
+					id="descuento"
+					name="descuento"
+					[(ngModel)]="coupon.descuento"
+					placeholder="## %"
+				/>
 			</div>
 
 			<div class="inputText">
 				<label for="plan" required>Plan</label>
-				<select id="plan" name="plan">
-					<option disabled selected>Seleccione el plan para el que aplica el cupón</option>
+				<select id="plan" name="plan" [(ngModel)]="coupon.plan">
 					<option value="Emprender">Emprender</option>
 					<option value="Plan2">Plan 2</option>
 					<option value="Plan3">Plan 3</option>
@@ -40,26 +46,17 @@
 					type="number"
 					id="validez"
 					name="validez"
-					placeholder="Ingrese el número de días (solo el número)"
+					[(ngModel)]="coupon.validez"
+					placeholder="Ingrese el número de días"
 				/>
 			</div>
 
 			<div class="inputText">
 				<label for="codigo" required>Código</label>
-				<input type="text" id="codigo" name="codigo" placeholder="Value" readonly />
+				<input type="text" id="codigo" name="codigo" [(ngModel)]="coupon.codigo" placeholder="Value" />
 			</div>
 
 			<button type="submit" class="btn-primary">Agregar cupón</button>
 		</form>
-		<div class="addBtn-container">
-			<a [routerLink]="'/cupones'">
-				<i class="bx bx-left-arrow-alt"></i>
-				Cancelar
-			</a>
-			<a [routerLink]="'/cupones'">
-				<i class="bx bxs-save"></i>
-				Agregar Cupón
-			</a>
-		</div>
 	</section>
 </body>

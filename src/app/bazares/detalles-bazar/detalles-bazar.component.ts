@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EventsService } from 'src/app/service/events.service';
-import { Events as BazarEvent } from 'src/app/model/events';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
 	selector: 'app-detalles-bazar',
@@ -9,7 +9,13 @@ import { Events as BazarEvent } from 'src/app/model/events';
 	styleUrls: ['./detalles-bazar.component.css']
 })
 export class DetallesBazarComponent implements OnInit {
-	event: BazarEvent | null = null;
+	event: any;
+	emprendimientos: any[] = [];
+	paginatedEmprendimientos: any[] = [];
+
+	length = 0;
+	pageSize = 4;
+	pageIndex = 0;
 
 	constructor(
 		private eventService: EventsService,
@@ -17,15 +23,40 @@ export class DetallesBazarComponent implements OnInit {
 	) {}
 
 	ngOnInit(): void {
-		const id = Number(this.route.snapshot.paramMap.get('id'));
-		this.eventService.findById(id).subscribe(
-			(data) => {
+		const eventId = this.route.snapshot.paramMap.get('id');
+
+		this.eventService.getEventDetails(Number(eventId)).subscribe(
+			(data: any) => {
 				this.event = data;
-				console.log('Event data:', this.event);
+				this.emprendimientos = this.event.emprendimientos || [];
+				this.length = this.emprendimientos.length;
+				this.paginarEmprendimientos();
 			},
 			(error) => {
-				console.error('Error fetching event details', error);
+				console.error('Error al cargar el evento:', error);
 			}
 		);
+
+		this.getEntrepreneurshipDetails(Number(eventId));
+	}
+
+	handlePageEvent(event: PageEvent): void {
+		this.pageIndex = event.pageIndex;
+		this.pageSize = event.pageSize;
+		this.paginarEmprendimientos();
+	}
+
+	paginarEmprendimientos(): void {
+		const startIndex = this.pageIndex * this.pageSize;
+		const endIndex = startIndex + this.pageSize;
+		this.paginatedEmprendimientos = this.emprendimientos.slice(startIndex, endIndex);
+	}
+
+	getEntrepreneurshipDetails(entrepreneurshipId: number): void {
+		this.eventService.getEntrepreneurshipDetails(entrepreneurshipId).subscribe((data: any) => {
+			this.emprendimientos = data;
+			this.length = this.emprendimientos.length;
+			this.paginarEmprendimientos();
+		});
 	}
 }

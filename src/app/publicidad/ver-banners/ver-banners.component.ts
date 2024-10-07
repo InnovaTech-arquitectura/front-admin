@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PublicidadService } from 'src/app/service/publicidad.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-ver-banners',
@@ -18,7 +19,7 @@ export class VerBannersComponent implements OnInit {
         this.banners = data;
       },
       (error) => {
-        console.error('Error fetching banners:', error);
+        Swal.fire('Error', 'Error al cargar los banners.', 'error');
       }
     );
   }
@@ -28,13 +29,25 @@ export class VerBannersComponent implements OnInit {
   }
 
   deleteBanner(id: number): void {
-    this.publicidadService.deleteBanner(id).subscribe(
-      () => {
-        this.banners = this.banners.filter((banner) => banner.id !== id);
-      },
-      (error) => {
-        console.error('Error deleting banner:', error);
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: "Esta acción no se puede deshacer.",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'No, cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.publicidadService.deleteBanner(id).subscribe(
+          () => {
+            this.banners = this.banners.filter((banner) => banner.id !== id);
+            Swal.fire('Eliminado', 'El banner ha sido eliminado con éxito.', 'success');
+          },
+          (error) => {
+            Swal.fire('Error', 'Ocurrió un error al eliminar el banner.', 'error');
+          }
+        );
       }
-    );
+    });
   }
 }

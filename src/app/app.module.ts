@@ -39,7 +39,9 @@ import { VerificacionComponent } from './recuperar-password/verificacion/verific
 import { CrearComponent } from './recuperar-password/crear/crear.component';
 import { ResponderPreguntaComponent } from './soporte/responder-pregunta/responder-pregunta.component';
 import { SoportePrincipalComponent } from './soporte/soporte-principal/soporte-principal.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 @NgModule({
@@ -85,7 +87,10 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+		ReactiveFormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

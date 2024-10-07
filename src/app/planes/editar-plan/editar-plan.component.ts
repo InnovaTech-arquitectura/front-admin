@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Functionalities } from 'src/app/model/functionalities';
 import { Planes } from 'src/app/model/planes';
 import { PlanesService } from 'src/app/service/planes.service';
+import Swal from 'sweetalert2';
 
 @Component({
 	selector: 'app-editar-plan',
@@ -75,8 +76,23 @@ export class EditarPlanComponent {
     this.editPlan = Object.assign({}, this.formPlan);
     console.log(this.editPlan);
 
-    this.planesService.updatePlan(this.editPlan);
-
-    this.router.navigate(['/planes']);
+    this.planesService.updatePlan(this.editPlan).subscribe(
+		response => {
+		  // Si la petición es exitosa, no hacemos nada extra
+		  console.log('Actualización exitosa', response);
+		  this.router.navigate(['/planes']);  // Navegamos a la ruta /planes
+		},
+		error => {
+		  // Si ocurre un error, mostramos el pop-up de SweetAlert
+		  Swal.fire({
+			title: 'Error al guardar',
+			text: 'Hubo un problema al intentar guardar los cambios. Por favor, intenta nuevamente.',
+			icon: 'error',
+			confirmButtonText: 'Aceptar',
+			confirmButtonColor: '#e15554'
+		  });
+		  console.error(error);
+		}
+	  );
   }
 }
