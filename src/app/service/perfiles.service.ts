@@ -39,40 +39,27 @@ export class PerfilesService {
     return this.http.get<any>(this.apiURL + '/' + id, { headers });
   }
 
-  updateProfile(profile: RequestUsersUpdate) {
+  updateProfile(profile: RequestUsersUpdate): Observable<any> {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
   
-    
-    this.http.put(this.apiURL, profile, { headers, responseType: 'text' })
-      .subscribe(response => {
-        console.log(response);
-      }, error => {
-        console.error(error); 
-      });
+    // Retornamos el observable de la petición HTTP para la actualización
+    return this.http.put(this.apiURL, profile, { headers, responseType: 'text' });
   }
 
-  addProfile(user: UsersCreate) {
+  addProfile(user: UsersCreate): Observable<any> {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
   
-    this.http.post(this.apiURL, user, { headers, responseType: 'text' })
-      .subscribe(response => {
-        console.log(response);
-      }, error => {
-        console.error(error); 
-      });
+    // Retornamos el observable de la petición HTTP para crear el perfil
+    return this.http.post(this.apiURL, user, { headers, responseType: 'text' });
   }
 
-  deleteProfile(id: number) {
+  deleteProfile(id: number): Observable<any> {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
   
-    this.http.delete(this.apiURL + '/' + id, { headers, responseType: 'text' })
-      .subscribe(response => {
-        console.log(response);
-      }, error => {
-        console.error(error); 
-      });
+    // Retornamos el observable de la petición HTTP de eliminación
+    return this.http.delete(this.apiURL + '/' + id, { headers, responseType: 'text' });
   }
 }

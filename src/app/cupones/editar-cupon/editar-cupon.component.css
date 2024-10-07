@@ -39,10 +39,12 @@ body {
     align-items: center;
 }
 
-.titulo h1 {
+.titulo {
+    text-align: center;
     font-size: 2.5em;
     font-weight: bold;
     color: #333333;
+    margin-bottom: 20px;
 }
 
 .editar {
@@ -74,7 +76,7 @@ body {
 }
 
 button[type="submit"] {
-    width: 100%;
+    width: 300px;
     background-color: var(--navy-blue);
     color: white;
     border: none;

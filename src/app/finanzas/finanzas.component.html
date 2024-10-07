@@ -8,16 +8,16 @@
         </div>
 
         <!-- Contenedor que incluye tarjetas y gráficos -->
-        <div class="seccion-finanzas"> <!-- Añadido este div como contenedor -->
+        <div class="seccion-finanzas">
             <!-- Contenedor para las tarjetas -->
             <div class="tarjetas-container">
                 <div class="tarjeta">
                     <h3>Ingresos Totales</h3>
-                    <p>{{ valorTarjeta1 }}</p> <!-- Valor obtenido desde el .ts -->
+                    <p>{{ totalIncomeValue }}</p> <!-- Valor obtenido desde el .ts -->
                 </div>
                 <div class="tarjeta">
                     <h3>Egresos Totales</h3>
-                    <p>{{ valorTarjeta2 }}</p> <!-- Valor obtenido desde el .ts -->
+                    <p>{{ totalExpensesValue }}</p> <!-- Valor obtenido desde el .ts -->
                 </div>
             </div>
 
@@ -26,44 +26,42 @@
                 <div class="containerGastoIngreso">
                     <h2>Evolución de Ingresos y Gastos</h2>
                     <div class="toggle-button" (click)="toggleGraph()">
-                        <div class="toggle-option" [class.active]="showIngresos">
+                        <div class="toggle-option" [class.active]="showIncome">
                             <i class='bx bx-plus'></i>
                         </div>
-                        <div class="toggle-option" [class.active]="!showIngresos">
+                        <div class="toggle-option" [class.active]="!showIncome">
                             <i class='bx bx-minus'></i>
                         </div>
                     </div>
-                    <app-line-chart *ngIf="showIngresos" [chartData]="chartData1"></app-line-chart>
-                    <app-line-chart *ngIf="!showIngresos" [chartData]="chartData2"></app-line-chart>
+                    <app-line-chart *ngIf="showIncome" [chartData]="incomeChartData"></app-line-chart>
+                    <app-line-chart *ngIf="!showIncome" [chartData]="expensesChartData"></app-line-chart>
                 </div>
                 <div class="containerIngresosPorPlan">
                     <h2>Ingresos por plan</h2>
                     <div class="spacer"></div>
-                    <app-bar-chart [chartData]="chartData3"></app-bar-chart>
+                    <app-bar-chart [chartData]="incomeByPlanChartData"></app-bar-chart>
                 </div>
                 <div class="containerUsuariosPorPlan">
                     <h2>Usuarios por plan</h2>
-                    <app-pie-chart [chartData]="chartData4" class="small-pie-chart"></app-pie-chart>
+                    <app-pie-chart [chartData]="usersByPlanChartData" class="small-pie-chart"></app-pie-chart>
                 </div>
             </div>
         </div>
 
-        <!-- Filtro de selección de año y mes -->
+        <!-- Filtro de selección de año -->
         <div class="filtro-container">
-            <h3>Seleccionar Año y Mes</h3>
+            <h3>Seleccionar Año</h3>
             <div class="filtro-separator"></div>
             <form (ngSubmit)="onSubmit()">
                 <label for="anio">Año:</label>
-                <select id="anio" name="anio">
+                <select id="anio" name="anio" [(ngModel)]="selectedYear">
                     <option *ngFor="let year of availableYears" [value]="year">{{ year }}</option>
                 </select>
-        
-                <label for="mes">Mes:</label>
-                <select id="mes" name="mes">
-                    <option *ngFor="let month of availableMonths" [value]="month.value">{{ month.name }}</option>
-                </select>
-        
-                <button type="submit" class="addBtn">Actualizar</button>
+
+                <button type="submit" class="addBtn" [disabled]="loading">
+                    <span *ngIf="loading" class="spinner"></span>
+                    <span *ngIf="!loading">Actualizar</span>
+                </button>                
             </form>
         </div>
     </section>

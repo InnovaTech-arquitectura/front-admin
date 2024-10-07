@@ -4,6 +4,7 @@ import { Profiles } from 'src/app/model/profiles';
 import { RequestUsersUpdate } from 'src/app/model/requestUserUpdate';
 import { UsersUpdate } from 'src/app/model/userUpdate';
 import { PerfilesService } from 'src/app/service/perfiles.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-perfil-editar-empleado',
@@ -86,12 +87,24 @@ export class PerfilEditarEmpleadoComponent {
     this.sendUser.id = this.profile;
     this.sendUser.user = Object.assign({}, this.formEmployee);
     
-    this.perfilesService.updateProfile(this.sendUser);
-    
-    console.log(this.sendUser);
-    
-
-    this.router.navigate(['/perfiles']);
+    this.perfilesService.updateProfile(this.sendUser).subscribe(
+      response => {
+        // Si la petición es exitosa, redirigimos sin mostrar nada extra
+        console.log('Perfil actualizado exitosamente', response);
+        this.router.navigate(['/perfiles']);
+      },
+      error => {
+        // Si ocurre un error, mostramos un pop-up con SweetAlert
+        Swal.fire({
+          title: 'Error al actualizar el perfil',
+          text: 'Hubo un problema al intentar actualizar el perfil. Por favor, intenta nuevamente.',
+          icon: 'error',
+          confirmButtonText: 'Aceptar',
+			    confirmButtonColor: '#e15554'
+        });
+        console.error(error);
+      }
+    );
   }
 
 }

@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Events as BazarEvent } from 'src/app/model/events'; // Alias para evitar el conflicto con el Event global
+import { Events as BazarEvent } from 'src/app/model/events';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -12,40 +12,58 @@ export class EventsService {
 
 	constructor(private http: HttpClient) {}
 
-	// Método para obtener todos los eventos
 	findAll(): Observable<BazarEvent[]> {
 		const token = localStorage.getItem('token');
 		const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-		return this.http.get<any>(this.apiURL + '/all', { headers });
+		return this.http.get<BazarEvent[]>(`${this.apiURL}/all`, { headers });
 	}
 
-	// Método para obtener un evento por ID
 	findById(id: number): Observable<BazarEvent> {
 		const token = localStorage.getItem('token');
 		const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 		return this.http.get<BazarEvent>(`${this.apiURL}/${id}`, { headers });
 	}
 
-	// Método para añadir un nuevo evento
-	addEvent(event: BazarEvent): Observable<any> {
+	addEvent(event: any): Observable<any> {
 		const token = localStorage.getItem('token');
 		const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-		return this.http.post<any>(this.apiURL + '/add', event, { headers });
+
+		return this.http.post<any>(`${this.apiURL}/add`, event, { headers });
 	}
 
-	// Método para actualizar un evento
 	updateEvent(event: BazarEvent): Observable<any> {
 		const token = localStorage.getItem('token');
 		const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-		
-		return this.http.put(this.apiURL + '/update', event, { headers, responseType: 'text' });
-	}	  
 
-	// Método para eliminar un evento
+		return this.http.put(this.apiURL + '/update', event, { headers, responseType: 'text' });
+	}
+
 	deleteEvent(id: number): Observable<any> {
 		const token = localStorage.getItem('token');
 		const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
 		return this.http.delete(this.apiURL + '/delete/' + id, { headers, responseType: 'text' });
+	}
+	getEventDetails(id: number): Observable<any> {
+		const token = localStorage.getItem('token');
+		const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+		return this.http.get<any>(`${this.apiURL}/${id}`, { headers });
+	}
+	getBazares(pageIndex: number, pageSize: number): Observable<any> {
+		const token = localStorage.getItem('token');
+		const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+		const params = {
+			limit: pageSize.toString(),
+			page: pageIndex.toString()
+		};
+
+		return this.http.get<any>(`${this.apiURL}/all`, { headers, params });
+	}
+
+	getEntrepreneurshipDetails(eventId: number): Observable<any> {
+		const token = localStorage.getItem('token');
+		const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+		console.log(localStorage.getItem('token'));
+		return this.http.get<any>(`${this.apiURL}/${eventId}/entrepreneurships`, { headers });
 	}
 }
