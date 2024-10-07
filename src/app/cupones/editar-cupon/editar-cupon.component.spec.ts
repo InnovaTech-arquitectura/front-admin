@@ -5,7 +5,6 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CuponesService } from 'src/app/service/cupones.service';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
 
 describe('EditarCuponComponent', () => {
   let component: EditarCuponComponent;
@@ -20,7 +19,7 @@ describe('EditarCuponComponent', () => {
         FormsModule,
         ReactiveFormsModule
       ],
-      providers: [CuponesService, FormBuilder],
+      providers: [CuponesService],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();
   });
@@ -28,16 +27,6 @@ describe('EditarCuponComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(EditarCuponComponent);
     component = fixture.componentInstance;
-  
-    const formBuilder: FormBuilder = TestBed.inject(FormBuilder);
-    component.couponForm = formBuilder.group({
-      descripcion: ['', Validators.required],
-      descuento: ['', Validators.required],
-      plan: ['', Validators.required],
-      validez: ['', Validators.required],
-      codigo: ['', Validators.required],
-      funcionalidad: ['', Validators.required]
-    });
   
     fixture.detectChanges();
   });
