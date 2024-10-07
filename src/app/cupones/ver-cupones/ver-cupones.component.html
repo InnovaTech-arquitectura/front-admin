@@ -15,7 +15,6 @@
 						<th>Id</th>
 						<th>Descripción</th>
 						<th>Fecha vencimiento</th>
-						<th>Plan</th>
 						<th>Opciones</th>
 					</tr>
 				</thead>
@@ -24,7 +23,6 @@
 						<td> {{ coupon.id }} </td>
 						<td> {{ coupon.description }} </td>
 						<td> {{ coupon.expirationDate | date:'dd/MM/yyyy' }} </td>
-						<td> {{ coupon.plan.name }} </td>
 						<td>
 							<div class="opciones">
 								<a class="links edit" [routerLink]="'/cupones/edit/' + coupon.id">

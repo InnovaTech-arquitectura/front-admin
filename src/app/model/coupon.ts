@@ -6,8 +6,8 @@ export interface Coupon {
 	description: string;
 	expirationDate: Date;
 	expirationPeriod: number;
-	entrepreneurship: any; // Cambiar any por el tipo correcto
-	plan: Planes;
-	couponFunctionalities: Functionalities[];
-	functionalities: Functionalities[];
+	entrepreneurship?: any; // Cambiar any por el tipo correcto
+	plan?: Planes;
+	couponFunctionalities?: Functionalities[];
+	functionalities?: Functionalities[];
 }

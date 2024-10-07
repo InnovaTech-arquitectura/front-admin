@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Coupon } from '../model/coupon';
+import { NewCoupon } from '../model/newCoupon';
 
 @Injectable({
 	providedIn: 'root'
@@ -12,6 +13,7 @@ export class CuponesService {
 
 	constructor(private http: HttpClient) {}
 
+	//! bien
 	findAll(): Observable<any> {
 		const token = localStorage.getItem('token');
 		const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
@@ -23,14 +25,19 @@ export class CuponesService {
 		return this.http.get<Coupon>(`${this.apiURL}/${id}`);
 	}
 
-	createCoupon(coupon: Coupon): Observable<Coupon> {
-		return this.http.post<Coupon>(this.apiURL, coupon);
+	//! bien
+	createCoupon(coupon: NewCoupon): Observable<any> { 
+		const token = localStorage.getItem('token'); // Obtener el token si es necesario
+		const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`); // Agregar autorización si es necesario
+		
+		return this.http.post<NewCoupon>(this.apiURL + '/add', coupon, { headers });
 	}
 
 	updateCoupon(id: number, coupon: Coupon): Observable<Coupon> {
 		return this.http.put<Coupon>(`${this.apiURL}/${id}`, coupon);
 	}
 
+	//! bien
 	deleteCoupon(id: number): Observable<any> {
 		const token = localStorage.getItem('token');
 		const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);

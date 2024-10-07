@@ -8,52 +8,75 @@
 			<h1>Agregar Nuevo Cupón</h1>
 		</div>
 
-		<form class="editar" (ngSubmit)="addCoupon()">
+		<form class="editar">
 			<div class="inputText">
 				<label for="descripcion" required>Descripción del cupón</label>
 				<input
 					type="text"
 					id="descripcion"
 					name="descripcion"
+					[(ngModel)]="formCoupon.description"
 					placeholder="Ingrese la descripción del cupón"
 				/>
 			</div>
 
 			<div class="inputText">
-				<label for="descuento" required>Porcentaje de descuento</label>
+				<label for="expiration" required>Fecha de vencimiento</label>
 				<input
-					type="text"
-					id="descuento"
-					name="descuento"
-					placeholder="## %"
+					type="date"
+					id="expiration"
+					name="expiration"
+					[(ngModel)]="formCoupon.expirationDate"
+					placeholder="DD/MM/AAAA"
+				/>
+			</div>
+
+			<div class="inputText">
+				<label for="period" required>Periodo de cupón</label>
+				<input
+					type="number"
+					id="period"
+					name="period"
+					[(ngModel)]="formCoupon.expirationPeriod"
+					placeholder="0"
 				/>
 			</div>
 
 			<div class="inputText">
 				<label for="plan" required>Plan</label>
-				<select id="plan" name="plan">
-					<option value="Emprender">Emprender</option>
-					<option value="Plan2">Plan 2</option>
-					<option value="Plan3">Plan 3</option>
+				<select id="plan" name="plan" [(ngModel)]="formCoupon.plan">
+					<option value="" selected>Seleccione un plan</option>
+					<option *ngFor="let plan of planList" value="'plan.id'"> {{ plan.name }} </option>
 				</select>
 			</div>
 
-			<div class="inputText">
-				<label for="validez" required>Periodo de validez</label>
-				<input
-					type="number"
-					id="validez"
-					name="validez"
-					placeholder="Ingrese el número de días"
-				/>
-			</div>
+			<!-- TODO: poner petición que se traiga funcionalidades -->
+			<div class="inputCheck">
+				<h3>Funcionalidades del plan</h3>
 
-			<div class="inputText">
-				<label for="codigo" required>Código</label>
-				<input type="text" id="codigo" name="codigo" placeholder="Value" />
-			</div>
+				<p>
+					Seleccione las casillas de las funcionalidades que desea agregar
+				</p>
 
-			<button type="submit" class="btn-primary">Agregar cupón</button>
+				<!-- Opciones -->
+				<div class="opciones">
+					<div class="checkDiv" *ngFor="let func of allFunc">
+						<input id="check-{{ func.id }}"  type="checkbox"/>
+						<label for="check-{{ func.id }}"> <strong> {{ func.name }} </strong> <br> {{func.description}} </label>
+					</div>
+				</div>
+			</div>
 		</form>
+
+		<div class="addBtn-container">
+			<a [routerLink]="'/cupones'">
+				<i class='bx bx-left-arrow-alt'></i>
+				Cancelar
+			</a>
+			<a (click)="addCoupon()" id="createButton">
+				<i class='bx bxs-save' ></i>
+				Aceptar
+			</a>
+		</div>
 	</section>
 </body>
