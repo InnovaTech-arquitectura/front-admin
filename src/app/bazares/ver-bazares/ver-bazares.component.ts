@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventsService } from 'src/app/service/events.service';
-import { Events } from 'src/app/model/events';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
 	selector: 'app-ver-bazares',
@@ -8,40 +8,45 @@ import { Events } from 'src/app/model/events';
 	styleUrls: ['./ver-bazares.component.css']
 })
 export class VerBazaresComponent implements OnInit {
-	bazares: Events[] = [];
+	bazares: any[] = [];
+	paginatedBazares: any[] = [];
 
-	constructor(private eventsService: EventsService) {}
+	length = 0;
+	pageSize = 4;
+	pageIndex = 0;
+
+	constructor(private eventService: EventsService) {}
 
 	ngOnInit(): void {
-		this.loadBazares();
+		this.pageIndex = 0;
+		console.log(this.pageIndex);
+		this.getBazares(this.pageIndex, this.pageSize);
+		console.log(this.length);
 	}
 
-	loadBazares(): void {
-		this.eventsService.findAll().subscribe(
-			(response: any) => {
-				this.bazares = response.content; // Adjust this line to fit your actual response structure
-				console.log('Bazares cargados:', this.bazares);
-			},
-			(error) => {
-				console.error('Error al cargar los bazares:', error);
-			}
-		);
+	getBazares(pageIndex: number, pageSize: number): void {
+		this.eventService.getBazares(pageIndex, pageSize).subscribe((data: any) => {
+			console.log(data);
+			this.bazares = data.content;
+			this.length = data.totalElements;
+		});
 	}
 
-	delete(id: number) {
-		// Llama a la función deleteEvent del servicio
-		const index = this.bazares.findIndex((plan) => plan.id === id);
-    	this.bazares.splice(index, 1);
+	handlePageEvent(event: PageEvent): void {
+		this.pageIndex = event.pageIndex;
+		this.pageSize = event.pageSize;
+		this.getBazares(this.pageIndex, this.pageSize);
+	}
 
-		this.eventsService.deleteEvent(id).subscribe(
-		  (response) => {
-			console.log('Evento eliminado con éxito:', response);
-			// Aquí puedes realizar cualquier acción adicional, como actualizar la UI
-		  },
-		  (error) => {
-			console.error('Error al eliminar el evento:', error);
-			// Manejar el error, por ejemplo mostrar un mensaje de error en la UI
-		  }
-		);
-	  }
+	paginarBazares(): void {
+		const startIndex = this.pageIndex * this.pageSize;
+		const endIndex = startIndex + this.pageSize;
+		this.paginatedBazares = this.bazares.slice(startIndex, endIndex);
+	}
+
+	delete(id: number): void {
+		this.eventService.deleteEvent(id).subscribe(() => {
+			this.getBazares(this.pageIndex, this.pageSize);
+		});
+	}
 }

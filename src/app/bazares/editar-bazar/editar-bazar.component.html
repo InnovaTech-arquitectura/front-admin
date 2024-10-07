@@ -14,7 +14,7 @@
 					<div class="form-row">
 						<div>
 							<label><strong>Nombre del evento:</strong></label>
-							<input type="text" [(ngModel)]="formEvent.name" name="name" id="name"/>
+							<input type="text" [(ngModel)]="formEvent.name" name="name" id="name" />
 						</div>
 						<div>
 							<label><strong>Ganancias:</strong></label>
@@ -48,6 +48,10 @@
 						<div>
 							<label><strong>Lugar:</strong></label>
 							<input type="text" [(ngModel)]="formEvent.place" name="place" />
+						</div>
+						<div>
+							<label><strong>Descripción:</strong></label>
+							<textarea [(ngModel)]="formEvent.description" name="description" rows="3"></textarea>
 						</div>
 					</div>
 				</div>
