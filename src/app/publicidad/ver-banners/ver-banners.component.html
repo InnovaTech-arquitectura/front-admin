@@ -23,7 +23,12 @@
 					<tr *ngFor="let banner of banners">
 						<td>{{ banner.id }}</td>
 						<td>
-							<img [src]="banner.multimedia" alt="Banner Image" class="banner-img" />
+							<img
+								*ngIf="banner.picture"
+								[src]="'data:image/png;base64,' + banner.picture"
+								alt="Banner Image"
+								class="banner-img"
+							/>
 						</td>
 						<td>{{ banner.title }}</td>
 						<td>{{ interactions }}</td>
