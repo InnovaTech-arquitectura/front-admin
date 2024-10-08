@@ -21,6 +21,10 @@ cd front-admin || exit 1
 echo "Instalando dependencias de npm..."
 npm install
 
+# Solucionar vulnerabilidades
+echo "Corrigiendo vulnerabilidades encontradas..."
+npm audit fix --force
+
 echo "Construyendo la aplicación Angular..."
 # Establecer la variable de entorno para el build
 if [[ $1 == "production" ]]; then
