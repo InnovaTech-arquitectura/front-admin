@@ -30,7 +30,16 @@ else
     export ENVIRONMENT=testing
 fi
 
+# Detener y eliminar contenedores existentes
+echo "Deteniendo y eliminando contenedores existentes..."
+docker-compose down
+
+# Limpiar imágenes huérfanas y no utilizadas
+echo "Limpiando imágenes de Docker no utilizadas..."
+docker image prune -f
+
 # Ejecutar docker-compose con el argumento de entorno
+echo "Levantando el contenedor con docker-compose..."
 docker-compose up --build -d
 
 echo "Reiniciando Nginx en el contenedor..."
