@@ -3,17 +3,15 @@
 
     <div class="password-recovery-card">
       <h1>Requiere verificación</h1>
-      <p>Para continuar, complete este paso de verificación. Hemos enviado un codigo al correo suministrado en el paso anterior. Introduce el código a continuación. </p>
-  
-      <form>
+      <p>Para continuar, complete este paso de verificación. Hemos enviado un código al correo suministrado en el paso anterior. Introduce el código a continuación.</p>
+
+      <form (ngSubmit)="onSubmit()">
         <label for="code">Introducir código</label>
-        <input type="code" id="code" name="code" placeholder="code" required>
-  
+        <input type="text" id="code" name="code" placeholder="code" [(ngModel)]="code" required>
+
         <div class="addBtn-container">
-			<a [routerLink]="'/recuperar-password/crear'">
-				Continuar
-			</a>
-		</div>
+          <button type="submit">Continuar</button>
+        </div>
       </form>
     </div>
   </div>
