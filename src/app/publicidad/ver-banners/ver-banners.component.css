@@ -36,21 +36,20 @@ body {
 	width: 100%;
 	height: 50px;
 	text-align: center;
-    margin: 0; /* Ajusta el margen superior e inferior */
+    margin: 0;
 }
 
 .titulo h1 {
-	font-size: 2.4em; /* Reducción del tamaño del texto */
+	font-size: 2.4em;
 	font-weight: bold;
 }
 
 .table-container {
 	width: 100%;
-    height: 60%px;
-	overflow: scroll;
+    height: 60%;
+	overflow: auto;
     display: flex;
     justify-content: center;
-
     margin-bottom: 25px;
 }
 
@@ -59,12 +58,13 @@ body {
 }
 
 table.tablita {
-	font-size: 1.04em; /* Reducción del tamaño del texto */
+	font-size: 1.04em;
 	width: 95%;
 	overflow-y: scroll;
 	border-collapse: separate;
 	border-spacing: 0px;
     margin-top: 25px;
+    table-layout: fixed;
 }
 
 .tablita th,
@@ -72,25 +72,32 @@ table.tablita {
 	padding: 10px;
 	text-align: center;
 	width: 33.33333%;
+    vertical-align: middle;
 }
 
 .tablita th {
-	position: sticky; /* Fija el encabezado en su posición */
+	position: sticky;
 	top: 0;
 	background-color: black;
 	color: white;
 }
 
 .tablita td {
-    height: 100px;
+    height: auto;
 }
 
 .tablita tr:nth-child(even) {
 	background-color: #eeeeee;
 }
 
+.tablita td img {
+    max-width: 100%;
+    max-height: 80px;
+    object-fit: contain;
+}
+
 .links {
-	font-size: 1.2em; /* Reducción del tamaño del texto */
+	font-size: 1.2em;
 	color: black;
 }
 
@@ -100,8 +107,8 @@ table.tablita {
 	transition: all 0.2s ease;
 }
 
-.iconImage{
-    font-size: 25.6px; 
+.iconImage {
+    font-size: 25.6px;
     cursor: pointer;
 }
 
@@ -111,13 +118,13 @@ table.tablita {
     margin-top: 20px;
 }
 
-
 .button-container {
     display: flex;
-    justify-content: center; /* Centrar el botón */
+    justify-content: center;
     margin-top: 20px;
 }
-.iconTrash{
+
+.iconTrash {
     cursor: pointer;
 }
 

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { PublicidadService } from 'src/app/service/publicidad.service';
+import Swal from 'sweetalert2';
 
 @Component({
 	selector: 'app-nuevo-banner',
@@ -31,19 +32,19 @@ export class NuevoBannerComponent {
 			};
 			reader.readAsDataURL(file);
 		} else {
-			console.error('No file selected');
+			Swal.fire('Error', 'No se seleccionó un archivo.', 'error');
 		}
 	}
 
 	onSubmit(): void {
 		if (!this.selectedFile) {
-			console.error('No se seleccionó un archivo.');
+			Swal.fire('Error', 'No se seleccionó un archivo.', 'error');
 			return;
 		}
 
 		const title = (document.getElementById('titleDescription') as HTMLInputElement)?.value;
 		if (!title) {
-			console.error('El título es obligatorio.');
+			Swal.fire('Error', 'El título es obligatorio.', 'error');
 			return;
 		}
 
@@ -54,11 +55,11 @@ export class NuevoBannerComponent {
 
 		this.publicidadService.createBanner(formData).subscribe(
 			(response) => {
-				console.log('Banner creado con éxito:', response);
+				Swal.fire('Éxito', 'Banner creado con éxito.', 'success');
 				this.router.navigate(['/ver-banners']);
 			},
 			(error) => {
-				console.error('Error creando el banner:', error);
+				Swal.fire('Error', 'Ocurrió un error al crear el banner.', 'error');
 			}
 		);
 	}

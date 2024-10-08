@@ -5,98 +5,98 @@
 	--dark-gray: #91918f;
 	--light-gray: #d9d9d9;
 	--light-yellow: #ffca3a;
-}
-
-body {
+  }
+  
+  body {
 	min-height: 89vh;
 	margin-top: 100px;
 	width: 100%;
-}
-
-.headerPage {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #f5f5f5;
+  }
+  
+  .headerPage {
 	z-index: 10;
 	width: 100%;
 	position: fixed;
 	top: 0;
-}
-
-.sidebar {
+  }
+  
+  .sidebar {
 	position: fixed;
 	top: 100px;
 	left: 0;
 	width: 280px;
-}
-
-.contenido {
+  }
+  
+  .contenido {
 	margin-left: 280px;
 	padding: 20px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-}
-
-.titulo {
+	justify-content: center;
+	max-width: 1200px; /* Limita el ancho del contenido */
+	width: 100%;
+  }
+  
+  .titulo {
 	width: 100%;
 	height: 50px;
 	text-align: center;
-}
-
-.subtitulo{
-    width: 100%;
+  }
+  
+  .subtitulo {
+	width: 100%;
 	height: 30px;
-    margin-top: 20px;
+	margin-top: 20px;
 	text-align: center;
-}
-
-.titulo h1 {
+  }
+  
+  .titulo h1 {
 	font-size: 3em;
 	font-weight: bold;
-}
-
-.table-container {
+  }
+  
+  .table-container {
 	width: 100%;
-	overflow: scroll;
-    display: flex;
-    justify-content: center;
-    
-}
-
-.table-container::-webkit-scrollbar {
-	display: none;
-}
-
-table.tablita {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow-x: auto; /* Permitir desplazamiento horizontal si es necesario */
+  }
+  
+  table.tablita {
 	font-size: 1.3em;
-	width: 80%;
-	overflow-y: scroll;
-	border-collapse: separate;
-	border-spacing: 0px;
-    margin-top: 25px;
-}
-
-.tablita th,
-.tablita td {
-	padding: 10px;
+	width: 100%;
+	max-width: 100%; /* Limita la expansión de la tabla al ancho del contenedor */
+	border-collapse: collapse; /* Hace que las celdas de la tabla compartan los bordes */
+	margin-top: 25px;
+	table-layout: fixed; /* Hace que las columnas tengan un ancho fijo */
+  }
+  
+  .tablita th,
+  .tablita td {
+	padding: 15px; /* Añadir más espacio entre el texto y los bordes de la celda */
 	text-align: center;
-	width: 25%;
-}
-
-.tablita th {
-	position: sticky; /* Fija el encabezado en su posición */
-	top: 0;
+	width: 25%; /* Distribuir uniformemente el ancho de las columnas */
+	border: 1px solid #ddd; /* Añadir borde para hacer la tabla más cuadrada */
+  }
+  
+  .tablita th {
 	background-color: black;
 	color: white;
-}
-
-.tablita td {
-    height: 100px;
-}
-
-.tablita tr:nth-child(even) {
-	background-color: #eeeeee;
-}
-
-.opciones {
+	position: sticky; /* Fija el encabezado en su posición */
+	top: 0;
+  }
+  
+  .tablita tr:nth-child(even) {
+	background-color: #eeeeee; /* Color alternado para las filas */
+  }
+  
+  .opciones {
 	height: 10%;
 	width: 100%;
 	padding: 0px 20%;
@@ -104,43 +104,39 @@ table.tablita {
 	flex-direction: row;
 	justify-content: space-evenly;
 	align-items: center;
-}
-
-
-
-.links {
+  }
+  
+  .links {
 	font-size: 1.5em;
 	color: black;
-}
-
-.edit:hover {
+  }
+  
+  .edit:hover {
 	color: #ffca3a;
 	text-shadow: 0 4px 16px #ffca3a;
 	transition: all 0.2s ease;
-}
-
-.delete:hover {
+  }
+  
+  .delete:hover {
 	color: #e15554;
 	text-shadow: 0 4px 16px #e15554;
 	transition: all 0.2s ease;
-}
-
-.info:hover {
-    color: #87bcde;
-    text-shadow: 0 4px 16px #87bcde;
-    transition: all 0.2s ease;
-}
-
-.addBtn-container {
+  }
+  
+  .info:hover {
+	color: #87bcde;
+	text-shadow: 0 4px 16px #87bcde;
+	transition: all 0.2s ease;
+  }
+  
+  .addBtn-container {
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: center;
 	align-items: center;
-	width: 700px;
-	padding-top: 15px;
-	height: 63px;
-}
-
-.addBtn-container a {
+	margin-top: 20px;
+  }
+  
+  .addBtn-container a {
 	width: 300px;
 	background-color: #d9d9d9;
 	padding: 10px 20px;
@@ -150,13 +146,14 @@ table.tablita {
 	border-radius: 10px;
 	text-decoration: none;
 	text-align: center;
-}
-
-.addBtn-container a:hover {
+  }
+  
+  .addBtn-container a:hover {
 	background-color: black;
 	color: #d9d9d9;
-}
-
-.addBtn-container i {
+  }
+  
+  .addBtn-container i {
 	font-size: 1.5em;
-}
+  }
+  
