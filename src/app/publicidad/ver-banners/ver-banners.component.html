@@ -1,46 +1,45 @@
 <app-header class="headerPage"></app-header>
 
 <body>
-    <app-sidebar class="sidebar"></app-sidebar>
+	<app-sidebar class="sidebar"></app-sidebar>
 
-    <section class="contenido">
-        <div class="titulo">
-            <h1>Publicidad - banners</h1>
-        </div>
-        
-        <div class="table-container">
-            <table id="myTable" class="tablita">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Multimedia</th>
-                        <th>Titulo-Descripción</th>
-                        <th>Interacciones</th>
-                        <th>Opciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let banner of banners">
-                        <td>{{ banner.id }}</td>
-                        <td>
-                            <img [src]="'data:image/jpeg;base64,' + banner.multimedia" alt="Banner Image" class="banner-img" />
-                        </td>
-                        <td>{{ banner.title }}</td>
-                        <td>{{ banner.interactions }}</td>
-                        <td>
-                            <i class='bx bxs-edit iconEdit' (click)="editBanner(banner.id)"></i>
-                            <i class='bx bxs-trash iconTrash' (click)="deleteBanner(banner.id)"></i>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+	<section class="contenido">
+		<div class="titulo">
+			<h1>Publicidad - banners</h1>
+		</div>
 
-        <div class="addBtn-container">
-            <a [routerLink]="'/nuevo-banner'">
-                <i class='bx bx-plus-circle'></i>
-                Agregar banner
-            </a>
-        </div>
-    </section>
+		<div class="table-container">
+			<table id="myTable" class="tablita">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Multimedia</th>
+						<th>Titulo-Descripción</th>
+						<th>Interacciones</th>
+						<th>Opciones</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let banner of banners">
+						<td>{{ banner.id }}</td>
+						<td>
+							<img [src]="banner.multimedia" alt="Banner Image" class="banner-img" />
+						</td>
+						<td>{{ banner.title }}</td>
+						<td>{{ interactions }}</td>
+						<td>
+							<i class="bx bxs-trash iconTrash" (click)="deleteBanner(banner.id)"></i>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="addBtn-container">
+			<a [routerLink]="'/nuevo-banner'">
+				<i class="bx bx-plus-circle"></i>
+				Agregar banner
+			</a>
+		</div>
+	</section>
 </body>
