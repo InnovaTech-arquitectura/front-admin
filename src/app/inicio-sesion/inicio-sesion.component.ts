@@ -22,7 +22,6 @@ export class InicioSesionComponent {
 		this.isLoading = true; // Mostrar el spinner
 		this.authService.login(this.email, this.password).subscribe(
 			(response) => {
-				console.log('Inicio de sesión exitoso:', response);
 				localStorage.setItem('token', response);
 				this.router.navigate(['/publicidad']);
 				this.isLoading = false; // Ocultar el spinner
