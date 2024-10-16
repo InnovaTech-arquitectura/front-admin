@@ -28,7 +28,7 @@ export class AuthService {
 		);
 	}
 
-	authRole(): Observable<String>{
+	authRole(): Observable<string>{
 		const token = localStorage.getItem('token');
 		const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 	  

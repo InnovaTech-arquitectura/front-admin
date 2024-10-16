@@ -12,7 +12,7 @@ export class SidebarComponent implements OnInit {
     private authService: AuthService
   ) { }
 
-  role: String;
+  role: string;
 
   ngOnInit(): void {
     this.authService.authRole().subscribe(
@@ -23,7 +23,7 @@ export class SidebarComponent implements OnInit {
     );
   }
 
-  showMenuItem(roles: String[]): boolean {
+  showMenuItem(roles: string[]): boolean {
     return roles.includes(this.role);
   }
 }
