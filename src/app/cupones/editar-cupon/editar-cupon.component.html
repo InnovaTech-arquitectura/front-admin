@@ -4,52 +4,78 @@
 	<app-sidebar class="sidebar"></app-sidebar>
 
 	<section class="contenido">
-		<div class="editar">
-			<h2 class="titulo">Editar Cupón</h2>
+		<div class="titulo">
+			<h1>Editar Cupón</h1>
+		</div>
 
-			<form [formGroup]="couponForm" (ngSubmit)="onSubmit()">
-				<div class="inputText">
-					<label>Descripción del cupón</label>
-					<input
-						type="text"
-						formControlName="descripcion"
-						placeholder="Cupón de descuento para el plan Emprender"
-					/>
-				</div>
+		<form class="editar">
+			<div class="inputText">
+				<label for="descripcion" required>Descripción del cupón</label>
+				<input
+					type="text"
+					id="descripcion"
+					name="descripcion"
+					[(ngModel)]="formCoupon.description"
+					placeholder="Ingrese la descripción del cupón"
+				/>
+			</div>
 
-				<div class="inputText">
-					<label>Funcionalidades</label>
-					<select formControlName="funcionalidad">
-						<option>Funcionalidad1</option>
-						<option>Funcionalidad2</option>
-					</select>
-				</div>
+			<div class="inputText">
+				<label for="expiration" required>Fecha de vencimiento</label>
+				<input
+					type="date"
+					id="expiration"
+					name="expiration"
+					[(ngModel)]="formCoupon.expirationDate"
+					placeholder="DD/MM/AAAA"
+				/>
+			</div>
 
-				<div class="inputText">
-					<label>Plan</label>
-					<select formControlName="plan">
-						<option>Emprender</option>
-						<option>Avanzado</option>
-					</select>
-				</div>
+			<div class="inputText">
+				<label for="period" required>Periodo de cupón</label>
+				<input
+					type="number"
+					id="period"
+					name="period"
+					[(ngModel)]="formCoupon.expirationPeriod"
+					placeholder="0"
+				/>
+			</div>
 
-				<div class="inputText">
-					<label>Periodo de validez</label>
-					<input type="number" formControlName="validez" value="5" />
-				</div>
+			<div class="inputText">
+				<label for="plan" required>Plan</label>
+				<select id="plan" name="plan" [(ngModel)]="formCoupon.plan">
+					<option value="" selected>Seleccione un plan</option>
+					<option *ngFor="let plan of planList" value="'plan.id'"> {{ plan.name }} </option>
+				</select>
+			</div>
 
-				<div class="inputText">
-					<label>Código</label>
-					<input type="text" formControlName="codigo" placeholder="aaa" />
-				</div>
+			<div class="inputCheck">
+				<h3>Funcionalidades del plan</h3>
 
-				<div class="addBtn-container">
-					<a href="#" class="cancel-btn"> <i class="fas fa-arrow-left"></i> Cancelar </a>
-					<button type="submit" class="submit-btn" [disabled]="couponForm.invalid">
-						<i class="fas fa-save"></i> Aceptar
-					</button>
+				<p>
+					Seleccione las casillas de las funcionalidades que desea agregar
+				</p>
+
+				<!-- Opciones -->
+				<div class="opciones">
+					<div class="checkDiv" *ngFor="let func of allFunc">
+						<input id="check-{{ func.id }}"  type="checkbox" [checked]="isChecked(func)"/>
+						<label for="check-{{ func.id }}"> <strong> {{ func.name }} </strong> <br> {{func.description}} </label>
+					</div>
 				</div>
-			</form>
+			</div>
+		</form>
+
+		<div class="addBtn-container">
+			<a [routerLink]="'/cupones'">
+				<i class='bx bx-left-arrow-alt'></i>
+				Cancelar
+			</a>
+			<a (click)="save()" id="createButton">
+				<i class='bx bxs-save' ></i>
+				Aceptar
+			</a>
 		</div>
 	</section>
 </body>
