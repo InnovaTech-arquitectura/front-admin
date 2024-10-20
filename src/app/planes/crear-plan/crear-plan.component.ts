@@ -54,7 +54,6 @@ export class CrearPlanComponent implements OnInit {
 		}
 
 		this.sendPlan = Object.assign({}, this.formPlan);
-		this.sendPlan.name = null;
 		console.log(this.sendPlan);
 
 		this.planesService.addPlan(this.sendPlan).subscribe(
