@@ -9,24 +9,22 @@
 		<div class="support-card">
 			<div class="question-section">
 				<p><strong>Pregunta:</strong></p>
-				<p>El emprendedor <a>Nike_co</a> ha hecho esta pregunta.</p>
 				<blockquote>
-					Necesito saber cómo puedo acceder al módulo de Capacitación, para mí es importante saber esto
-					porque mi emprendimiento depende mucho de esto, ¿me podrían ayudar?
+					{{ pregunta }}
 				</blockquote>
 			</div>
 
 			<div class="answer-section">
-				<label for="respuesta">Responder:</label>
+				<label for="respuesta"><strong>Respuesta:</strong></label>
 				<textarea
 					id="respuesta"
 					name="respuesta"
 					rows="6"
-					placeholder="Escriba aquí lo que quiere responderle al usuario"
+					[(ngModel)]="respuesta"
 				></textarea>
 			</div>
 
-			<button type="submit" [routerLink]="'/soporte'">Enviar respuesta</button>
+			<button type="submit" (click)="update()">Guardar respuesta</button>
 		</div>
 	</div>
 </body>
