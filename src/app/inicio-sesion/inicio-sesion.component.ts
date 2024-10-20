@@ -23,7 +23,7 @@ export class InicioSesionComponent {
 		this.authService.login(this.email, this.password).subscribe(
 			(response) => {
 				localStorage.setItem('token', response);
-				this.router.navigate(['/publicidad']);
+				this.router.navigate(['/dashboard']);
 				this.isLoading = false; // Ocultar el spinner
 			},
 			(error) => {
