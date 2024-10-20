@@ -31,17 +31,9 @@ export class CrearBazarComponent implements OnInit {
 		});
 	}
 	crear(): void {
-		if (this.eventForm.valid) {
-			const newEvent = this.eventForm.value;
-			this.eventService.addEvent(newEvent).subscribe(
-				(response) => {
-					console.log('Evento creado:', response);
-					this.router.navigate(['/bazares']);
-				},
-				(error) => {
-					console.error('Error al crear el evento:', error);
-				}
-			);
-		}
+		this.eventForm = Object.assign({}, this.eventForm.value);
+		console.log(this.eventForm);
+		this.eventService.addEvent(this.eventForm);
+		this.router.navigate(['/bazares']);
 	}
 }
