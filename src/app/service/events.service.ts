@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 import { Events as BazarEvent } from 'src/app/model/events';
 import { environment } from 'src/environments/environment';
 
@@ -24,11 +24,10 @@ export class EventsService {
 		return this.http.get<BazarEvent>(`${this.apiURL}/${id}`, { headers });
 	}
 
-	addEvent(event: any): Observable<any> {
+	addEvent(eventData: any): Observable<any> {
 		const token = localStorage.getItem('token');
 		const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-
-		return this.http.post<any>(`${this.apiURL}/add`, event, { headers });
+		return this.http.post(this.apiURL + '/add', eventData, { headers, responseType: 'text' });
 	}
 
 	updateEvent(event: BazarEvent): Observable<any> {
