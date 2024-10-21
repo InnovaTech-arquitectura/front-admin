@@ -5,61 +5,69 @@
 
     <div class="opciones">
         <ul>
-            <li>
-                <a class="elementos" [routerLink]="'/dashboard'" id="linkDashboard">
-                    <i class="bx bxs-dashboard"></i>
-                    <span class="nav-item">Dashboard</span>
-                </a>
+            <li *ngIf="showMenuItem(['Administrator', 'Sales', 'Billing'])" id="dashboard">
+              <a class="elementos" [routerLink]="'/dashboard'" id="linkDashboard">
+                <i class="bx bxs-dashboard"></i>
+                <span class="nav-item">Dashboard</span>
+              </a>
             </li>
-            <li>
-                <a class="elementos" [routerLink]="'/emprendimientos'" id="linkEmprendimientos">
-                    <i class="bx bxs-store-alt"></i>
-                    <span class="nav-item">Emprendimientos</span>
-                </a>
+          
+            <li *ngIf="showMenuItem(['Administrator', 'Sales'])" id="emprendimientos">
+              <a class="elementos" [routerLink]="'/emprendimientos'" id="linkEmprendimientos">
+                <i class="bx bxs-store-alt"></i>
+                <span class="nav-item">Emprendimientos</span>
+              </a>
             </li>
-            <li>
-                <a class="elementos" [routerLink]="'/planes'" id="linkPlanes">
-                    <i class="bx bx-news"></i>
-                    <span class="nav-item">Planes</span>
-                </a>
+          
+            <li *ngIf="showMenuItem(['Administrator', 'Marketing', 'Billing', 'Sales'])" id="planes">
+              <a class="elementos" [routerLink]="'/planes'" id="linkPlanes">
+                <i class="bx bx-news"></i>
+                <span class="nav-item">Planes</span>
+              </a>
             </li>
-            <li>
-                <a class="elementos" [routerLink]="'/finanzas'" id="linkFinanzas">
-                    <i class='bx bx-dollar'></i>
-                    <span class="nav-item">Finanzas</span>
-                </a>
+          
+            <li *ngIf="showMenuItem(['Administrator', 'Billing'])" id="finanzas">
+              <a class="elementos" [routerLink]="'/finanzas'" id="linkFinanzas">
+                <i class='bx bx-dollar'></i>
+                <span class="nav-item">Finanzas</span>
+              </a>
             </li>
-            <li>
-                <a class="elementos" [routerLink]="'/bazares'" id="linkBazares">
-                    <i class='bx bxs-shopping-bags'></i>
-                    <span class="nav-item">Bazares</span>
-                </a>
+          
+            <li *ngIf="showMenuItem(['Administrator'])" id="bazares">
+              <a class="elementos" [routerLink]="'/bazares'" id="linkBazares">
+                <i class='bx bxs-shopping-bags'></i>
+                <span class="nav-item">Bazares</span>
+              </a>
             </li>
-            <li>
-                <a class="elementos" [routerLink]="'/publicidad'" id="linkPublicidad">
-                    <i class='bx bxl-instagram'></i>
-                    <span class="nav-item">Publicidad</span>
-                </a>
+          
+            <li *ngIf="showMenuItem(['Administrator', 'Marketing', 'Community Manager'])" id="publicidad">
+              <a class="elementos" [routerLink]="'/publicidad'" id="linkPublicidad">
+                <i class='bx bxl-instagram'></i>
+                <span class="nav-item">Publicidad</span>
+              </a>
             </li>
-            <li>
-                <a class="elementos" [routerLink]="'/perfiles'" id="linkPerfiles">
-                    <i class='bx bx-user'></i>
-                    <span class="nav-item">Perfiles</span>
-                </a>
+          
+            <li *ngIf="showMenuItem(['Administrator'])" id="perfiles">
+              <a class="elementos" [routerLink]="'/perfiles'" id="linkPerfiles">
+                <i class='bx bx-user'></i>
+                <span class="nav-item">Perfiles</span>
+              </a>
             </li>
-            <li>
-                <a class="elementos" [routerLink]="'/capacitaciones'" id="linkCapacitaciones">
-                    <i class='bx bxs-videos' ></i>
-                    <span class="nav-item">Capacitaciones</span>
-                </a>
+          
+            <li *ngIf="showMenuItem(['Administrator', 'Asesor'])" id="capacitaciones">
+              <a class="elementos" [routerLink]="'/capacitaciones'" id="linkCapacitaciones">
+                <i class='bx bxs-videos'></i>
+                <span class="nav-item">Capacitaciones</span>
+              </a>
             </li>
-            <li>
-                <a class="elementos" [routerLink]="'/soporte'" id="linkSoporte">
-                    <i class='bx bx-support' ></i>
-                    <span class="nav-item">Soporte</span>
-                </a>
+          
+            <li *ngIf="showMenuItem(['Administrator', 'Support'])" id="soporte">
+              <a class="elementos" [routerLink]="'/soporte'" id="linkSoporte">
+                <i class='bx bx-support'></i>
+                <span class="nav-item">Soporte</span>
+              </a>
             </li>
-        </ul>
+          </ul>
     </div>
 
 </body>

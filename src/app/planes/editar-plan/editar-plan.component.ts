@@ -14,21 +14,21 @@ export class EditarPlanComponent {
 	constructor(
 		private route: ActivatedRoute,
 		private planesService: PlanesService,
-		private router: Router,
+		private router: Router
 	) {
-		this.editPlan =  {
+		this.editPlan = {
 			id: 0,
 			name: '',
 			price: 0,
 			functionalities: []
-		}
+		};
 
-		this.formPlan =  {
+		this.formPlan = {
 			id: 0,
 			name: '',
 			price: 0,
 			functionalities: []
-		}
+		};
 	}
 
 	allFunc: Functionalities[];
@@ -59,40 +59,69 @@ export class EditarPlanComponent {
 				return true;
 			}
 		}
-    return false;
+		return false;
 	}
 
-  guardar() {
-    this.formPlan.functionalities = [];
-    for (let i=0; i<this.allFunc.length; i++) {
-      const check = document.getElementById('check-' + (i+1)) as HTMLInputElement;
-      if (check) {
-        if (check.checked) {
-          this.formPlan.functionalities.push(this.allFunc[i]);
-        } 
-      }
-    }
-
-    this.editPlan = Object.assign({}, this.formPlan);
-    console.log(this.editPlan);
-
-    this.planesService.updatePlan(this.editPlan).subscribe(
-		response => {
-		  // Si la petición es exitosa, no hacemos nada extra
-		  console.log('Actualización exitosa', response);
-		  this.router.navigate(['/planes']);  // Navegamos a la ruta /planes
-		},
-		error => {
-		  // Si ocurre un error, mostramos el pop-up de SweetAlert
-		  Swal.fire({
-			title: 'Error al guardar',
-			text: 'Hubo un problema al intentar guardar los cambios. Por favor, intenta nuevamente.',
-			icon: 'error',
-			confirmButtonText: 'Aceptar',
-			confirmButtonColor: '#e15554'
-		  });
-		  console.error(error);
+	emptyInputs() {
+		if (!this.formPlan.name || this.formPlan.name.trim() === '') {
+			Swal.fire({
+				title: 'Error',
+				text: 'El nombre del plan no puede estar vacío',
+				icon: 'error',
+				confirmButtonText: 'Aceptar',
+				confirmButtonColor: '#e15554'
+			});
+			return true;
 		}
-	  );
-  }
+
+		if (this.formPlan.price === null || this.formPlan.price === undefined || this.formPlan.price <= 0) {
+			Swal.fire({
+				title: 'Error',
+				text: 'El precio del plan debe ser mayor a 0',
+				icon: 'error',
+				confirmButtonText: 'Aceptar',
+				confirmButtonColor: '#e15554'
+			});
+			return true;
+		}
+
+		return false;
+	}
+
+	guardar() {
+		if (this.emptyInputs()) {
+		} else {
+			this.formPlan.functionalities = [];
+			for (let i = 0; i < this.allFunc.length; i++) {
+				const check = document.getElementById('check-' + (i + 1)) as HTMLInputElement;
+				if (check) {
+					if (check.checked) {
+						this.formPlan.functionalities.push(this.allFunc[i]);
+					}
+				}
+			}
+
+			this.editPlan = Object.assign({}, this.formPlan);
+			console.log(this.editPlan);
+
+			this.planesService.updatePlan(this.editPlan).subscribe(
+				(response) => {
+					// Si la petición es exitosa, no hacemos nada extra
+					console.log('Actualización exitosa', response);
+					this.router.navigate(['/planes']); // Navegamos a la ruta /planes
+				},
+				(error) => {
+					// Si ocurre un error, mostramos el pop-up de SweetAlert
+					Swal.fire({
+						title: 'Error al guardar',
+						text: 'Hubo un problema al intentar guardar los cambios. Por favor, intenta nuevamente.',
+						icon: 'error',
+						confirmButtonText: 'Aceptar',
+						confirmButtonColor: '#e15554'
+					});
+					console.error(error);
+				}
+			);
+		}
+	}
 }
