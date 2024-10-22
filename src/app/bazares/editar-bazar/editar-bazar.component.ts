@@ -23,8 +23,8 @@ export class EditarBazarComponent implements OnInit {
 			date2: new Date(),
 			place: '',
 			modality: '',
+			totalCost: 0,
 			costoLocal: 0,
-			total_Cost: 0,
 			earnings: 0,
 			quota: 0,
 			description: ''
@@ -44,9 +44,21 @@ export class EditarBazarComponent implements OnInit {
 	}
 
 	editar() {
-		this.formEvent = Object.assign({}, this.formEvent);
-
-		this.eventService.updateEvent(this.formEvent).subscribe(
+		const eventToUpdate = {
+			id: this.formEvent.id,
+			name: this.formEvent.name,
+			date: this.formEvent.date,
+			date2: this.formEvent.date2,
+			totalCost: this.formEvent.totalCost,
+			earnings: this.formEvent.earnings,
+			costoLocal: this.formEvent.costoLocal,
+			place: this.formEvent.place.toString(),
+			modality: this.formEvent.modality,
+			quota: this.formEvent.quota,
+			description: this.formEvent.description,
+			entrepreneurshipeventregistry: []
+		};
+		this.eventService.updateEvent(eventToUpdate).subscribe(
 			(response) => {
 				console.log('Evento actualizado con éxito:', response);
 				this.router.navigate(['/bazares']);

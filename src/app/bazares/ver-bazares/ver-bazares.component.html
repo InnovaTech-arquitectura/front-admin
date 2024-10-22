@@ -4,8 +4,19 @@
 	<app-sidebar class="sidebar"></app-sidebar>
 
 	<section class="contenido">
-		<div class="titulo">
-			<h1>Bazares</h1>
+		<div class="titulo-paginacion">
+			<div class="titulo">
+				<h1>Bazares</h1>
+			</div>
+			<div class="paginacion">
+				<mat-paginator
+					[length]="length"
+					[pageSize]="pageSize"
+					(page)="handlePageEvent($event)"
+					[hidePageSize]="true"
+				>
+				</mat-paginator>
+			</div>
 		</div>
 
 		<div class="table-container">
@@ -43,8 +54,6 @@
 					</tr>
 				</tbody>
 			</table>
-
-			<mat-paginator [length]="length" [pageSize]="pageSize" (page)="handlePageEvent($event)"> </mat-paginator>
 		</div>
 
 		<div class="addBtn-container">

@@ -73,6 +73,7 @@ export class CapacitacionesService {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.delete(this.apiURL + "/" + id, { headers, responseType: 'text' }).pipe(
+      
       catchError(this.handleError)
     );
   }
