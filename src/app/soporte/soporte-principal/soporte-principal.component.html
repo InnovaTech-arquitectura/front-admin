@@ -12,62 +12,20 @@
 			<table id="myTable" class="tablita">
 				<thead>
 					<tr>
-						<th>Id</th>
-						<th>Emprendimiento</th>
 						<th>Pregunta</th>
-						<th>Estado</th>
-						<th>Responder</th>
+						<th>Opciones</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>01</td>
-						<td>Nike_col</td>
-						<td>¿Cómo puedo suscribirme a un plan?</td>
-						<td>Pendiente</td>
+					<tr *ngFor="let pregunta of preguntas; let i = index">
+						<td> {{ pregunta }} </td>
 						<td>
 							<div class="opciones">
-								<a class="links message" [routerLink]="'/soporte/responder'">
+								<a class="links message" [routerLink]="['/soporte/', i]">
 									<i class="bx bxs-message"></i>
 								</a>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>02</td>
-						<td>Adidas_col</td>
-						<td>¿Cómo puedo gestionar las finanzas de mi emprendimiento?</td>
-						<td>Respuesta</td>
-						<td>
-							<div class="opciones">
-								<a class="links message" [routerLink]="'/soporte/responder'">
-									<i class="bx bxs-message"></i>
-								</a>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>03</td>
-						<td>Emprendimiento_x</td>
-						<td>¿Puedo suscribirme a la cantidad de bazares que desee?</td>
-						<td>Pendiente</td>
-						<td>
-							<div class="opciones">
-								<a class="links message" [routerLink]="'/soporte/responder'">
-									<i class="bx bxs-message"></i>
-								</a>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>04</td>
-						<td>Emprendimiento_y</td>
-						<td>¿ Para qué puedo utilizar la publicidad en Made-in?</td>
-						<td>Pendiente</td>
-						<td>
-							<div class="opciones">
-								<a class="links message" [routerLink]="'/soporte/responder'">
-									<i class="bx bxs-message"></i>
+								<a class="links delete" (click)="delete(i)">
+									<i class="bx bxs-trash"></i>
 								</a>
 							</div>
 						</td>

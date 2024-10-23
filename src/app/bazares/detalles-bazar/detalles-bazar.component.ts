@@ -10,8 +10,8 @@ import { PageEvent } from '@angular/material/paginator';
 })
 export class DetallesBazarComponent implements OnInit {
 	event: any;
-	emprendimientos: any[] = [];
-	paginatedEmprendimientos: any[] = [];
+	entrepreneurshipEvents: any[] = [];
+	paginatedEntrepreneurshipEvents: any[] = [];
 
 	length = 0;
 	pageSize = 4;
@@ -28,35 +28,31 @@ export class DetallesBazarComponent implements OnInit {
 		this.eventService.getEventDetails(Number(eventId)).subscribe(
 			(data: any) => {
 				this.event = data;
-				this.emprendimientos = this.event.emprendimientos || [];
-				this.length = this.emprendimientos.length;
-				this.paginarEmprendimientos();
+				this.entrepreneurshipEvents = this.event.entrepreneurshipeventregistry || [];
+				this.length = this.entrepreneurshipEvents.length;
+				this.paginarEntrepreneurshipEvents();
 			},
 			(error) => {
 				console.error('Error al cargar el evento:', error);
 			}
 		);
-
-		this.getEntrepreneurshipDetails(Number(eventId));
 	}
 
 	handlePageEvent(event: PageEvent): void {
 		this.pageIndex = event.pageIndex;
 		this.pageSize = event.pageSize;
-		this.paginarEmprendimientos();
+		this.paginarEntrepreneurshipEvents();
 	}
 
-	paginarEmprendimientos(): void {
+	paginarEntrepreneurshipEvents(): void {
 		const startIndex = this.pageIndex * this.pageSize;
 		const endIndex = startIndex + this.pageSize;
-		this.paginatedEmprendimientos = this.emprendimientos.slice(startIndex, endIndex);
+		this.paginatedEntrepreneurshipEvents = this.entrepreneurshipEvents.slice(startIndex, endIndex);
 	}
 
 	getEntrepreneurshipDetails(entrepreneurshipId: number): void {
 		this.eventService.getEntrepreneurshipDetails(entrepreneurshipId).subscribe((data: any) => {
-			this.emprendimientos = data;
-			this.length = this.emprendimientos.length;
-			this.paginarEmprendimientos();
+			console.log('Detalles del emprendimiento:', data);
 		});
 	}
 }

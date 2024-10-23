@@ -68,7 +68,7 @@ const routes: Routes = [
   { path: 'capacitaciones/add', component: CrearCapacitacionesComponent, canActivate: [AuthGuard] },
   { path: 'capacitaciones/edit/:id', component: EditarCapacitacionesComponent, canActivate: [AuthGuard] },
   { path: 'capacitaciones/info/:id', component: VerInfoCapacitacionesComponent, canActivate: [AuthGuard] },
-  { path: 'soporte/responder', component: ResponderPreguntaComponent, canActivate: [AuthGuard] },
+  { path: 'soporte/:index', component: ResponderPreguntaComponent, canActivate: [AuthGuard] },
   { path: 'soporte', component: SoportePrincipalComponent, canActivate: [AuthGuard] },
   { path: 'login', component: InicioSesionComponent },
   { path: 'recuperar-password/recuperar', component: RecuperarComponent },

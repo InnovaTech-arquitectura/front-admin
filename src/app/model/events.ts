@@ -6,7 +6,7 @@ export interface Events {
 	place: string;
 	modality: string;
 	costoLocal: number;
-	total_Cost: number;
+	totalCost: number;
 	earnings: number;
 	quota: number;
 	description: string;

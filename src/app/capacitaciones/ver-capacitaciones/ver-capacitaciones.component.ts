@@ -31,12 +31,13 @@ export class VerCapacitacionesComponent {
       confirmButtonText: 'Sí, eliminarlo'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.courseService.deleteCourse(id);
-        
+        this.courseService.deleteCourse(id).subscribe(() => {
+          console.log('Eliminado', id);
         const index = this.courseList.findIndex((course) => course.id === id);
         this.courseList.splice(index, 1);
 
         Swal.fire('Eliminado', 'El curso ha sido eliminado', 'success');
+        })  
       }
     });
   }

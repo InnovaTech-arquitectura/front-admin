@@ -18,12 +18,14 @@ export class InicioSesionComponent {
 		private router: Router
 	) {}
 
+	role: string;
+
 	onSubmit() {
 		this.isLoading = true; // Mostrar el spinner
 		this.authService.login(this.email, this.password).subscribe(
 			(response) => {
 				localStorage.setItem('token', response);
-				this.router.navigate(['/publicidad']);
+				this.router.navigate(['/dashboard']);
 				this.isLoading = false; // Ocultar el spinner
 			},
 			(error) => {
@@ -37,5 +39,31 @@ export class InicioSesionComponent {
 				});
 			}
 		);
+	}
+
+	redirectUserBasedOnRole(role: string) {
+		switch (role) {
+		  case 'Administrator':
+			this.router.navigate(['/dashboard']);
+			break;
+		  case 'Marketing':
+			this.router.navigate(['/publicidad']);
+			break;
+		  case 'Sales':
+			this.router.navigate(['/dashboard']);
+			break;
+		  case 'Community Manager':
+			this.router.navigate(['/publicidad']);
+			break;
+		  case 'Asesor':
+			this.router.navigate(['/capacitaciones']);
+			break;
+		  case 'Support':
+			this.router.navigate(['/soporte']);
+			break;
+		  case 'Billing':
+			this.router.navigate(['/dashboard']);
+			break;
+		}
 	}
 }
