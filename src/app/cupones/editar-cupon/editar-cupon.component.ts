@@ -56,8 +56,8 @@ export class EditarCuponComponent implements OnInit {
 					else 
 						this.formCoupon.planId = null;
 
-					for(let i=0; i<data.functionalities.length; i++) {
-						this.formCoupon.functionalityIds.push(data.functionalities[i].id);
+					for(let i=0; i<data.couponFunctionalities.length; i++) {
+						this.formCoupon.functionalityIds.push(data.couponFunctionalities[i].functionality.id);
 					}
 					console.log("data: ", data);
 					console.log("form: ", this.formCoupon);
@@ -73,6 +73,13 @@ export class EditarCuponComponent implements OnInit {
 			this.allFunc = data;
 			console.log(this.allFunc);
 		});
+	}
+
+	planChecked(idplan: number): boolean {
+		if (this.formCoupon.planId == idplan) {
+			return true;
+		}
+		return false;
 	}
 
 	isChecked(func: Functionalities): boolean {
