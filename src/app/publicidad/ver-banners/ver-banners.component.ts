@@ -37,23 +37,22 @@ export class VerBannersComponent implements OnInit {
 	deleteBanner(id: number): void {
 		Swal.fire({
 			title: '¿Estás seguro?',
-			text: 'Esta acción no se puede deshacer.',
+			text: "¡No podrás revertir esto!",
 			icon: 'warning',
 			showCancelButton: true,
-			confirmButtonText: 'Sí, eliminar',
-			cancelButtonText: 'No, cancelar'
-		}).then((result) => {
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: 'Sí, eliminarlo'
+		  }).then((result) => {
 			if (result.isConfirmed) {
-				this.publicidadService.deleteBanner(id).subscribe(
-					() => {
-						this.banners = this.banners.filter((banner) => banner.id !== id);
-						Swal.fire('Eliminado', 'El banner ha sido eliminado con éxito.', 'success');
-					},
-					(error) => {
-						Swal.fire('Error', 'Ocurrió un error al eliminar el banner.', 'error');
-					}
-				);
+			  this.publicidadService.deleteBanner(id).subscribe(() => {
+				console.log('Eliminado', id);
+			  const index = this.banners.findIndex((course) => course.id === id);
+			  this.banners.splice(index, 1);
+	  
+			  Swal.fire('Eliminado', 'El curso ha sido eliminado', 'success');
+			  })  
 			}
-		});
+		  });
 	}
 }

@@ -34,6 +34,9 @@
 						<td>{{ interactions }}</td>
 						<td>
 							<i class="bx bxs-trash iconTrash" (click)="deleteBanner(banner.id)"></i>
+							<a class="links edit" [routerLink]="['/publicidad/edit/', banner.id]" [attr.id]="'edit-' + banner.id">
+								<i class="bx bxs-edit"></i>
+							</a>
 						</td>
 					</tr>
 				</tbody>

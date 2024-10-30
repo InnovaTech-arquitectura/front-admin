@@ -39,6 +39,7 @@ import { SoportePrincipalComponent } from './soporte/soporte-principal/soporte-p
 
 
 import { GraphsComponent } from './dashboard/graphs/graphs.component';
+import { EditarBannerComponent } from './publicidad/editar-banner/editar-banner.component';
 
 
 
@@ -54,6 +55,7 @@ const routes: Routes = [
   { path: 'emprendimientos', component: VerEmprendimeintosComponent, canActivate: [AuthGuard] },
   { path: 'emprendimientos/:id', component: StatsEmprendimientoComponent, canActivate: [AuthGuard] },
   { path: 'publicidad', component: VerBannersComponent, canActivate: [AuthGuard] },
+  { path: 'publicidad/edit/:id', component: EditarBannerComponent, canActivate: [AuthGuard] },
   { path: 'nuevo-banner', component: NuevoBannerComponent, canActivate: [AuthGuard] },
   { path: 'dashboard', component: GraphsComponent, canActivate: [AuthGuard] },
   { path: 'finanzas', component: FinanzasComponent, canActivate: [AuthGuard] },
