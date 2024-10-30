@@ -43,6 +43,17 @@
 			</div>
 
 			<div class="inputText">
+				<label for="shop" required>ID del emprendimiento</label>
+				<input
+					type="number"
+					id="shop"
+					name="shop"
+					[(ngModel)]="formCoupon.entrepreneurshipId"
+					placeholder="0"
+				/>
+			</div>
+
+			<div class="inputText">
 				<label for="plan" required>Plan</label>
 				<select id="plan" name="plan" [(ngModel)]="formCoupon.planId">
 					<option value="" selected>Seleccione un plan</option>
