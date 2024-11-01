@@ -30,10 +30,21 @@ export class CrearBazarComponent implements OnInit {
 			description: ['', Validators.required]
 		});
 	}
+
 	crear(): void {
-		this.eventForm = Object.assign({}, this.eventForm.value);
-		console.log(this.eventForm);
-		this.eventService.addEvent(this.eventForm);
-		this.router.navigate(['/bazares']);
+		const formData = { 
+			...this.eventForm.value, 
+			totalCost: 100,
+			entrepreneurshipeventregistry: [] 
+		};
+	
+		console.log(formData);
+	
+		this.eventService.addEvent(formData).subscribe(
+			(response) => {
+				console.log('Bazar agregado exitosamente', response);
+				this.router.navigate(['/bazares']);
+			}
+		);
 	}
 }

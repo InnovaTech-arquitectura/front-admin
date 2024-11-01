@@ -82,7 +82,7 @@
 
 						<div>
 							<label><strong>Lugar:</strong></label>
-							<input type="text" id="lugar" name="lugar" formControlName="place" />
+							<input type="number" id="lugar" name="lugar" formControlName="place" />
 							<div *ngIf="eventForm.get('place').invalid && eventForm.get('place').touched">
 								<small class="error">El lugar es obligatorio</small>
 							</div>
@@ -114,7 +114,7 @@
 						<i class="bx bx-left-arrow-alt"></i>
 						Cancelar
 					</a>
-					<button type="submit" class="btn-save" [disabled]="eventForm.invalid">
+					<button type="submit" class="btn-save" [disabled]="eventForm.invalid" id="saveBazar">
 						<i class="bx bxs-save"></i>
 						Aceptar
 					</button>
