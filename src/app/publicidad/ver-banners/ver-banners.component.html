@@ -33,7 +33,9 @@
 						<td>{{ banner.title }}</td>
 						<td>{{ interactions }}</td>
 						<td>
-							<i class="bx bxs-trash iconTrash" (click)="deleteBanner(banner.id)"></i>
+							<a class="links delete" (click)="deleteBanner(banner.id)" [attr.id]="'delete-' + banner.id">
+								<i class="bx bxs-trash iconTrash"></i>
+							</a>
 							<a class="links edit" [routerLink]="['/publicidad/edit/', banner.id]" [attr.id]="'edit-' + banner.id">
 								<i class="bx bxs-edit"></i>
 							</a>
@@ -44,7 +46,7 @@
 		</div>
 
 		<div class="addBtn-container">
-			<a [routerLink]="'/nuevo-banner'">
+			<a [routerLink]="'/nuevo-banner'" id="addBanner">
 				<i class="bx bx-plus-circle"></i>
 				Agregar banner
 			</a>
