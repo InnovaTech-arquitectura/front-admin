@@ -42,6 +42,7 @@ import { SoportePrincipalComponent } from './soporte/soporte-principal/soporte-p
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { EditarBannerComponent } from './publicidad/editar-banner/editar-banner.component';
 
 
 @NgModule({
@@ -81,7 +82,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     VerificacionComponent,
     CrearComponent,
     ResponderPreguntaComponent,
-    SoportePrincipalComponent
+    SoportePrincipalComponent,
+    EditarBannerComponent
   ],
   imports: [
     BrowserModule,
