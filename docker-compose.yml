@@ -8,6 +8,7 @@ services:
         ENV: ${ENVIRONMENT}  # Usamos la variable de entorno ENVIRONMENT
     ports:
       - "80:80"  # Nginx escuchando en el puerto 80
+      - "8080:8080" #para lo del exporter
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
     container_name: front-admin-container
