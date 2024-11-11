@@ -4,6 +4,7 @@ import { Functionalities } from 'src/app/model/functionalities';
 import { NewCoupon } from 'src/app/model/newCoupon';
 import { Planes } from 'src/app/model/planes';
 import { CuponesService } from 'src/app/service/cupones.service';
+import { PerfilesService } from 'src/app/service/perfiles.service';
 import { PlanesService } from 'src/app/service/planes.service';
 
 @Component({
@@ -15,19 +16,21 @@ export class CrearCuponComponent implements OnInit {
 	constructor(
 		private couponService: CuponesService,
 		private planesService: PlanesService,
+		private perfilesService: PerfilesService,
 		private router: Router
 	) {
 		this.formCoupon = {
 			description: '',
 			expirationDate: '',
 			expirationPeriod: 0,
-			entrepreneurshipId: 1,
+			entrepreneurshipId: 0,
 			functionalityIds: []
 		};
 	}
 
 	planList: Planes[];
 	allFunc: Functionalities[];
+	shopList: any[] = [];
 
 	formCoupon: NewCoupon;
 	sendCoupon: NewCoupon;
@@ -42,6 +45,15 @@ export class CrearCuponComponent implements OnInit {
 			this.allFunc = data;
 			console.log(this.allFunc);
 		});
+
+		this.perfilesService.findById(9).subscribe(
+			(response) => {
+			  console.log(response);
+			  for (let i=0; i<response.length; i++){
+				this.shopList.push(response[i]);
+			  }
+			}
+		  );
 	}
 
 	addCoupon() {
