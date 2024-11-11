@@ -47,14 +47,14 @@ export class EditarCapacitacionesComponent {
       const id = Number(params.get('id'));
       this.courseService.findCourse(id).subscribe((data) => {
         this.formCourse = data;
-        console.log(this.formCourse);
+        //console.log(this.formCourse);
       });
     });
   }
 
   guardar() {
     this.editCourse = Object.assign({}, this.formCourse);
-    console.log(this.editCourse);
+    //console.log(this.editCourse);
 
     this.courseService.updateCourse(this.editCourse).subscribe(
       (response) => {
@@ -68,7 +68,7 @@ export class EditarCapacitacionesComponent {
         });
       },
       (error) => {
-        console.error('Error al actualizar capacitación', error);
+        //console.error('Error al actualizar capacitación', error);
       }
     );
   }

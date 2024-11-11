@@ -32,7 +32,7 @@ export class VerInfoCapacitacionesComponent {
 
       this.courseService.findCourse(id).subscribe((data) => {
 				this.formCourse = data;
-				console.log(this.formCourse);
+				//console.log(this.formCourse);
       });
     });
   

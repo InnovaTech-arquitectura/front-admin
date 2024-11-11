@@ -43,7 +43,7 @@ export class CrearCapacitacionesComponent {
 
   crear() {
     this.sendCourse = Object.assign({}, this.formCourse);
-    console.log(this.sendCourse);
+    //console.log(this.sendCourse);
 
     this.courseService.addCourse(this.sendCourse).subscribe(
       (response) => {
@@ -59,7 +59,7 @@ export class CrearCapacitacionesComponent {
       },
       (error) => {
         // El error ya se maneja en el servicio, no redirigir en caso de error
-        console.error('Error al crear capacitación', error);
+        //console.error('Error al crear capacitación', error);
       }
     );
   }

@@ -29,7 +29,7 @@ export class EditarBannerComponent implements OnInit {
           this.imagePreview = 'data:image/png;base64,' + this.banner.picture; // Muestra la imagen actual
         },
         error => {
-          console.error('Error al cargar el banner:', error);
+          //console.error('Error al cargar el banner:', error);
           alert('No se pudo cargar el banner.'); // Manejo de error
         }
       );
@@ -59,11 +59,11 @@ export class EditarBannerComponent implements OnInit {
 
     this.publicidadService.updateBanner(this.banner.id, formData).subscribe(
       response => {
-        console.log('Banner actualizado exitosamente:', response);
+        //console.log('Banner actualizado exitosamente:', response);
         this.router.navigate(['/publicidad']); // Redirige al componente de visualización
       },
       error => {
-        console.error('Error al actualizar el banner:', error);
+        //console.error('Error al actualizar el banner:', error);
         alert('Error al actualizar el banner.');
       }
     );

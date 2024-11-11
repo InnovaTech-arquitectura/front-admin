@@ -33,7 +33,7 @@ export class DetallesBazarComponent implements OnInit {
 				this.paginarEntrepreneurshipEvents();
 			},
 			(error) => {
-				console.error('Error al cargar el evento:', error);
+				//console.error('Error al cargar el evento:', error);
 			}
 		);
 	}
@@ -52,7 +52,7 @@ export class DetallesBazarComponent implements OnInit {
 
 	getEntrepreneurshipDetails(entrepreneurshipId: number): void {
 		this.eventService.getEntrepreneurshipDetails(entrepreneurshipId).subscribe((data: any) => {
-			console.log('Detalles del emprendimiento:', data);
+			//console.log('Detalles del emprendimiento:', data);
 		});
 	}
 }

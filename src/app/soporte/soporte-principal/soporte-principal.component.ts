@@ -18,11 +18,11 @@ export class SoportePrincipalComponent implements OnInit {
   ngOnInit(): void {
     this.pqrsService.findAll().subscribe(
       (response) => {
-        console.log(response);
+        //console.log(response);
         this.preguntas = response;
       },
       (error) => {
-        console.log(error);
+        //console.log(error);
       }
     );
   }
@@ -43,7 +43,7 @@ export class SoportePrincipalComponent implements OnInit {
       if (result.isConfirmed) {
         this.pqrsService.delete(id).subscribe(
           (response) => {
-            console.log("Index: ", id, response);
+            //console.log("Index: ", id, response);
             this.preguntas.splice(id, 1);
 
             Swal.fire({

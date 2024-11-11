@@ -15,7 +15,7 @@ export class PublicidadService {
 		const token = localStorage.getItem('token');
 		const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-		console.log(localStorage.getItem('token'));
+		//console.log(localStorage.getItem('token'));
 
 		return this.http.post<any>(`${this.apiURL}/new`, formData, { headers });
 	}

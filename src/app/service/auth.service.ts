@@ -22,7 +22,7 @@ export class AuthService {
 		// Cambia el responseType a 'text'
 		return this.http.post(this.apiUrl, body, { headers, responseType: 'text' }).pipe(
 			catchError((error) => {
-				console.error('Error en la solicitud:', error);
+				//console.error('Error en la solicitud:', error);
 				return throwError(error);
 			})
 		);

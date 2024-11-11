@@ -38,7 +38,7 @@ export class EditarBazarComponent implements OnInit {
 
 			this.eventService.findById(id).subscribe((data) => {
 				this.formEvent = data;
-				console.log('Evento a editar:', this.formEvent);
+				//console.log('Evento a editar:', this.formEvent);
 			});
 		});
 	}
@@ -60,11 +60,11 @@ export class EditarBazarComponent implements OnInit {
 		};
 		this.eventService.updateEvent(eventToUpdate).subscribe(
 			(response) => {
-				console.log('Evento actualizado con éxito:', response);
+				//console.log('Evento actualizado con éxito:', response);
 				this.router.navigate(['/bazares']);
 			},
 			(error) => {
-				console.error('Error al actualizar el evento:', error);
+				//console.error('Error al actualizar el evento:', error);
 			}
 		);
 	}
