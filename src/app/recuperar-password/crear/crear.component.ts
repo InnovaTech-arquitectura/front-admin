@@ -19,7 +19,7 @@ export class CrearComponent {
     const passwordDTO: PasswordChangeDTO = { newPassword: this.newPassword, confirmNewPassword: this.confirmNewPassword };
     this.recuperarPasswordService.setNewPassword(passwordDTO).subscribe(
       (response) => {
-        console.log(response); 
+        //console.log(response); 
         this.router.navigate(['/login']);
         Swal.fire({
           icon: 'success',
@@ -28,7 +28,7 @@ export class CrearComponent {
         });
       },
       (error) => {
-        console.error('Error al establecer la nueva contraseña', error);
+        //console.error('Error al establecer la nueva contraseña', error);
       }
     );
   }

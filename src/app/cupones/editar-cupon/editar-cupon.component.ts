@@ -59,19 +59,19 @@ export class EditarCuponComponent implements OnInit {
 					for(let i=0; i<data.couponFunctionalities.length; i++) {
 						this.formCoupon.functionalityIds.push(data.couponFunctionalities[i].functionality.id);
 					}
-					console.log("data: ", data);
-					console.log("form: ", this.formCoupon);
+					//console.log("data: ", data);
+					//console.log("form: ", this.formCoupon);
 			});
 		});
 
 		this.planesService.findAll().subscribe((planes) => {
 			this.planList = planes.content;
-			console.log(this.planList);
+			//console.log(this.planList);
 		});
 
 		this.planesService.findFuncionalities().subscribe((data) => {
 			this.allFunc = data;
-			console.log(this.allFunc);
+			//console.log(this.allFunc);
 		});
 	}
 
@@ -115,14 +115,14 @@ export class EditarCuponComponent implements OnInit {
 			}
 		  }
 
-		console.log("editado:", this.sendCoupon);
+		//console.log("editado:", this.sendCoupon);
 
 		this.couponService.updateCoupon(this.sendCoupon).subscribe(
 			() => {
 				this.router.navigate(['/cupones']);
 			},
 			(error) => {
-				console.error(error);
+				//console.error(error);
 			}
 		);
 	}

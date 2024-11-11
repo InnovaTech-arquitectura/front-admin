@@ -63,7 +63,7 @@ export class EventsService {
 	getEntrepreneurshipDetails(eventId: number): Observable<any> {
 		const token = localStorage.getItem('token');
 		const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-		console.log(localStorage.getItem('token'));
+		//console.log(localStorage.getItem('token'));
 		return this.http.get<any>(`${this.apiURL}/${eventId}/entrepreneurships`, { headers });
 	}
 }

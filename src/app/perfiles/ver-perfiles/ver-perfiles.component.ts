@@ -19,7 +19,7 @@ export class VerPerfilesComponent implements OnInit {
     this.perfilesService.findProfiles().subscribe(
       (profiles) => {
         this.profilesList = profiles;
-        console.log(this.profilesList);
+        //console.log(this.profilesList);
         this.profilesList = this.profilesList.sort((a, b) => a.id - b.id);
       }
     );

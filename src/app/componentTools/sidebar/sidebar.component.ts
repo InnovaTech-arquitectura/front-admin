@@ -18,7 +18,7 @@ export class SidebarComponent implements OnInit {
     this.authService.authRole().subscribe(
       (response) => {
         this.role = response;
-        console.log(response);
+        //console.log(response);
       }
     );
   }

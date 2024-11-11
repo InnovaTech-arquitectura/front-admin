@@ -39,7 +39,7 @@ export class ResponderPreguntaComponent implements OnInit {
   update(): void {
     this.pqrsService.update(this.index).subscribe(
       (response) => {
-        console.log("Index: ", this.index, response);
+        //console.log("Index: ", this.index, response);
         Swal.fire({
           title: 'Plan editado',
           text: response,
@@ -60,7 +60,7 @@ export class ResponderPreguntaComponent implements OnInit {
           confirmButtonText: 'Aceptar',
           confirmButtonColor: '#19647e'
         });
-        console.error(error);
+        //console.error(error);
       }
     );
   }

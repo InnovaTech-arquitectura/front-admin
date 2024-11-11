@@ -42,7 +42,7 @@ export class PerfilNuevoEmpleadoComponent implements OnInit {
     this.perfilesService.findProfiles().subscribe(
       (profiles) => {
         this.allProfiles = profiles;
-        console.log(this.allProfiles);
+        //console.log(this.allProfiles);
         this.allProfiles = this.allProfiles.sort((a, b) => a.id - b.id);
       }
     );
@@ -53,12 +53,12 @@ export class PerfilNuevoEmpleadoComponent implements OnInit {
     const check = document.getElementById('perfil');
     this.formEmployee.role = this.allProfiles[check['selectedIndex']].name;
 
-    console.log(this.formEmployee);
+    //console.log(this.formEmployee);
 
     this.perfilesService.addProfile(this.formEmployee).subscribe(
       response => {
         // Si la petición es exitosa, redirigimos sin mostrar nada extra
-        console.log('Perfil creado exitosamente', response);
+        //console.log('Perfil creado exitosamente', response);
         this.router.navigate(['/perfiles']);
       },
       error => {
@@ -70,7 +70,7 @@ export class PerfilNuevoEmpleadoComponent implements OnInit {
           confirmButtonText: 'Aceptar',
 			    confirmButtonColor: '#e15554'
         });
-        console.error(error);
+        //console.error(error);
       }
     );
   }

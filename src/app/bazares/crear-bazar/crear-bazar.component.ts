@@ -38,11 +38,11 @@ export class CrearBazarComponent implements OnInit {
 			entrepreneurshipeventregistry: [] 
 		};
 	
-		console.log(formData);
+		//console.log(formData);
 	
 		this.eventService.addEvent(formData).subscribe(
 			(response) => {
-				console.log('Bazar agregado exitosamente', response);
+				//console.log('Bazar agregado exitosamente', response);
 				this.router.navigate(['/bazares']);
 			}
 		);

@@ -19,7 +19,7 @@ export class RecuperarComponent {
     const emailDTO: PasswordRecoveryEmailDTO = { email: this.email };
     this.recuperarPasswordService.requestPasswordRecovery(emailDTO).subscribe(
       (response) => {
-        console.log(response); // Manejo de la respuesta
+        //console.log(response); // Manejo de la respuesta
         this.router.navigate(['/recuperar-password/verificacion']);
        
         Swal.fire({
@@ -30,7 +30,7 @@ export class RecuperarComponent {
     
       },
       (error) => {
-        console.error('Error al enviar la solicitud de recuperación de contraseña', error);
+        //console.error('Error al enviar la solicitud de recuperación de contraseña', error);
       }
     );
   }

@@ -49,7 +49,7 @@ export class FinanzasComponent implements OnInit {
         this.totalIncomeValue = this.sumValues(data.data); // Sumar los ingresos totales
       },
       error => {
-        console.error('Error al obtener ingresos:', error);
+        //console.error('Error al obtener ingresos:', error);
         this.showError();
       }
     );
@@ -63,7 +63,7 @@ export class FinanzasComponent implements OnInit {
         this.totalExpensesValue = this.sumValues(data.data); // Sumar los gastos totales
       },
       error => {
-        console.error('Error al obtener egresos:', error);
+        //console.error('Error al obtener egresos:', error);
         this.showError();
       }
     );
@@ -77,7 +77,7 @@ export class FinanzasComponent implements OnInit {
         };
       },
       error => {
-        console.error('Error al obtener ingresos por plan:', error);
+        //console.error('Error al obtener ingresos por plan:', error);
         this.showError();
       }
     );
@@ -91,7 +91,7 @@ export class FinanzasComponent implements OnInit {
         };
       },
       error => {
-        console.error('Error al obtener usuarios por plan:', error);
+        //console.error('Error al obtener usuarios por plan:', error);
         this.showError();
       }
     ).add(() => this.loading = false); // Desactivar el estado de carga una vez que se completa

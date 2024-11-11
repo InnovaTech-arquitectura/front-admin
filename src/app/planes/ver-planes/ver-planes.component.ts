@@ -20,7 +20,7 @@ export class VerPlanesComponent implements OnInit {
     this.planesService.findAll().subscribe(
       (planes) => {
         this.planList = planes.content;
-        console.log(this.planList);
+        //console.log(this.planList);
       }
     );
   }
@@ -43,7 +43,7 @@ export class VerPlanesComponent implements OnInit {
         this.planesService.deletePlan(id).subscribe(
           response => {
             // Eliminación exitosa
-            console.log('Plan eliminado', response);
+            //console.log('Plan eliminado', response);
             
             // Eliminamos el plan de la lista local (en el front)
             const index = this.planList.findIndex((plan) => plan.id === id);
@@ -69,7 +69,7 @@ export class VerPlanesComponent implements OnInit {
               confirmButtonText: 'Aceptar',
               confirmButtonColor: '#19647e'
             });
-            console.error(error);
+            //console.error(error);
           }
         );
       }

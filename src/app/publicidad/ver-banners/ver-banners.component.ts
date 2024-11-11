@@ -22,7 +22,7 @@ export class VerBannersComponent implements OnInit {
 		this.publicidadService.listBanners().subscribe(
 			(data) => {
 				this.banners = data;
-				console.log(this.banners);
+				//console.log(this.banners);
 			},
 			(error) => {
 				Swal.fire('Error', 'Error al cargar los banners.', 'error');
@@ -46,7 +46,7 @@ export class VerBannersComponent implements OnInit {
 		  }).then((result) => {
 			if (result.isConfirmed) {
 			  this.publicidadService.deleteBanner(id).subscribe(() => {
-				console.log('Eliminado', id);
+				//console.log('Eliminado', id);
 			  const index = this.banners.findIndex((course) => course.id === id);
 			  this.banners.splice(index, 1);
 	  
