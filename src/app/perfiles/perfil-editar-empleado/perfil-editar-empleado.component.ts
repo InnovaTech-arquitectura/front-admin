@@ -76,7 +76,7 @@ export class PerfilEditarEmpleadoComponent {
     this.perfilesService.findProfiles().subscribe(
       (profiles) => {
         this.allProfiles = profiles;
-        console.log(this.allProfiles);
+        //console.log(this.allProfiles);
         this.allProfiles = this.allProfiles.sort((a, b) => a.id - b.id);
       }
     );
@@ -90,7 +90,7 @@ export class PerfilEditarEmpleadoComponent {
     this.perfilesService.updateProfile(this.sendUser).subscribe(
       response => {
         // Si la petición es exitosa, redirigimos sin mostrar nada extra
-        console.log('Perfil actualizado exitosamente', response);
+        //console.log('Perfil actualizado exitosamente', response);
         this.router.navigate(['/perfiles']);
       },
       error => {
@@ -102,7 +102,7 @@ export class PerfilEditarEmpleadoComponent {
           confirmButtonText: 'Aceptar',
 			    confirmButtonColor: '#e15554'
         });
-        console.error(error);
+        //console.error(error);
       }
     );
   }

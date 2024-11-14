@@ -25,17 +25,11 @@ export class InicioSesionComponent {
 		this.authService.login(this.email, this.password).subscribe(
 			(response) => {
 				localStorage.setItem('token', response);
-
-				this.authService.authRole().subscribe(
-					(response) => {
-					  this.redirectUserBasedOnRole(response);
-					}
-				  );
-
+				this.router.navigate(['/dashboard']);
 				this.isLoading = false; // Ocultar el spinner
 			},
 			(error) => {
-				console.error('Error al iniciar sesión:', error);
+				//console.error('Error al iniciar sesión:', error);
 				this.isLoading = false; // Ocultar el spinner
 				Swal.fire({
 					icon: 'error',

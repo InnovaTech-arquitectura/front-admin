@@ -20,7 +20,7 @@ export class VerCuponesComponent {
 		this.cuponesService.findAll().subscribe(
 			(cupones) => {
 				this.cuponsList = cupones.content;
-				console.log(this.cuponsList);
+				//console.log(this.cuponsList);
 			}
 		);
 	}
@@ -43,7 +43,7 @@ export class VerCuponesComponent {
 			  this.cuponesService.deleteCoupon(id).subscribe(
 				response => {
 				  // Eliminación exitosa
-				  console.log('Plan eliminado', response);
+				  //console.log('Plan eliminado', response);
 				  
 				  // Eliminamos el plan de la lista local (en el front)
 				  const index = this.cuponsList.findIndex((plan) => plan.id === id);
@@ -69,7 +69,7 @@ export class VerCuponesComponent {
 					confirmButtonText: 'Aceptar',
 					confirmButtonColor: '#19647e'
 				  });
-				  console.error(error);
+				  //console.error(error);
 				}
 			  );
 			}

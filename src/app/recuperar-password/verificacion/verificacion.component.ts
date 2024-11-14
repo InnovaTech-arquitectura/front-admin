@@ -18,12 +18,12 @@ export class VerificacionComponent {
     const codeDTO: PasswordRecoveryCodeDTO = { code: this.code };
     this.recuperarPasswordService.verifyRecoveryCode(codeDTO).subscribe(
       (response) => {
-        console.log(response);
+        //console.log(response);
         this.router.navigate(['/recuperar-password/crear']);
         
       },
       (error) => {
-        console.error('Error al verificar el código de recuperación', error);
+        //console.error('Error al verificar el código de recuperación', error);
       }
     );
   }

@@ -4,8 +4,10 @@
 	<app-sidebar class="sidebar"></app-sidebar>
 
 	<section class="contenido">
+
 		<div class="titulo">
 			<h1>Estadisticas: Emprendiemiento XYZ</h1>
+
 		</div>
 
 		<div class="middle">
@@ -19,8 +21,8 @@
 							<div class="icono petIcon">
 								<i class='bx bx-show-alt' ></i>
 							</div>
-							<div class="dato">
-								<i let ventasVirtuales> 133</i>
+							<div class="dato" >
+								<i let ventasVirtual> {{datosSueltos?.ventasVirtual}} </i>
 							</div>
 						</div>
 
@@ -35,7 +37,7 @@
 								<i class="bx bx-money-withdraw"></i>
 							</div>
 							<div class="dato">
-								<i let totalVentas> 444</i>
+								<i let totalVentas> {{datosSueltos?.totalVentas}}</i>
 							</div>
 						</div>
 						<div class="card-body">
@@ -49,7 +51,7 @@
                                 <i class='bx bxs-truck' ></i>
                             </div>
                             <div class="dato">
-                                <i let enviosCompletados> 123</i>
+                                <i let enviosCompletados> {{datosSueltos?.enviosCompletados}}</i>
                             </div>
                         </div>
         
@@ -64,7 +66,7 @@
                                 <i class='bx bx-group'></i>
                             </div>
                             <div class="dato">
-                                <i let clientesTotales> 5516</i>
+                                <i let clientesTotales> {{datosSueltos?.clientes}}</i>
                             </div>
                         </div>
         
@@ -84,14 +86,14 @@
             <div class = "grafica_Izq">
                 <h1> Ventas por año </h1>
                 <div class = "chart1">
-                    <canvas id="chart">{{ chart }}</canvas>
+                    <app-line-chart [chartData]="chartDataVentasAnio"></app-line-chart>
                 </div>
             </div>
 
             <div class = "grafica_Der">
                 <h1> Ventas por producto </h1>
                 <div class = "chart">
-                    <canvas id="chart2">{{ chart2 }}></canvas>
+                    <app-pie-chart [chartData]="chartVentasPrducto"></app-pie-chart>
                 </div>
             </div>      
             

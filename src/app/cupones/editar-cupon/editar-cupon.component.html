@@ -43,10 +43,21 @@
 			</div>
 
 			<div class="inputText">
+				<label for="shop" required>ID del emprendimiento</label>
+				<input
+					type="number"
+					id="shop"
+					name="shop"
+					[(ngModel)]="formCoupon.entrepreneurshipId"
+					placeholder="0"
+				/>
+			</div>
+
+			<div class="inputText">
 				<label for="plan" required>Plan</label>
 				<select id="plan" name="plan" [(ngModel)]="formCoupon.plan">
-					<option value="" selected>Seleccione un plan</option>
-					<option *ngFor="let plan of planList" value="'plan.id'"> {{ plan.name }} </option>
+					<option value="">Seleccione un plan</option>
+					<option *ngFor="let plan of planList" value="plan.id" [selected]="planChecked(plan.id)"> {{ plan.name }} </option>
 				</select>
 			</div>
 

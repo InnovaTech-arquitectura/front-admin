@@ -42,13 +42,13 @@ export class EditarPlanComponent {
 
 			this.planesService.findById(id).subscribe((data) => {
 				this.formPlan = data;
-				console.log(this.formPlan);
+				//console.log(this.formPlan);
 			});
 		});
 
 		this.planesService.findFuncionalities().subscribe((data) => {
 			this.allFunc = data;
-			console.log(this.allFunc);
+			//console.log(this.allFunc);
 		});
 	}
 
@@ -102,12 +102,12 @@ export class EditarPlanComponent {
 			}
 
 			this.editPlan = Object.assign({}, this.formPlan);
-			console.log(this.editPlan);
+			//console.log(this.editPlan);
 
 			this.planesService.updatePlan(this.editPlan).subscribe(
 				(response) => {
 					// Si la petición es exitosa, no hacemos nada extra
-					console.log('Actualización exitosa', response);
+					//console.log('Actualización exitosa', response);
 					this.router.navigate(['/planes']); // Navegamos a la ruta /planes
 				},
 				(error) => {
@@ -119,7 +119,7 @@ export class EditarPlanComponent {
 						confirmButtonText: 'Aceptar',
 						confirmButtonColor: '#e15554'
 					});
-					console.error(error);
+					//console.error(error);
 				}
 			);
 		}

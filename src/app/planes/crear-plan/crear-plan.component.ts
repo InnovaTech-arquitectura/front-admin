@@ -38,7 +38,7 @@ export class CrearPlanComponent implements OnInit {
 	ngOnInit(): void {
 		this.planesService.findFuncionalities().subscribe((data) => {
 			this.allFunc = data;
-			console.log(this.allFunc);
+			//console.log(this.allFunc);
 		});
 	}
 
@@ -83,12 +83,12 @@ export class CrearPlanComponent implements OnInit {
 			}
 
 			this.sendPlan = Object.assign({}, this.formPlan);
-			console.log(this.sendPlan);
+			//console.log(this.sendPlan);
 
 			this.planesService.addPlan(this.sendPlan).subscribe(
 				(response) => {
 					// Si la petición es exitosa, no hacemos nada extra
-					console.log('Plan agregado exitosamente', response);
+					//console.log('Plan agregado exitosamente', response);
 					this.router.navigate(['/planes']); // Navegamos a la ruta /planes
 				},
 				(error) => {
@@ -100,7 +100,7 @@ export class CrearPlanComponent implements OnInit {
 						confirmButtonText: 'Aceptar',
 						confirmButtonColor: '#e15554'
 					});
-					console.error(error);
+					//console.error(error);
 				}
 			);
 		}

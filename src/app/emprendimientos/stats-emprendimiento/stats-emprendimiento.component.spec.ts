@@ -1,24 +1,40 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { StatsEmprendimientoComponent } from './stats-emprendimiento.component';
-import { RouterTestingModule } from '@angular/router/testing';
+import { Component, OnInit } from '@angular/core';
+import { DashboardService } from '../../service/dashboard.service';
+import Swal from 'sweetalert2';
 
-describe('StatsEmprendimientoComponent', () => {
-  let component: StatsEmprendimientoComponent;
-  let fixture: ComponentFixture<StatsEmprendimientoComponent>;
+@Component({
+  selector: 'app-stats-emprendimiento',
+  templateUrl: './stats-emprendimiento.component.html',
+  styleUrls: ['./stats-emprendimiento.component.css']
+})
+export class StatsEmprendimientoComponent implements OnInit {
+  
+  chartDataVentasAnio: any;
+  chartVentasPrducto: any;
+  datosSueltos: any = {};  // Inicializado como un objeto vacío para evitar errores al acceder
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [StatsEmprendimientoComponent],
-      imports: [RouterTestingModule],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  constructor(private dashboardService: DashboardService) { }
+
+  ngOnInit(): void { 
+    this.loadFinances(1, 2021);
+  }
+
+  loadFinances(idEntrepreneurship: number, year: number): void {
+    this.dashboardService.getFinances(idEntrepreneurship, year).subscribe(response => {
+
+      // Asignar los datos de la respuesta a las variables correspondientes
+      this.chartDataVentasAnio = response.chartData1;
+      this.chartVentasPrducto = response.chartData2;
+      this.datosSueltos = response.summary;  // Asignar los datos sueltos
+
+    }, error => {
+      // Manejar el error en caso de que la API falle
+      //console.error('Error al cargar los datos del dashboard:', error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'No se pudieron cargar los datos de las finanzas.'
+      });
     });
-    fixture = TestBed.createComponent(StatsEmprendimientoComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+  }
+}

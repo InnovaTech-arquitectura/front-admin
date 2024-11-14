@@ -43,9 +43,17 @@
 			</div>
 
 			<div class="inputText">
+				<label for="shop" required>Emprendimiento</label>
+				<select id="shop" name="shop" [(ngModel)]="formCoupon.entrepreneurshipId">
+					<option value="" selected disabled>Seleccione un emprendimiento</option>
+					<option *ngFor="let shop of shopList" [value]="shop.user.id"> {{ shop.user.name }} </option>
+				</select>
+			</div>
+
+			<div class="inputText">
 				<label for="plan" required>Plan</label>
 				<select id="plan" name="plan" [(ngModel)]="formCoupon.planId">
-					<option value="" selected>Seleccione un plan</option>
+					<option value="" selected disabled>Seleccione un plan</option>
 					<option *ngFor="let plan of planList" [value]="plan.id"> {{ plan.name }} </option>
 				</select>
 			</div>

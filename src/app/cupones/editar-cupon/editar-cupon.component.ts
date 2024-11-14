@@ -56,23 +56,30 @@ export class EditarCuponComponent implements OnInit {
 					else 
 						this.formCoupon.planId = null;
 
-					for(let i=0; i<data.functionalities.length; i++) {
-						this.formCoupon.functionalityIds.push(data.functionalities[i].id);
+					for(let i=0; i<data.couponFunctionalities.length; i++) {
+						this.formCoupon.functionalityIds.push(data.couponFunctionalities[i].functionality.id);
 					}
-					console.log("data: ", data);
-					console.log("form: ", this.formCoupon);
+					//console.log("data: ", data);
+					//console.log("form: ", this.formCoupon);
 			});
 		});
 
 		this.planesService.findAll().subscribe((planes) => {
 			this.planList = planes.content;
-			console.log(this.planList);
+			//console.log(this.planList);
 		});
 
 		this.planesService.findFuncionalities().subscribe((data) => {
 			this.allFunc = data;
-			console.log(this.allFunc);
+			//console.log(this.allFunc);
 		});
+	}
+
+	planChecked(idplan: number): boolean {
+		if (this.formCoupon.planId == idplan) {
+			return true;
+		}
+		return false;
 	}
 
 	isChecked(func: Functionalities): boolean {
@@ -108,14 +115,14 @@ export class EditarCuponComponent implements OnInit {
 			}
 		  }
 
-		console.log("editado:", this.sendCoupon);
+		//console.log("editado:", this.sendCoupon);
 
 		this.couponService.updateCoupon(this.sendCoupon).subscribe(
 			() => {
 				this.router.navigate(['/cupones']);
 			},
 			(error) => {
-				console.error(error);
+				//console.error(error);
 			}
 		);
 	}

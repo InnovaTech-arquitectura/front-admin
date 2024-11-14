@@ -59,13 +59,6 @@
 								<small class="error">El costo local es obligatorio</small>
 							</div>
 						</div>
-						<div>
-							<label><strong>Quota:</strong></label>
-							<input type="number" id="quota" name="quota" formControlName="quota" />
-							<div *ngIf="eventForm.get('quota').invalid && eventForm.get('quota').touched">
-								<small class="error">La quota es obligatoria</small>
-							</div>
-						</div>
 					</div>
 
 					<div class="form-row">
@@ -114,7 +107,7 @@
 						<i class="bx bx-left-arrow-alt"></i>
 						Cancelar
 					</a>
-					<button type="submit" class="btn-save" [disabled]="eventForm.invalid">
+					<button type="submit" class="btn-save" [disabled]="eventForm.invalid" id="saveBazar">
 						<i class="bx bxs-save"></i>
 						Aceptar
 					</button>

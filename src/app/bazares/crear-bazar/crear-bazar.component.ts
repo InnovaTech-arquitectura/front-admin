@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EventsService } from 'src/app/service/events.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
 	selector: 'app-crear-bazar',
@@ -24,16 +25,63 @@ export class CrearBazarComponent implements OnInit {
 			date: ['', Validators.required],
 			date2: ['', Validators.required],
 			costoLocal: ['', Validators.required],
-			quota: ['', Validators.required],
 			modality: ['', Validators.required],
 			place: ['', Validators.required],
 			description: ['', Validators.required]
 		});
 	}
+
+	/*crear(): void {
+		const formData = {
+			...this.eventForm.value,
+			totalCost: 100,
+			entrepreneurshipeventregistry: []
+		};
+
+		//console.log(formData);
+
+		this.eventService.addEvent(formData).subscribe(
+			(response) => {
+				Swal.fire('Creado', 'El bazar ha sido creado', 'success');
+				this.router.navigate(['/bazares']);
+			},
+			(error) => {
+				Swal.fire('Error', 'No se pudo crear el bazar', 'error');
+				console.error(error);
+			}
+		);
+	}*/
 	crear(): void {
-		this.eventForm = Object.assign({}, this.eventForm.value);
-		console.log(this.eventForm);
-		this.eventService.addEvent(this.eventForm);
-		this.router.navigate(['/bazares']);
+		const startDate = new Date(this.eventForm.get('date')?.value);
+		const endDate = new Date(this.eventForm.get('date2')?.value);
+		const today = new Date();
+		today.setHours(0, 0, 0, 0);
+
+		if (startDate < today) {
+			Swal.fire('Error', 'La fecha de inicio debe ser mayor a la fecha actual', 'error');
+			return;
+		}
+
+		if (endDate <= startDate) {
+			Swal.fire('Error', 'La fecha de fin debe ser posterior a la fecha de inicio', 'error');
+			return;
+		}
+
+		const formData = {
+			...this.eventForm.value,
+			totalCost: 100,
+			entrepreneurshipeventregistry: []
+		};
+
+		this.eventService.addEvent(formData).subscribe(
+			(response) => {
+				Swal.fire('Creado', 'El bazar ha sido creado', 'success');
+				this.router.navigate(['/bazares']);
+			},
+			(error) => {
+				Swal.fire('Error', 'No se pudo crear el bazar', 'error');
+				console.error(error);
+			}
+		);
 	}
 }

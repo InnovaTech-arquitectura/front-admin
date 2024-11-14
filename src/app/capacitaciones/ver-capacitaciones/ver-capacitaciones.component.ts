@@ -32,7 +32,7 @@ export class VerCapacitacionesComponent {
     }).then((result) => {
       if (result.isConfirmed) {
         this.courseService.deleteCourse(id).subscribe(() => {
-          console.log('Eliminado', id);
+          //console.log('Eliminado', id);
         const index = this.courseList.findIndex((course) => course.id === id);
         this.courseList.splice(index, 1);
 

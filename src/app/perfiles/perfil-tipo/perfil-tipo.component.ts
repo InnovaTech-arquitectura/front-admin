@@ -35,17 +35,17 @@ export class PerfilTipoComponent {
         (profiles) => {
           const selectedProfile = profiles.find(profile => profile.id === this.tipo);
           this.profile = selectedProfile;
-          console.log(this.profile);
+          //console.log(this.profile);
         }
       );
 
       this.perfilesService.findById(this.tipo).subscribe(
         (response) => {
-          console.log(response);
+          //console.log(response);
           for (let i=0; i<response.length; i++){
             this.users.push(response[i]);
           }
-          console.log(this.users);
+          //console.log(this.users);
         }
       );
     });
@@ -69,7 +69,7 @@ export class PerfilTipoComponent {
         this.perfilesService.deleteProfile(id).subscribe(
           response => {
             // Eliminación exitosa
-            console.log('Perfil eliminado', response);
+            //console.log('Perfil eliminado', response);
   
             // Eliminamos el perfil de la lista local (en el front)
             const index = this.users.findIndex((user) => user.id === id);
@@ -95,7 +95,7 @@ export class PerfilTipoComponent {
               confirmButtonText: 'Aceptar',
               confirmButtonColor: '#19647e'
             });
-            console.error(error);
+            //console.error(error);
           }
         );
       }
