@@ -13,7 +13,6 @@
 		</div>
 
 		<div class="course-item">
-
 			<table id="myTable" class="tablita">
 				<thead>
 					<tr>
@@ -24,10 +23,10 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr *ngFor="let course of courseList">
+					<tr *ngFor="let course of courseList; let i = index">
 						<td>{{ course.id }}</td>
 						<td>{{ course.title }}</td>
-						<td>{{ course.date | date: 'dd/MM/yyyy' }}</td>
+						<td>{{ formattedDates[i] }}</td> <!-- Usar la fecha formateada aquí -->
 						<td>
 							<div class="opciones">
 								<a class="links edit" [routerLink]="['/capacitaciones/edit/', course.id]" [attr.id]="'edit-' + course.id">
@@ -42,13 +41,11 @@
 							</div>
 						</td>
 					</tr>
-				
 				</tbody>
 			</table>
 		</div>
 
 		<div class="addBtn-container">
-			
 			<a [routerLink]="'/capacitaciones/add'" id="addCapacitation">
 				<i class='bx bx-user-plus'></i>
 				Agregar capacitación
