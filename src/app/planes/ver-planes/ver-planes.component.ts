@@ -54,7 +54,7 @@ export class VerPlanesComponent implements OnInit {
             // Mostramos el pop-up de éxito
             Swal.fire({
               title: 'Eliminado',
-              text: 'El plan ha sido eliminado correctamente.',
+              text: response,
               icon: 'success',
               confirmButtonText: 'Aceptar',
               confirmButtonColor: '#19647e'
@@ -64,7 +64,7 @@ export class VerPlanesComponent implements OnInit {
             // Si ocurre un error, mostramos el pop-up de error
             Swal.fire({
               title: 'Error',
-              text: 'Hubo un problema al eliminar el plan. Por favor, intenta nuevamente.',
+              text: error.error,
               icon: 'error',
               confirmButtonText: 'Aceptar',
               confirmButtonColor: '#19647e'
