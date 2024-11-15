@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Course } from 'src/app/model/course';
 import { CapacitacionesService } from 'src/app/service/capacitaciones.service';
 import Swal from 'sweetalert2';
@@ -8,15 +8,22 @@ import Swal from 'sweetalert2';
   templateUrl: './ver-capacitaciones.component.html',
   styleUrls: ['./ver-capacitaciones.component.css']
 })
-export class VerCapacitacionesComponent {
+export class VerCapacitacionesComponent implements OnInit {
 
   courseList: Course[] = [];
+  formattedDates: string[] = []; // Lista para almacenar las fechas formateadas de cada curso
 
   constructor(private courseService: CapacitacionesService) { }
 
   ngOnInit(): void {
-    this.courseService.findAll().subscribe(course => {
-      this.courseList = course;
+    this.courseService.findAll().subscribe(courses => {
+      this.courseList = courses;
+
+      // Formatear cada fecha de la lista de cursos
+      this.formattedDates = this.courseList.map(course => {
+        const fecha = new Date(course.date);
+        return fecha.toISOString().split('T')[0]; // Formato yyyy-MM-dd
+      });
     });
   }
 
@@ -32,12 +39,12 @@ export class VerCapacitacionesComponent {
     }).then((result) => {
       if (result.isConfirmed) {
         this.courseService.deleteCourse(id).subscribe(() => {
-          //console.log('Eliminado', id);
-        const index = this.courseList.findIndex((course) => course.id === id);
-        this.courseList.splice(index, 1);
+          const index = this.courseList.findIndex((course) => course.id === id);
+          this.courseList.splice(index, 1);
+          this.formattedDates.splice(index, 1); // Eliminar también la fecha formateada correspondiente
 
-        Swal.fire('Eliminado', 'El curso ha sido eliminado', 'success');
-        })  
+          Swal.fire('Eliminado', 'El curso ha sido eliminado', 'success');
+        });
       }
     });
   }

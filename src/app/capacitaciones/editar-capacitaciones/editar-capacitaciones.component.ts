@@ -46,15 +46,17 @@ export class EditarCapacitacionesComponent {
     this.route.paramMap.subscribe((params) => {
       const id = Number(params.get('id'));
       this.courseService.findCourse(id).subscribe((data) => {
-        this.formCourse = data;
-        //console.log(this.formCourse);
+        // Convertimos la fecha a formato yyyy-MM-dd para que se muestre correctamente en el input de fecha
+        const fecha = new Date(data.date);
+        const formattedDate = fecha.toISOString().split('T')[0];
+        this.formCourse = { ...data, date: formattedDate }; // Asignamos la fecha formateada
       });
     });
   }
 
   guardar() {
     this.editCourse = Object.assign({}, this.formCourse);
-    //console.log(this.editCourse);
+    console.log(this.editCourse);
 
     this.courseService.updateCourse(this.editCourse).subscribe(
       (response) => {
@@ -68,7 +70,7 @@ export class EditarCapacitacionesComponent {
         });
       },
       (error) => {
-        //console.error('Error al actualizar capacitación', error);
+        console.error('Error al actualizar capacitación', error);
       }
     );
   }
