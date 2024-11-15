@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PublicidadService } from 'src/app/service/publicidad.service';
-
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-editar-banner',
@@ -9,8 +9,8 @@ import { PublicidadService } from 'src/app/service/publicidad.service';
   styleUrls: ['./editar-banner.component.css']
 })
 export class EditarBannerComponent implements OnInit {
-  banner: any = {}; // Almacena los datos del banner
-  imagePreview: string | ArrayBuffer | null = null; // Almacena la vista previa de la imagen
+  banner: any = {}; 
+  imagePreview: string | ArrayBuffer | null = null; 
 
   constructor(
     private publicidadService: PublicidadService,
@@ -19,24 +19,29 @@ export class EditarBannerComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Obtiene el ID del banner desde la URL
+    
     const bannerId = this.route.snapshot.paramMap.get('id');
     if (bannerId) {
-      // Llama al servicio para obtener los datos del banner
+      
       this.publicidadService.getBannerById(bannerId).subscribe(
         (data: any) => {
           this.banner = data;
-          this.imagePreview = 'data:image/png;base64,' + this.banner.picture; // Muestra la imagen actual
+          this.imagePreview = 'data:image/png;base64,' + this.banner.picture; 
         },
         error => {
-          //console.error('Error al cargar el banner:', error);
-          alert('No se pudo cargar el banner.'); // Manejo de error
+       
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'No se pudo cargar el banner.',
+            confirmButtonText: 'Cerrar'
+          });
         }
       );
     }
   }
 
-  // Método para manejar el cambio de imagen
+  
   onFileSelected(event: any): void {
     const file = event.target.files[0];
     if (file) {
@@ -45,11 +50,11 @@ export class EditarBannerComponent implements OnInit {
         this.imagePreview = reader.result;
       };
       reader.readAsDataURL(file);
-      this.banner.picture = file; // Guarda el archivo en el objeto banner
+      this.banner.picture = file; 
     }
   }
 
-  // Método para enviar los cambios
+  
   onSubmit(): void {
     const formData = new FormData();
     formData.append('title', this.banner.title);
@@ -59,12 +64,25 @@ export class EditarBannerComponent implements OnInit {
 
     this.publicidadService.updateBanner(this.banner.id, formData).subscribe(
       response => {
-        //console.log('Banner actualizado exitosamente:', response);
-        this.router.navigate(['/publicidad']); // Redirige al componente de visualización
+        
+        Swal.fire({
+          icon: 'success',
+          title: 'Éxito',
+          text: 'El banner se actualizó correctamente.',
+          showConfirmButton: false,
+          timer: 1500
+        }).then(() => {
+          this.router.navigate(['/publicidad']); 
+        });
       },
       error => {
-        //console.error('Error al actualizar el banner:', error);
-        alert('Error al actualizar el banner.');
+        
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Error al actualizar el banner.',
+          confirmButtonText: 'Cerrar'
+        });
       }
     );
   }
