@@ -156,4 +156,18 @@
   .addBtn-container i {
 	font-size: 1.5em;
   }
+
+  .paginacion {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	width: 100%;
+}
+.paginacion mat-paginator {
+	border-radius: 8px;
+	background-color: var(--light-gray);
+	padding: 10px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+	margin-right: 10px;
+}
   

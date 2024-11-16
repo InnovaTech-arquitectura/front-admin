@@ -39,42 +39,16 @@ export class EditarBazarComponent implements OnInit {
 
 			this.eventService.findById(id).subscribe((data) => {
 				this.formEvent = data;
-				//console.log('Evento a editar:', this.formEvent);
 			});
 		});
 	}
-
-	/*editar() {
-		const eventToUpdate = {
-			id: this.formEvent.id,
-			name: this.formEvent.name,
-			date: this.formEvent.date,
-			date2: this.formEvent.date2,
-			totalCost: this.formEvent.totalCost,
-			earnings: this.formEvent.earnings,
-			costoLocal: this.formEvent.costoLocal,
-			place: this.formEvent.place.toString(),
-			modality: this.formEvent.modality,
-			quota: this.formEvent.quota,
-			description: this.formEvent.description,
-			entrepreneurshipeventregistry: []
-		};
-		this.eventService.updateEvent(eventToUpdate).subscribe(
-			(response) => {
-				//console.log('Evento actualizado con éxito:', response);
-				Swal.fire('Guardado', 'El bazar ha sido modificado', 'success');
-				this.router.navigate(['/bazares']);
-			},
-			(error) => {
-				//console.error('Error al actualizar el evento:', error);
-			}
-		);
-	}*/
 	editar(): void {
 		const startDate = new Date(this.formEvent.date);
 		const endDate = new Date(this.formEvent.date2);
 		const today = new Date();
 		today.setHours(0, 0, 0, 0);
+		startDate.setHours(0, 0, 0, 0);
+		endDate.setHours(0, 0, 0, 0);
 
 		if (startDate < today) {
 			Swal.fire('Error', 'La fecha de inicio debe ser mayor a la fecha actual', 'error');
@@ -85,20 +59,32 @@ export class EditarBazarComponent implements OnInit {
 			Swal.fire('Error', 'La fecha de fin debe ser posterior a la fecha de inicio', 'error');
 			return;
 		}
-
 		const eventToUpdate = {
-			...this.formEvent,
+			id: this.formEvent.id,
+			name: this.formEvent.name,
+			date: new Date(this.formEvent.date),
+			date2: new Date(this.formEvent.date2),
+			modality: this.formEvent.modality,
+			place: this.formEvent.place,
+			totalCost: this.formEvent.totalCost,
+			costoLocal: this.formEvent.costoLocal,
+			earnings: this.formEvent.earnings,
+			quota: this.formEvent.quota,
+			description: this.formEvent.description,
 			entrepreneurshipeventregistry: []
 		};
 
+		//console.log('Datos enviados al backend:', eventToUpdate);
+
 		this.eventService.updateEvent(eventToUpdate).subscribe(
 			(response) => {
-				Swal.fire('Guardado', 'El bazar ha sido modificado', 'success');
-				this.router.navigate(['/bazares']);
+				Swal.fire('Guardado', 'El bazar ha sido modificado', 'success').then(() => {
+					this.router.navigate(['/bazares']);
+				});
 			},
 			(error) => {
 				Swal.fire('Error', 'No se pudo actualizar el bazar', 'error');
-				console.error(error);
+				//console.error(error);
 			}
 		);
 	}

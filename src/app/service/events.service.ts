@@ -31,10 +31,15 @@ export class EventsService {
 		return this.http.post(this.apiURL + '/add', eventData, { headers, responseType: 'text' });
 	}
 
-	updateEvent(event: BazarEvent): Observable<any> {
+	/*updateEvent(event: BazarEvent): Observable<any> {
 		const token = localStorage.getItem('token');
 		const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
+		return this.http.put(this.apiURL + '/update', event, { headers, responseType: 'text' });
+	}*/
+	updateEvent(event: any): Observable<any> {
+		const token = localStorage.getItem('token');
+		const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 		return this.http.put(this.apiURL + '/update', event, { headers, responseType: 'text' });
 	}
 
