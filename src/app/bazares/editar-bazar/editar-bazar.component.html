@@ -29,11 +29,21 @@
 					<div class="form-row">
 						<div>
 							<label><strong>Fecha Inicio:</strong></label>
-							<input type="date" [(ngModel)]="formEvent.date" name="date" />
+							<input
+								type="date"
+								[(ngModel)]="formEvent.date"
+								[ngModel]="formEvent.date | date: 'yyyy-MM-dd'"
+								name="date"
+							/>
 						</div>
 						<div>
 							<label><strong>Fechas Fin:</strong></label>
-							<input type="date" [(ngModel)]="formEvent.date2" name="date" />
+							<input
+								type="date"
+								[(ngModel)]="formEvent.date2"
+								[ngModel]="formEvent.date2 | date: 'yyyy-MM-dd'"
+								name="date2"
+							/>
 						</div>
 					</div>
 
