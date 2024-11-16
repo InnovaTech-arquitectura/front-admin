@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Events } from 'src/app/model/events';
 import { EventsService } from 'src/app/service/events.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
 	selector: 'app-editar-bazar',
@@ -38,33 +39,52 @@ export class EditarBazarComponent implements OnInit {
 
 			this.eventService.findById(id).subscribe((data) => {
 				this.formEvent = data;
-				console.log('Evento a editar:', this.formEvent);
 			});
 		});
 	}
+	editar(): void {
+		const startDate = new Date(this.formEvent.date);
+		const endDate = new Date(this.formEvent.date2);
+		const today = new Date();
+		today.setHours(0, 0, 0, 0);
+		startDate.setHours(0, 0, 0, 0);
+		endDate.setHours(0, 0, 0, 0);
 
-	editar() {
+		if (startDate < today) {
+			Swal.fire('Error', 'La fecha de inicio debe ser mayor a la fecha actual', 'error');
+			return;
+		}
+
+		if (endDate <= startDate) {
+			Swal.fire('Error', 'La fecha de fin debe ser posterior a la fecha de inicio', 'error');
+			return;
+		}
 		const eventToUpdate = {
 			id: this.formEvent.id,
 			name: this.formEvent.name,
-			date: this.formEvent.date,
-			date2: this.formEvent.date2,
-			totalCost: this.formEvent.totalCost,
-			earnings: this.formEvent.earnings,
-			costoLocal: this.formEvent.costoLocal,
-			place: this.formEvent.place.toString(),
+			date: new Date(this.formEvent.date),
+			date2: new Date(this.formEvent.date2),
 			modality: this.formEvent.modality,
+			place: this.formEvent.place,
+			totalCost: this.formEvent.totalCost,
+			costoLocal: this.formEvent.costoLocal,
+			earnings: this.formEvent.earnings,
 			quota: this.formEvent.quota,
 			description: this.formEvent.description,
 			entrepreneurshipeventregistry: []
 		};
+
+		//console.log('Datos enviados al backend:', eventToUpdate);
+
 		this.eventService.updateEvent(eventToUpdate).subscribe(
 			(response) => {
-				console.log('Evento actualizado con éxito:', response);
-				this.router.navigate(['/bazares']);
+				Swal.fire('Guardado', 'El bazar ha sido modificado', 'success').then(() => {
+					this.router.navigate(['/bazares']);
+				});
 			},
 			(error) => {
-				console.error('Error al actualizar el evento:', error);
+				Swal.fire('Error', 'No se pudo actualizar el bazar', 'error');
+				//console.error(error);
 			}
 		);
 	}

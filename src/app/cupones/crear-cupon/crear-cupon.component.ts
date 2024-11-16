@@ -4,6 +4,7 @@ import { Functionalities } from 'src/app/model/functionalities';
 import { NewCoupon } from 'src/app/model/newCoupon';
 import { Planes } from 'src/app/model/planes';
 import { CuponesService } from 'src/app/service/cupones.service';
+import { PerfilesService } from 'src/app/service/perfiles.service';
 import { PlanesService } from 'src/app/service/planes.service';
 
 @Component({
@@ -15,19 +16,21 @@ export class CrearCuponComponent implements OnInit {
 	constructor(
 		private couponService: CuponesService,
 		private planesService: PlanesService,
+		private perfilesService: PerfilesService,
 		private router: Router
 	) {
 		this.formCoupon = {
 			description: '',
 			expirationDate: '',
 			expirationPeriod: 0,
-			entrepreneurshipId: 1,
+			entrepreneurshipId: 0,
 			functionalityIds: []
 		};
 	}
 
 	planList: Planes[];
 	allFunc: Functionalities[];
+	shopList: any[] = [];
 
 	formCoupon: NewCoupon;
 	sendCoupon: NewCoupon;
@@ -35,13 +38,22 @@ export class CrearCuponComponent implements OnInit {
 	ngOnInit(): void {
 		this.planesService.findAll().subscribe((planes) => {
 			this.planList = planes.content;
-			console.log(this.planList);
+			//console.log(this.planList);
 		});
 
 		this.planesService.findFuncionalities().subscribe((data) => {
 			this.allFunc = data;
-			console.log(this.allFunc);
+			//console.log(this.allFunc);
 		});
+
+		this.perfilesService.findById(9).subscribe(
+			(response) => {
+			  //console.log(response);
+			  for (let i=0; i<response.length; i++){
+				this.shopList.push(response[i]);
+			  }
+			}
+		  );
 	}
 
 	addCoupon() {
@@ -61,14 +73,14 @@ export class CrearCuponComponent implements OnInit {
 
 		this.sendCoupon = Object.assign({}, this.formCoupon);
 		this.sendCoupon.planId = this.formCoupon.planId;
-		console.log("Crea", this.sendCoupon);
+		//console.log("Crea", this.sendCoupon);
 
 		this.couponService.createCoupon(this.sendCoupon).subscribe(
 			() => {
 				this.router.navigate(['/cupones']);
 			},
 			(error) => {
-				console.error(error);
+				//console.error(error);
 			}
 		);
 	}

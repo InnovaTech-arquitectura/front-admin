@@ -18,15 +18,25 @@ export class VerBazaresComponent implements OnInit {
 	constructor(private eventService: EventsService) {}
 
 	ngOnInit(): void {
-		this.pageIndex = 0;
-		console.log(this.pageIndex);
-		this.getBazares(this.pageIndex, this.pageSize);
-		console.log(this.length);
+		this.loadBazares();
+	}
+
+	loadBazares(): void {
+		this.eventService.getBazares(this.pageIndex, this.pageSize).subscribe((data: any) => {
+			this.bazares = data.content.map((bazar: any) => {
+				return {
+					...bazar,
+					date: new Date(bazar.date).toLocaleDateString('en-CA'), // Ajusta al formato yyyy-MM-dd
+					date2: new Date(bazar.date2).toLocaleDateString('en-CA')
+				};
+			});
+			this.length = data.totalElements;
+			//console.log('Bazares cargados:', this.bazares);
+		});
 	}
 
 	getBazares(pageIndex: number, pageSize: number): void {
 		this.eventService.getBazares(pageIndex, pageSize).subscribe((data: any) => {
-			console.log(data);
 			this.bazares = data.content;
 			this.length = data.totalElements;
 		});

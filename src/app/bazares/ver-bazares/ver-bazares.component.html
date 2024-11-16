@@ -37,14 +37,22 @@
 						<td>{{ bazar.id }}</td>
 						<td>{{ bazar.name }}</td>
 						<td>{{ bazar.date | date: 'dd/MM/yyyy' }}</td>
-						<td>{{ bazar.date | date: 'dd/MM/yyyy' }}</td>
+						<td>{{ bazar.date2 | date: 'dd/MM/yyyy' }}</td>
 						<td>{{ bazar.modality }}</td>
-						<td>{{ bazar.quota }}</td>
+						<td>{{ bazar.costoLocal }}</td>
 						<td>
-							<a class="links informa" [routerLink]="'/bazares/' + bazar.id" [attr.id]="'info-' + bazar.id">
+							<a
+								class="links informa"
+								[routerLink]="'/bazares/' + bazar.id"
+								[attr.id]="'info-' + bazar.id"
+							>
 								<i class="bx bx-info-circle"></i>
 							</a>
-							<a class="links edit" [routerLink]="'/bazares/edit/' + bazar.id" [attr.id]="'edit-' + bazar.id">
+							<a
+								class="links edit"
+								[routerLink]="'/bazares/edit/' + bazar.id"
+								[attr.id]="'edit-' + bazar.id"
+							>
 								<i class="bx bx-edit"></i>
 							</a>
 							<a class="links delete" (click)="delete(bazar.id)" [attr.id]="'delete-' + bazar.id">

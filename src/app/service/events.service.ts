@@ -27,14 +27,19 @@ export class EventsService {
 	addEvent(eventData: any): Observable<any> {
 		const token = localStorage.getItem('token');
 		const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-		
+
 		return this.http.post(this.apiURL + '/add', eventData, { headers, responseType: 'text' });
 	}
 
-	updateEvent(event: BazarEvent): Observable<any> {
+	/*updateEvent(event: BazarEvent): Observable<any> {
 		const token = localStorage.getItem('token');
 		const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
+		return this.http.put(this.apiURL + '/update', event, { headers, responseType: 'text' });
+	}*/
+	updateEvent(event: any): Observable<any> {
+		const token = localStorage.getItem('token');
+		const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 		return this.http.put(this.apiURL + '/update', event, { headers, responseType: 'text' });
 	}
 
@@ -63,7 +68,7 @@ export class EventsService {
 	getEntrepreneurshipDetails(eventId: number): Observable<any> {
 		const token = localStorage.getItem('token');
 		const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-		console.log(localStorage.getItem('token'));
+		//console.log(localStorage.getItem('token'));
 		return this.http.get<any>(`${this.apiURL}/${eventId}/entrepreneurships`, { headers });
 	}
 }

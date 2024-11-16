@@ -22,7 +22,7 @@ export class VerBannersComponent implements OnInit {
 		this.publicidadService.listBanners().subscribe(
 			(data) => {
 				this.banners = data;
-				console.log(this.banners);
+				//console.log(this.banners);
 			},
 			(error) => {
 				Swal.fire('Error', 'Error al cargar los banners.', 'error');
@@ -37,22 +37,22 @@ export class VerBannersComponent implements OnInit {
 	deleteBanner(id: number): void {
 		Swal.fire({
 			title: '¿Estás seguro?',
-			text: "¡No podrás revertir esto!",
+			text: '¡No podrás revertir esto!',
 			icon: 'warning',
 			showCancelButton: true,
 			confirmButtonColor: '#3085d6',
 			cancelButtonColor: '#d33',
 			confirmButtonText: 'Sí, eliminarlo'
-		  }).then((result) => {
+		}).then((result) => {
 			if (result.isConfirmed) {
-			  this.publicidadService.deleteBanner(id).subscribe(() => {
-				console.log('Eliminado', id);
-			  const index = this.banners.findIndex((course) => course.id === id);
-			  this.banners.splice(index, 1);
-	  
-			  Swal.fire('Eliminado', 'El curso ha sido eliminado', 'success');
-			  })  
+				this.publicidadService.deleteBanner(id).subscribe(() => {
+					//console.log('Eliminado', id);
+					const index = this.banners.findIndex((course) => course.id === id);
+					this.banners.splice(index, 1);
+
+					Swal.fire('Eliminado', 'El curso ha sido eliminado', 'success');
+				});
 			}
-		  });
+		});
 	}
 }

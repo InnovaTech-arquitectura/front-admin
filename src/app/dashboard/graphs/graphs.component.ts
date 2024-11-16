@@ -32,7 +32,7 @@ export class GraphsComponent implements OnInit {
       this.chartData4 = response.chartData4;
       this.chartData5 = response.chartData5;
     }, error => {
-      console.error('Error al cargar los datos del dashboard:', error);
+      //console.error('Error al cargar los datos del dashboard:', error);
     });
   }
 }

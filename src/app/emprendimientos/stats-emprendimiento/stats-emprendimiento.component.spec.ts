@@ -29,7 +29,7 @@ export class StatsEmprendimientoComponent implements OnInit {
 
     }, error => {
       // Manejar el error en caso de que la API falle
-      console.error('Error al cargar los datos del dashboard:', error);
+      //console.error('Error al cargar los datos del dashboard:', error);
       Swal.fire({
         icon: 'error',
         title: 'Error',
