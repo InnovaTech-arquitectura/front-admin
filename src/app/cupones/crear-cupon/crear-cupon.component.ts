@@ -6,6 +6,8 @@ import { Planes } from 'src/app/model/planes';
 import { CuponesService } from 'src/app/service/cupones.service';
 import { PerfilesService } from 'src/app/service/perfiles.service';
 import { PlanesService } from 'src/app/service/planes.service';
+import { EmprendimientosService } from 'src/app/service/emprendimientos.service';
+import { Emprendimiento } from 'src/app/model/emprendimiento';
 
 @Component({
 	selector: 'app-crear-cupon',
@@ -17,7 +19,8 @@ export class CrearCuponComponent implements OnInit {
 		private couponService: CuponesService,
 		private planesService: PlanesService,
 		private perfilesService: PerfilesService,
-		private router: Router
+		private router: Router,
+		private emprendimientosService: EmprendimientosService
 	) {
 		this.formCoupon = {
 			description: '',
@@ -30,8 +33,7 @@ export class CrearCuponComponent implements OnInit {
 
 	planList: Planes[];
 	allFunc: Functionalities[];
-	shopList: any[] = [];
-
+	shopList: Emprendimiento[] = [];
 	formCoupon: NewCoupon;
 	sendCoupon: NewCoupon;
 
@@ -46,19 +48,23 @@ export class CrearCuponComponent implements OnInit {
 			//console.log(this.allFunc);
 		});
 
-		this.perfilesService.findById(9).subscribe(
-			(response) => {
-			  //console.log(response);
-			  for (let i=0; i<response.length; i++){
-				this.shopList.push(response[i]);
-			  }
-			}
-		  );
+		this.emprendimientosService.getEmprendimientos().subscribe(data => {
+			this.shopList = data;
+		});
 	}
 
 	addCoupon() {
 		let dateFromForm = this.formCoupon.expirationDate;
-		let fullDateTime = dateFromForm + 'T23:59:59'; //Agrega la hora en formato 24h
+
+		// Validar si la fecha viene en formato "dd/mm/yyyy" y convertirla a "yyyy-MM-dd"
+		if (dateFromForm.includes('/')) {
+			const [day, month, year] = dateFromForm.split('/');
+			if (day && month && year) {
+				dateFromForm = `${year}-${month}-${day}`;
+			}
+		}
+
+		let fullDateTime = dateFromForm //+ 'T23:59:59'; //Agrega la hora en formato 24h
 		this.formCoupon.expirationDate = fullDateTime;
 
 		this.formCoupon.functionalityIds = [];
@@ -71,9 +77,11 @@ export class CrearCuponComponent implements OnInit {
 			}
 		}
 
+		//this.sendCoupon.entrepreneurshipId = 0//this.formCoupon.entrepreneurshipId;
+
 		this.sendCoupon = Object.assign({}, this.formCoupon);
 		this.sendCoupon.planId = this.formCoupon.planId;
-		//console.log("Crea", this.sendCoupon);
+	    console.log("Crea", this.sendCoupon);
 
 		this.couponService.createCoupon(this.sendCoupon).subscribe(
 			() => {

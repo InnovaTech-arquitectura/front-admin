@@ -27,10 +27,12 @@
 					id="expiration"
 					name="expiration"
 					[(ngModel)]="formCoupon.expirationDate"
-					placeholder="DD/MM/AAAA"
+					[value]="(formCoupon.expirationDate | date:'yyyy-MM-dd')"
+					placeholder="AAAA-MM-DD"
 				/>
-			</div>
 
+			</div>
+			
 			<div class="inputText">
 				<label for="period" required>Periodo de cupón</label>
 				<input
@@ -44,11 +46,17 @@
 
 			<div class="inputText">
 				<label for="shop" required>Emprendimiento</label>
-				<select id="shop" name="shop" [(ngModel)]="formCoupon.entrepreneurshipId">
+				<select 
+					id="shop" 
+					name="shop" 
+					[(ngModel)]="formCoupon.entrepreneurshipId">
 					<option value="" selected disabled>Seleccione un emprendimiento</option>
-					<option *ngFor="let shop of shopList" [value]="shop.user.id"> {{ shop.user.name }} </option>
+					<option *ngFor="let shop of shopList" [value]="shop.id">
+						{{ shop.name }}
+					</option>
 				</select>
 			</div>
+			
 
 			<div class="inputText">
 				<label for="plan" required>Plan</label>
