@@ -6,7 +6,9 @@ import { Coupon } from 'src/app/model/coupon';
 import { NewCoupon } from 'src/app/model/newCoupon';
 import { Planes } from 'src/app/model/planes';
 import { Functionalities } from 'src/app/model/functionalities';
+import { Emprendimiento } from 'src/app/model/emprendimiento';
 import { PlanesService } from 'src/app/service/planes.service';
+import { EmprendimientosService } from 'src/app/service/emprendimientos.service';
 
 @Component({
 	selector: 'app-editar-cupon',
@@ -18,8 +20,9 @@ export class EditarCuponComponent implements OnInit {
 	constructor(
 		private route: ActivatedRoute,
 		private couponService: CuponesService,
-		private planesService: PlanesService,
-		private router: Router
+		private router: Router,
+		private emprendimientosService: EmprendimientosService,
+		private planesService: PlanesService
 	) {
 		this.formCoupon = {
 			description: '',
@@ -31,7 +34,7 @@ export class EditarCuponComponent implements OnInit {
 	}
 
 	couponId: number;
-
+	shopList: Emprendimiento[] = [];
 	formCoupon: NewCoupon;
 	sendCoupon: NewCoupon;
 
@@ -74,6 +77,12 @@ export class EditarCuponComponent implements OnInit {
 					} else {
 						//console.error('expirationPeriod no está definido');
 					}
+					
+
+					this.emprendimientosService.getEmprendimientos().subscribe(data => {
+						this.shopList = data;
+					});
+
 					
 					
 					this.formCoupon.entrepreneurshipId = data.entrepreneurship.id;

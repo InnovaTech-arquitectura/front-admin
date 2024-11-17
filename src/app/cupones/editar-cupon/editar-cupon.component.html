@@ -43,14 +43,16 @@
 			</div>
 
 			<div class="inputText">
-				<label for="shop" required>ID del emprendimiento</label>
-				<input
-					type="number"
-					id="shop"
-					name="shop"
-					[(ngModel)]="formCoupon.entrepreneurshipId"
-					placeholder="0"
-				/>
+				<label for="shop" required>Emprendimiento</label>
+				<select 
+					id="shop" 
+					name="shop" 
+					[(ngModel)]="formCoupon.entrepreneurshipId">
+					<option value="" selected disabled>Seleccione un emprendimiento</option>
+					<option *ngFor="let shop of shopList" [value]="shop.id">
+						{{ shop.name }}
+					</option>
+				</select>
 			</div>
 
 			<div class="inputText">
