@@ -28,7 +28,7 @@ export class EventsService {
 		const token = localStorage.getItem('token');
 		const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-		return this.http.post(this.apiURL + '/add', eventData, { headers, responseType: 'text' });
+		return this.http.post(this.apiURL + '/add', eventData, { headers });
 	}
 
 	/*updateEvent(event: BazarEvent): Observable<any> {
