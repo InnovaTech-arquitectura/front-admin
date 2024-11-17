@@ -8,69 +8,42 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = environment.baseApiUrl + '/login';
-  private secretKey = 'mySecretKey12345'; // Clave secreta de longitud adecuada (16, 24, 32 bytes)
+  private apiUrl = environment.baseApiUrl + '/login';  // La URL de tu backend
+  private secretKey = 'mySecretKey12345';  // Clave secreta (debe coincidir con la del backend)
 
   constructor(private http: HttpClient) {}
 
-  getAdminId(): string | null {
-    return localStorage.getItem('adminId');
-  }
-
-  // Método login modificado para cifrar la contraseña
-  async login(email: string, password: string): Promise<Observable<string>> {
+  // Método de login
+  login(email: string, password: string): Observable<string> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-    // Ciframos la contraseña y esperamos el resultado
-    const encryptedPassword = await this.encryptPassword(password);
+    // Ciframos la contraseña
+    const encryptedPassword = this.encrypt(password);
 
-    // Enviamos el email y la contraseña cifrada
+    // Realizamos la solicitud HTTP POST con el email y la contraseña cifrada
     const body = JSON.stringify({ email, password: encryptedPassword });
 
     return this.http.post(this.apiUrl, body, { headers, responseType: 'text' }).pipe(
       catchError((error) => {
+        console.error('Error en la solicitud:', error);
         return throwError(error);
       })
     );
   }
 
-  // Función para cifrar la contraseña usando SubtleCrypto
-  private async encryptPassword(password: string): Promise<string> {
-    const encoder = new TextEncoder();
-    const passwordBuffer = encoder.encode(password);
-    
-    // Generamos la clave a partir de la clave secreta (usamos un hash SHA-256)
-    const key = await window.crypto.subtle.importKey(
-      'raw',
-      encoder.encode(this.secretKey),
-      { name: 'AES-GCM', length: 256 },
-      false,
-      ['encrypt']
-    );
-
-    // Generamos un vector de inicialización (IV) aleatorio
-    const iv = window.crypto.getRandomValues(new Uint8Array(12)); // 12 bytes para AES-GCM
-
-    // Realizamos el cifrado
-    const cipherText = await window.crypto.subtle.encrypt(
-      { name: 'AES-GCM', iv: iv },
-      key,
-      passwordBuffer
-    );
-
-    // Convertimos el cifrado a un formato que se pueda enviar (base64 o hexadecimal)
-    const buffer = new Uint8Array(cipherText);
-    const cipherTextBase64 = btoa(String.fromCharCode.apply(null, buffer));
-    const ivBase64 = btoa(String.fromCharCode.apply(null, iv));
-
-    // Devuelve el texto cifrado junto con el IV en base64
-    return `${ivBase64}:${cipherTextBase64}`;
+  // Función de cifrado XOR
+  private encrypt(password: string): string {
+    let encrypted = '';
+    for (let i = 0; i < password.length; i++) {
+      encrypted += String.fromCharCode(password.charCodeAt(i) ^ this.secretKey.charCodeAt(i % this.secretKey.length));
+    }
+    return btoa(encrypted);  // Convertimos a Base64 para una transmisión segura
   }
 
+  // Método para obtener el rol desde el token (si es necesario)
   authRole(): Observable<string> {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-
     return this.http.get(this.apiUrl + '/role', { headers, responseType: 'text' });
   }
 }
