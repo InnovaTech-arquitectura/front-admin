@@ -11,7 +11,7 @@ RUN npm install
 COPY . .
 
 # Usar la variable de entorno para definir el entorno de construcción
-ARG ENV=testing
+ARG ENV
 RUN npm run build -- --configuration=$ENV
 
 # Usar una imagen base de Nginx para servir la aplicación

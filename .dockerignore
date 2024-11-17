@@ -1,0 +1,25 @@
+# Ignorar node_modules (no se necesita en la imagen)
+node_modules
+
+# Ignorar archivos de configuración de npm
+npm-debug.log
+package-lock.json
+
+# Ignorar el Dockerfile y docker-compose.yml para que no se copien en la imagen
+Dockerfile
+docker-compose.yml
+
+# Ignorar scripts de despliegue
+deploy.sh
+
+# Ignorar el directorio .git (si usas git)
+.git
+.gitignore
+
+# Ignorar archivos de compilación de Angular
+dist
+build
+
+# Ignorar archivos temporales
+*.tmp
+*.temp

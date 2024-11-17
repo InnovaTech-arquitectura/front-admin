@@ -22,23 +22,24 @@ export class InicioSesionComponent {
 
 	onSubmit() {
 		this.isLoading = true; // Mostrar el spinner
-		this.authService.login(this.email, this.password).subscribe(
-			(response) => {
-				localStorage.setItem('token', response);
-				this.router.navigate(['/dashboard']);
-				this.isLoading = false; // Ocultar el spinner
-			},
-			(error) => {
-				//console.error('Error al iniciar sesión:', error);
-				this.isLoading = false; // Ocultar el spinner
-				Swal.fire({
-					icon: 'error',
-					title: 'Error de autenticación',
-					text: 'No pudimos iniciar sesión. Por favor, verifica tus credenciales.',
-					confirmButtonText: 'Cerrar'
-				});
-			}
-		);
+		this.authService.login(this.email, this.password).then((response) => {  // Modificado a .then() para manejar Promise
+			response.subscribe(
+				(token) => {
+					localStorage.setItem('token', token);
+					this.router.navigate(['/dashboard']);
+					this.isLoading = false; // Ocultar el spinner
+				},
+				(error) => {
+					this.isLoading = false; // Ocultar el spinner
+					Swal.fire({
+						icon: 'error',
+						title: 'Error de autenticación',
+						text: 'No pudimos iniciar sesión. Por favor, verifica tus credenciales.',
+						confirmButtonText: 'Cerrar'
+					});
+				}
+			);
+		});
 	}
 
 	redirectUserBasedOnRole(role: string) {
