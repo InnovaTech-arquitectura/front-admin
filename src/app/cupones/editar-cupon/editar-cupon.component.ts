@@ -6,7 +6,9 @@ import { Coupon } from 'src/app/model/coupon';
 import { NewCoupon } from 'src/app/model/newCoupon';
 import { Planes } from 'src/app/model/planes';
 import { Functionalities } from 'src/app/model/functionalities';
+import { Emprendimiento } from 'src/app/model/emprendimiento';
 import { PlanesService } from 'src/app/service/planes.service';
+import { EmprendimientosService } from 'src/app/service/emprendimientos.service';
 
 @Component({
 	selector: 'app-editar-cupon',
@@ -18,8 +20,9 @@ export class EditarCuponComponent implements OnInit {
 	constructor(
 		private route: ActivatedRoute,
 		private couponService: CuponesService,
-		private planesService: PlanesService,
-		private router: Router
+		private router: Router,
+		private emprendimientosService: EmprendimientosService,
+		private planesService: PlanesService
 	) {
 		this.formCoupon = {
 			description: '',
@@ -31,7 +34,7 @@ export class EditarCuponComponent implements OnInit {
 	}
 
 	couponId: number;
-
+	shopList: Emprendimiento[] = [];
 	formCoupon: NewCoupon;
 	sendCoupon: NewCoupon;
 
@@ -46,9 +49,42 @@ export class EditarCuponComponent implements OnInit {
 
 			this.couponService.getCouponById(id).subscribe(
 				(data) => {
+					//console.log(data);
 					this.formCoupon.description = data.description;
 					this.formCoupon.expirationDate = data.expirationDate;
 					this.formCoupon.expirationPeriod = data.expirationPeriod;
+					// Verificar si data.expirationPeriod es una fecha en formato ISO
+					if (data.expirationDate) {
+						//console.log('expirationPeriod recibido:', data.expirationDate);
+						
+						// Si expirationPeriod es una fecha en formato ISO (ejemplo: "2025-12-10T23:59:59.000+00:00")
+						let isoDate = data.expirationDate;
+					
+						// Crear un objeto Date a partir de la fecha ISO
+						let dateObject = new Date(isoDate);
+					
+						// Comprobar si la fecha es válida
+						if (!isNaN(dateObject.getTime())) {
+							// Obtener el formato 'yyyy-MM-dd' utilizando los métodos de Date
+							let formattedDate = dateObject.toISOString().split('T')[0];
+					
+							// Asignar la fecha formateada a expirationDate
+							this.formCoupon.expirationDate = formattedDate;
+							console.log('Fecha formateada:', this.formCoupon.expirationDate);
+						} else {
+							//console.error('Fecha no válida:', isoDate);
+						}
+					} else {
+						//console.error('expirationPeriod no está definido');
+					}
+					
+
+					this.emprendimientosService.getEmprendimientos().subscribe(data => {
+						this.shopList = data;
+					});
+
+					
+					
 					this.formCoupon.entrepreneurshipId = data.entrepreneurship.id;
 					
 					if(data.plan != null)
